@@ -13,7 +13,7 @@ public class Menu{
             System.out.println("3. Buscar vehículo");
             System.out.println("4. Modificar vehículo");
             System.out.println("5. Eliminar vehículo");
-            System.out.println("6. Salir");
+            System.out.println("6. Salir\n");
             String opcionS=Validaciones.validarNumero("tu selección del menú", sc);
             opcion=Integer.parseInt(opcionS);
 
