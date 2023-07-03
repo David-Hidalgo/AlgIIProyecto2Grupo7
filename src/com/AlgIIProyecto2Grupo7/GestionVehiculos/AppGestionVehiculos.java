@@ -1,4 +1,5 @@
 package com.AlgIIProyecto2Grupo7.GestionVehiculos;
+
 import com.AlgIIProyecto2Grupo7.Menu;
 
 public class AppGestionVehiculos {

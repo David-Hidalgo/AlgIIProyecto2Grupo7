@@ -2,11 +2,11 @@ package com.AlgIIProyecto2Grupo7;
 
 import java.util.Scanner;
 
-public class Menu{
+public class Menu {
     public static void menuGestionVehiculos() {
         int opcion;
         Scanner sc = new Scanner(System.in);
-        do { 
+        do {
             System.out.println("Bienvenido a la gestión de vehículos");
             System.out.println("1. Crear vehículo");
             System.out.println("2. Modificar vehículo");
@@ -14,54 +14,43 @@ public class Menu{
             System.out.println("4. Consultar vehículo");
             System.out.println("5. Listar vehículos");
             System.out.println("0. Salir\n");
-            String opcionS=Validaciones.validarNumero("tu selección del menú", sc);
-            opcion=Integer.parseInt(opcionS);
-
+            String opcionS = Validaciones.validarNumero("tu selección del menú", sc);
+            opcion = Integer.parseInt(opcionS);
             switch (opcion) {
                 case 1:
-                /*
-                pedirDatosVehiculo(listaCompetidores);
-                descargar_archivo3(*listaCompetidores);
-                 */
-                break;
-                
+                    /*
+                     * pedirDatosVehiculo(listaCompetidores);
+                     * descargar_archivo3(*listaCompetidores);
+                     */
+                    break;
                 case 2:
-                /*
-                modificarVehiculo(listaCompetidores);
-                descargar_archivo3(*listaCompetidores);
-                 */
-                
-                break;
-                
+                    /*
+                     * modificarVehiculo(listaCompetidores);
+                     * descargar_archivo3(*listaCompetidores);
+                     */
+                    break;
                 case 3:
-                /*
-                eliminarVehiculo(listaCompetidores);
-                descargar_archivo3(*listaCompetidores);
-                 */
-                break;
-                
+                    /*
+                     * eliminarVehiculo(listaCompetidores);
+                     * descargar_archivo3(*listaCompetidores);
+                     */
+                    break;
                 case 4:
-                //consultarVehiculo(*listaCompetidores);
-                
-                break;
-                
+                    // consultarVehiculo(*listaCompetidores);
+                    break;
                 case 5:
-                //muestra(*listaCompetidores);
-                
-                break;
-                
+                    // muestra(*listaCompetidores);
+                    break;
                 case 0:
-                System.out.println("Gracias por usar el programa");
-                
-                break;
-                
-                default: System.out.println("Error, ingrese un numero del 1 al 6");
-                break;
+                    System.out.println("Gracias por usar el programa");
+                    break;
+                default:
+                    System.out.println("Error, ingrese un numero del 1 al 6");
+                    break;
             }
         } while (opcion != 6);
-       sc.close(); 
+        sc.close();
     }
-
 
     public static void MenuVelocidadVehiculo() {
         System.out.println("Ingrese la velocidad del vehiculo:");
@@ -85,7 +74,6 @@ public class Menu{
     }
 
     public static void menuComoSeVeElVehiculo() {
-
         /*
          * aqui hacer una lista de caracteres , y que solo muestre los
          * todavia no han sido elegidos
@@ -110,7 +98,6 @@ public class Menu{
         System.out.println("15. ");
         System.out.println("(el numero que esta al lado de su opcion)");
         System.out.print("Ingrese la opcion elegida:");
-
     }
 
     public static void menuTipoDeCaucho() {
@@ -143,5 +130,4 @@ public class Menu{
         System.out.println("8. super ferrari   Anti Coleo     Pegado al piso     160");
         System.out.println("9.  Delorean       Anti Coleo     Pegado al piso     180");
     }
-
 }
