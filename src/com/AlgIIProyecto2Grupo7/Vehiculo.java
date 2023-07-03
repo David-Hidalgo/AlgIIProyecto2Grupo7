@@ -112,4 +112,9 @@ public class Vehiculo {
     public void setvehiculoEnPantalla(String vehiculoEnPantalla) {
         this.vehiculoEnPantalla = vehiculoEnPantalla;
     }
+
+    @Override
+	public String toString() {
+		return "Los datos de la Carro son: nombreEs " + nombreEs  + ", nombreEn= " + nombreEn + ", velocidad= " + velocidad + ", vehiculoEnPantalla= " + vehiculoEnPantalla+"\n";
+	}	
 }
