@@ -93,4 +93,81 @@ public class ArbolAVL {
         }
         return nuevoPadre;
     }
+
+    private NodoAVL buscarNodo(NodoAVL nodo, int dato) {
+        if (nodo == null) {
+            return null;
+        } else if (nodo.getDato() == dato) {
+            return nodo;
+        } else if (nodo.getDato() < dato) {
+            return buscarNodo(nodo.getDerecho(), dato);
+        } else {
+            return buscarNodo(nodo.getIzquierdo(), dato);
+        }
+    }
+
+    public NodoAVL buscar(int dato) {
+        return buscarNodo(raiz, dato);
+    }
+
+    private NodoAVL reemplazar(NodoAVL nodo) {
+        NodoAVL auxiliar1 = nodo;
+        NodoAVL auxiliar2 = nodo.getIzquierdo();
+        while (auxiliar2 != null) {
+            auxiliar1 = auxiliar2;
+            auxiliar2 = auxiliar2.getIzquierdo();
+        }
+        nodo.setDato(auxiliar1.getDato());
+        return auxiliar1;
+    }
+
+    
+
+    private NodoAVL eliminarAVL(NodoAVL nodo, int dato) {
+        if (nodo == null) {
+            return nodo;
+        } else if (nodo.getDato() < dato) {
+            nodo.setDerecho(eliminarAVL(nodo.getDerecho(), dato));
+        } else if (nodo.getDato() > dato) {
+            nodo.setIzquierdo(eliminarAVL(nodo.getIzquierdo(), dato));
+        } else {
+            NodoAVL auxiliar = nodo;
+            if (auxiliar.getIzquierdo() == null) {
+                nodo = auxiliar.getDerecho();
+            } else if (auxiliar.getDerecho() == null) {
+                nodo = auxiliar.getIzquierdo();
+            } else {
+                auxiliar = reemplazar(auxiliar);
+            }
+            auxiliar = null;
+        }
+        if (nodo == null) {
+            return nodo;
+        }
+        nodo.setFe(Math.max(obtenerFE(nodo.getIzquierdo()), obtenerFE(nodo.getDerecho())) + 1);
+        int fe = obtenerFE(nodo);
+        if (fe > 1 && obtenerFE(nodo.getIzquierdo()) >= 0) {
+            return rotacionDerecha(nodo);
+        }
+        if (fe > 1 && obtenerFE(nodo.getIzquierdo()) < 0) {
+            return rotacionDobleDerecha(nodo);
+        }
+        if (fe < -1 && obtenerFE(nodo.getDerecho()) <= 0) {
+            return rotacionIzquierda(nodo);
+        }
+        if (fe < -1 && obtenerFE(nodo.getDerecho()) > 0) {
+            return rotacionDobleIzquierda(nodo);
+        }
+        return nodo;
+    }
+
+    public void eliminar(int dato) {
+        if (raiz == null) {
+            System.out.println("Arbol vacio");
+        } else {
+            raiz = eliminarAVL(raiz, dato);
+        }
+    }
+
+
 }
