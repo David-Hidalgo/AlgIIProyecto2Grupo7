@@ -1,20 +1,20 @@
 package edu.ucab.Estructuras;
 
 public class NodoAVL {
-    private int dato;
+    private int clave;
     private int fe;
     private NodoAVL izquierdo;
     private NodoAVL derecho;
 
-    public NodoAVL(int dato) {
-        this.dato = dato;
+    public NodoAVL(int clave) {
+        this.clave = clave;
         this.fe = 0;
         this.izquierdo = null;
         this.derecho = null;
     }
 
-    public int getDato() {
-        return dato;
+    public int getClave() {
+        return clave;
     }
 
     public int getFe() {
@@ -29,8 +29,8 @@ public class NodoAVL {
         return derecho;
     }
 
-    public void setDato(int dato) {
-        this.dato = dato;
+    public void setClave(int clave) {
+        this.clave = clave;
     }
 
     public void setFe(int fe) {
