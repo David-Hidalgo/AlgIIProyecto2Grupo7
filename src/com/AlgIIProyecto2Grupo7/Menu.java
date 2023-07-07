@@ -48,7 +48,7 @@ public class Menu {
                     System.out.println("Error, ingrese un numero del 1 al 6");
                     break;
             }
-        } while (opcion != 6);
+        } while (opcion != 0);
         sc.close();
     }
 
