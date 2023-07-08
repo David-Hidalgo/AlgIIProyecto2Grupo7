@@ -1,4 +1,4 @@
-package edu.ucab.Estructuras.avl;
+package edu.ucab.estructuras.avl;
 
 public class Avl {
     private Nodo raiz;

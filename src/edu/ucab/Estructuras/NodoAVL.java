@@ -1,4 +1,4 @@
-package edu.ucab.Estructuras;
+package edu.ucab.estructuras;
 
 public class NodoAVL {
     private int clave;
