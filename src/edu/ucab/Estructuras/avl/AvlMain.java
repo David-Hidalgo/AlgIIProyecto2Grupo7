@@ -3,26 +3,30 @@ package edu.ucab.estructuras.avl;
 public class AvlMain {
 
     public static void main(String[] args) {
-        Avl avl = new Avl(10);
-        avl.insertar(9);
-        avl.insertar(10);
-        avl.insertar(11);
-        avl.insertar(12);
-        avl.insertar(13);
-        avl.insertar(14);
-        avl.insertar(15);
-        avl.insertar(1);
-        avl.insertar(2);
-        avl.insertar(3);
-        avl.insertar(4);
-        avl.insertar(5);
-        avl.insertar(6);
-        avl.insertar(7);
-        avl.insertar(8);
-        avl.insertar(19);
-        avl.insertar(18);
-        avl.insertar(17);
-        avl.insertar(16);
-        avl.inOrden();
+        int n =10;
+        Avl ArbolAVL = new Avl(15);
+        ArbolAVL.insertar(9);
+        ArbolAVL.insertar(10);
+        ArbolAVL.insertar(11);
+        ArbolAVL.insertar(12);
+        ArbolAVL.insertar(13);
+        ArbolAVL.insertar(14);
+        ArbolAVL.insertar(15);
+        ArbolAVL.insertar(1);
+        ArbolAVL.insertar(2);
+        ArbolAVL.insertar(3);
+        ArbolAVL.insertar(4);
+        ArbolAVL.insertar(5);
+        ArbolAVL.insertar(6);
+        ArbolAVL.insertar(7);
+        ArbolAVL.insertar(8);
+        ArbolAVL.insertar(19);
+        ArbolAVL.insertar(18);
+        ArbolAVL.insertar(17);
+        ArbolAVL.insertar(16);
+        ArbolAVL.inOrden();
+        System.out.println("Prueba borrar " + n);
+        ArbolAVL.eliminar(n);
+        ArbolAVL.inOrden();
     }
 }

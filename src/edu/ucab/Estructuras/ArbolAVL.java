@@ -171,9 +171,7 @@ public class ArbolAVL {
     }
 
     public void eliminar(int clave) {
-        if (raiz == null) {
-            System.out.println("Arbol vacio");
-        } else {
+        if (raiz != null) {
             raiz = eliminarAVL(raiz, clave);
         }
     }

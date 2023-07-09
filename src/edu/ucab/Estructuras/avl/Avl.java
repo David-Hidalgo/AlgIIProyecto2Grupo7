@@ -55,15 +55,13 @@ public class Avl {
         int alturaDerecha = nodo.altura(nodo.getHijoDerecho());
 
         if (alturaIzquierda - alturaDerecha > 1) {
-            if (hijoIzquierdo.altura(hijoIzquierdo.getHijoIzquierdo()) >= hijoIzquierdo
-                    .altura(hijoIzquierdo.getHijoDerecho())) {
+            if (hijoIzquierdo.altura(hijoIzquierdo.getHijoIzquierdo()) >= hijoIzquierdo.altura(hijoIzquierdo.getHijoDerecho())) {
                 nodo = rotacionSimpleIzquierda(nodo);
             } else {
                 nodo = rotacionDobleIzquierda(nodo);
             }
         } else if (alturaDerecha - alturaIzquierda > 1) {
-            if (hijoDerecho.altura(hijoDerecho.getHijoDerecho()) >= hijoDerecho
-                    .altura(hijoDerecho.getHijoIzquierdo())) {
+            if (hijoDerecho.altura(hijoDerecho.getHijoDerecho()) >= hijoDerecho.altura(hijoDerecho.getHijoIzquierdo())) {
                 nodo = rotacionSimpleDerecha(nodo);
             } else {
                 nodo = rotacionDobleDerecha(nodo);
@@ -97,9 +95,11 @@ public class Avl {
         Nodo aux = raiz.buscarNodo(dato);
         if (aux != null) {
             if (comprobarHoja(aux, dato)) {
-                return (EliminarHoja1(this.raiz, dato));
-            } else
+                return (EliminarHoja(this.raiz, dato));
+            } else {
+                raiz = EliminarNodo(this.raiz, dato);
                 return false;
+            }
         } else
             return false;
     }
@@ -119,7 +119,7 @@ public class Avl {
         }
     }
 
-    private boolean EliminarHoja1(Nodo n, int dato) {
+    private boolean EliminarHoja(Nodo n, int dato) {
         boolean loEncontre = true;
         if (dato == n.getClave()) {
 
@@ -127,17 +127,19 @@ public class Avl {
 
         }
         if (dato < n.getClave()) {
-            loEncontre = EliminarHoja1(n.getHijoIzquierdo(), dato);
+            loEncontre = EliminarHoja(n.getHijoIzquierdo(), dato);
             if (!loEncontre) {
                 n.setHijoIzquierdo(null);
             }
+                n = balancear(n);
             return true;
 
         } else {
-            loEncontre = EliminarHoja1(n.getHijoDerecho(), dato);
+            loEncontre = EliminarHoja(n.getHijoDerecho(), dato);
             if (!loEncontre) {
                 n.setHijoDerecho(null);
             }
+                n = balancear(n);
             return true;
         }
     }
@@ -161,35 +163,82 @@ public class Avl {
         }
     }
 
-    private Nodo EliminarRaiz(Nodo n, int dato, boolean loEncontre) {
+    private Nodo EliminarNodo(Nodo n, int dato) {
         if (dato == n.getClave()) {
-            loEncontre = true;
+            if (n.getHijoIzquierdo() == null) {
+                n = EliminarRaizDerecha(n);
+            } else {
+                n = EliminarRaizIzquierda(n);
+            }
 
         } else {
             if (dato < n.getClave()) {
-                n.setHijoIzquierdo(EliminarRaiz(n.getHijoIzquierdo(), dato, loEncontre));
+                n.setHijoIzquierdo(EliminarNodo(n.getHijoIzquierdo(), dato));
             }
             if (dato > n.getClave()) {
-                n.setHijoDerecho(EliminarRaiz(n.getHijoDerecho(), dato, loEncontre));
+                n.setHijoDerecho(EliminarNodo(n.getHijoDerecho(), dato));
             }
-
         }
         return balancear(n);
     }
 
-    private boolean existeYEsHoja(Nodo n, int dato) {
-        if (dato == n.getClave()) {
-            if ((n.getHijoDerecho() != null) && (n.getHijoIzquierdo() != null)) {
-                return false;
-            } else
-                return true;
-        }
-        if (dato < n.getClave()) {
-            return existeYEsHoja(n.getHijoIzquierdo(), dato);
+    private Nodo EliminarRaizIzquierda(Nodo n) {
+        if (n.getHijoIzquierdo().getHijoDerecho() == null) {
+            n.setClave(n.getHijoIzquierdo().getClave());
+            n.setHijoIzquierdo(n.getHijoIzquierdo().getHijoIzquierdo());
+            n = balancear(n);
         } else {
-            return existeYEsHoja(n.getHijoDerecho(), dato);
+            Nodo aux = n.getHijoIzquierdo().getHijoDerecho();
+            while (aux.getHijoDerecho() != null) {
+                aux = aux.getHijoDerecho();
+            }
+            int clave = aux.getClave();
+            n.setClave(clave);
+            if (aux.getHijoIzquierdo() == null) {
+                EliminarHoja(n.getHijoIzquierdo(), clave);
+            } else {
+                n= EliminarNodo(n.getHijoIzquierdo(), clave);
+            }
         }
+        return n;
     }
+
+    private Nodo EliminarRaizDerecha(Nodo n) {
+        if (n.getHijoDerecho().getHijoIzquierdo() == null) {
+            n.setClave(n.getHijoDerecho().getClave());
+            n.setHijoDerecho(n.getHijoDerecho().getHijoDerecho());
+            n = balancear(n);
+        } else {
+            Nodo aux = n.getHijoDerecho().getHijoIzquierdo();
+            while (aux.getHijoIzquierdo() != null) {
+                aux = aux.getHijoIzquierdo();
+            }
+            int clave = aux.getClave();
+            n.setClave(clave);
+            if (aux.getHijoDerecho() == null) {
+                EliminarHoja(n.getHijoDerecho(), clave);
+            } else {
+                n= EliminarNodo(n.getHijoDerecho(), clave);
+            }
+        }
+        return n;
+    }
+
+    /*
+     * private boolean existeYEsHoja(Nodo n, int dato) {
+     * if (dato == n.getClave()) {
+     * if ((n.getHijoDerecho() != null) && (n.getHijoIzquierdo() != null)) {
+     * return false;
+     * } else
+     * return true;
+     * }
+     * if (dato < n.getClave()) {
+     * return existeYEsHoja(n.getHijoIzquierdo(), dato);
+     * } else {
+     * return existeYEsHoja(n.getHijoDerecho(), dato);
+     * }
+     * }
+     */
 
     public void inOrden() {
         if (raiz != null) {
