@@ -95,10 +95,11 @@ public class Avl {
         Nodo aux = raiz.buscarNodo(dato);
         if (aux != null) {
             if (comprobarHoja(aux, dato)) {
-                return (EliminarHoja(this.raiz, dato));
+                raiz = EliminarHoja(this.raiz, dato);
+                return (true);
             } else {
                 raiz = EliminarNodo(this.raiz, dato);
-                return false;
+                return true;
             }
         } else
             return false;
@@ -107,7 +108,7 @@ public class Avl {
     private boolean comprobarHoja(Nodo n, int dato) {
 
         if (dato == n.getClave()) {
-            if ((n.getHijoDerecho() != null) && (n.getHijoIzquierdo() != null)) {
+            if ((n.getHijoDerecho() != null) || (n.getHijoIzquierdo() != null)) {
                 return false;
             } else
                 return true;
@@ -119,28 +120,19 @@ public class Avl {
         }
     }
 
-    private boolean EliminarHoja(Nodo n, int dato) {
-        boolean loEncontre = true;
+    private Nodo EliminarHoja(Nodo n, int dato) {
         if (dato == n.getClave()) {
 
-            return false;
+            return null;
 
         }
         if (dato < n.getClave()) {
-            loEncontre = EliminarHoja(n.getHijoIzquierdo(), dato);
-            if (!loEncontre) {
-                n.setHijoIzquierdo(null);
-            }
-                n = balancear(n);
-            return true;
+            n.setHijoIzquierdo(EliminarHoja(n.getHijoIzquierdo(), dato)); 
+            return balancear(n);
 
         } else {
-            loEncontre = EliminarHoja(n.getHijoDerecho(), dato);
-            if (!loEncontre) {
-                n.setHijoDerecho(null);
-            }
-                n = balancear(n);
-            return true;
+            n.setHijoDerecho(EliminarHoja(n.getHijoDerecho(), dato));
+            return balancear(n);
         }
     }
 
@@ -184,9 +176,7 @@ public class Avl {
 
     private Nodo EliminarRaizIzquierda(Nodo n) {
         if (n.getHijoIzquierdo().getHijoDerecho() == null) {
-            n.setClave(n.getHijoIzquierdo().getClave());
-            n.setHijoIzquierdo(n.getHijoIzquierdo().getHijoIzquierdo());
-            n = balancear(n);
+            n = n.getHijoIzquierdo();
         } else {
             Nodo aux = n.getHijoIzquierdo().getHijoDerecho();
             while (aux.getHijoDerecho() != null) {
@@ -195,19 +185,17 @@ public class Avl {
             int clave = aux.getClave();
             n.setClave(clave);
             if (aux.getHijoIzquierdo() == null) {
-                EliminarHoja(n.getHijoIzquierdo(), clave);
+                n.setHijoIzquierdo(EliminarHoja(n.getHijoIzquierdo(), clave));
             } else {
-                n= EliminarNodo(n.getHijoIzquierdo(), clave);
+                n.setHijoIzquierdo(EliminarNodo(n.getHijoIzquierdo(), clave));
             }
         }
-        return n;
+        return balancear(n);
     }
 
     private Nodo EliminarRaizDerecha(Nodo n) {
         if (n.getHijoDerecho().getHijoIzquierdo() == null) {
-            n.setClave(n.getHijoDerecho().getClave());
-            n.setHijoDerecho(n.getHijoDerecho().getHijoDerecho());
-            n = balancear(n);
+            n= n.getHijoDerecho();
         } else {
             Nodo aux = n.getHijoDerecho().getHijoIzquierdo();
             while (aux.getHijoIzquierdo() != null) {
@@ -216,12 +204,12 @@ public class Avl {
             int clave = aux.getClave();
             n.setClave(clave);
             if (aux.getHijoDerecho() == null) {
-                EliminarHoja(n.getHijoDerecho(), clave);
+                n.setHijoDerecho(EliminarHoja(n.getHijoDerecho(), clave));
             } else {
-                n= EliminarNodo(n.getHijoDerecho(), clave);
+                n.setHijoDerecho(EliminarNodo(n.getHijoDerecho(), clave));
             }
         }
-        return n;
+        return balancear(n);
     }
 
     /*
