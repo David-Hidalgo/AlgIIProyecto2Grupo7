@@ -1,202 +1,190 @@
 package edu.ucab.estructuras;
 
-public class ArbolAVL {
-    private NodoAVL raiz;
+public class ArbolAVL<T extends Comparable<T>> {
 
-    private int obtenerFE(NodoAVL nodo) {
-        if (nodo == null) {
-            return -1;
-        } else {
-            return nodo.getFe();
-        }
-    }
-
-    private NodoAVL rotacionIzquierda(NodoAVL c) {
-        NodoAVL auxiliar = c.getIzquierdo();
-        c.setIzquierdo(auxiliar.getDerecho());
-        auxiliar.setDerecho(c);
-        c.setFe(Math.max(obtenerFE(c.getIzquierdo()), obtenerFE(c.getDerecho())) + 1);
-        auxiliar.setFe(Math.max(obtenerFE(auxiliar.getIzquierdo()), obtenerFE(auxiliar.getDerecho())) + 1);
-        return auxiliar;
-    }
-
-    private NodoAVL rotacionDerecha(NodoAVL c) {
-        NodoAVL auxiliar = c.getDerecho();
-        c.setDerecho(auxiliar.getIzquierdo());
-        auxiliar.setIzquierdo(c);
-        c.setFe(Math.max(obtenerFE(c.getIzquierdo()), obtenerFE(c.getDerecho())) + 1);
-        auxiliar.setFe(Math.max(obtenerFE(auxiliar.getIzquierdo()), obtenerFE(auxiliar.getDerecho())) + 1);
-        return auxiliar;
-    }
+    private NodoAVL<T> raiz;
 
     public ArbolAVL() {
         raiz = null;
     }
 
-    public NodoAVL getRaiz() {
-        return raiz;
+    public void insertar(T dato) {
+        raiz = insertar(dato, raiz);
     }
 
-    public void setRaiz(NodoAVL raiz) {
-        this.raiz = raiz;
-    }
-
-    private NodoAVL rotacionDobleIzquierda(NodoAVL c) {
-        NodoAVL temporal;
-        c.setIzquierdo(rotacionDerecha(c.getIzquierdo()));
-        temporal = rotacionIzquierda(c);
-        return temporal;
-    }
-
-    private NodoAVL rotacionDobleDerecha(NodoAVL c) {
-        NodoAVL temporal;
-        c.setDerecho(rotacionIzquierda(c.getDerecho()));
-        temporal = rotacionDerecha(c);
-        return temporal;
-    }
-
-    public void insertar(int clave) {
-        NodoAVL nuevo = new NodoAVL(clave);
-        if (raiz == null) {
-            raiz = nuevo;
-        } else {
-            raiz = insertarAVL(nuevo, raiz);
-        }
-    }
-
-    private NodoAVL insertarAVL(NodoAVL nuevo, NodoAVL subAr) {
-        NodoAVL nuevoPadre = subAr;
-        if (nuevo.getClave() < subAr.getClave()) {
-            if (subAr.getIzquierdo() == null) {
-                subAr.setIzquierdo(nuevo);
-            } else {
-                subAr.setIzquierdo(insertarAVL(nuevo, subAr.getIzquierdo()));
-                if ((obtenerFE(subAr.getIzquierdo()) - obtenerFE(subAr.getDerecho())) == 2) {
-                    if (nuevo.getClave() < subAr.getIzquierdo().getClave()) {
-                        nuevoPadre = rotacionIzquierda(subAr);
-                    } else {
-                        nuevoPadre = rotacionDobleIzquierda(subAr);
-                    }
-                }
-            }
-        } else if (nuevo.getClave() > subAr.getClave()) {
-            if (subAr.getDerecho() == null) {
-                subAr.setDerecho(nuevo);
-            } else {
-                subAr.setDerecho(insertarAVL(nuevo, subAr.getDerecho()));
-                if ((obtenerFE(subAr.getDerecho()) - obtenerFE(subAr.getIzquierdo())) == 2) {
-                    if (nuevo.getClave() > subAr.getDerecho().getClave()) {
-                        nuevoPadre = rotacionDerecha(subAr);
-                    } else {
-                        nuevoPadre = rotacionDobleDerecha(subAr);
-                    }
-                }
-            }
-        } else {
-            System.out.println("Nodo Duplicado");
-        }
-        if ((subAr.getIzquierdo() == null) && (subAr.getDerecho() != null)) {
-            subAr.setFe(subAr.getDerecho().getFe() + 1);
-        } else if ((subAr.getDerecho() == null) && (subAr.getIzquierdo() != null)) {
-            subAr.setFe(subAr.getIzquierdo().getFe() + 1);
-        } else {
-            subAr.setFe(Math.max(obtenerFE(subAr.getIzquierdo()), obtenerFE(subAr.getDerecho())) + 1);
-        }
-        return nuevoPadre;
-    }
-
-    private NodoAVL buscarNodo(NodoAVL nodo, int clave) {
+    private NodoAVL<T> insertar(T dato, NodoAVL<T> nodo) {
         if (nodo == null) {
-            return null;
-        } else if (nodo.getClave() == clave) {
-            return nodo;
-        } else if (nodo.getClave() < clave) {
-            return buscarNodo(nodo.getDerecho(), clave);
+            return new NodoAVL<>(dato);
+        }
+
+        if (dato.compareTo(nodo.getDato()) < 0) {
+            nodo.setIzquierdo(insertar(dato, nodo.getIzquierdo()));
         } else {
-            return buscarNodo(nodo.getIzquierdo(), clave);
+            nodo.setDerecho(insertar(dato, nodo.getDerecho()));
         }
-    }
 
-    public NodoAVL buscar(int clave) {
-        return buscarNodo(raiz, clave);
-    }
+        nodo.actualizarAltura();
 
-    private NodoAVL reemplazar(NodoAVL nodo) {
-        NodoAVL auxiliar1 = nodo;
-        NodoAVL auxiliar2 = nodo.getIzquierdo();
-        while (auxiliar2 != null) {
-            auxiliar1 = auxiliar2;
-            auxiliar2 = auxiliar2.getIzquierdo();
-        }
-        nodo.setClave(auxiliar1.getClave());
-        return auxiliar1;
-    }
+        int balance = nodo.getBalance();
 
-    private NodoAVL eliminarAVL(NodoAVL nodo, int clave) {
-        if (nodo == null) {
-            return nodo;
-        } else if (nodo.getClave() < clave) {
-            nodo.setDerecho(eliminarAVL(nodo.getDerecho(), clave));
-        } else if (nodo.getClave() > clave) {
-            nodo.setIzquierdo(eliminarAVL(nodo.getIzquierdo(), clave));
-        } else {
-            NodoAVL auxiliar = nodo;
-            if (auxiliar.getIzquierdo() == null) {
-                nodo = auxiliar.getDerecho();
-            } else if (auxiliar.getDerecho() == null) {
-                nodo = auxiliar.getIzquierdo();
-            } else {
-                auxiliar = reemplazar(auxiliar);
-            }
-            auxiliar = null;
-        }
-        if (nodo == null) {
-            return nodo;
-        }
-        nodo.setFe(Math.max(obtenerFE(nodo.getIzquierdo()), obtenerFE(nodo.getDerecho())) + 1);
-        int fe = obtenerFE(nodo);
-        if (fe > 1 && obtenerFE(nodo.getIzquierdo()) >= 0) {
+        if (balance > 1 && dato.compareTo(nodo.getIzquierdo().getDato()) < 0) {
             return rotacionDerecha(nodo);
         }
-        if (fe > 1 && obtenerFE(nodo.getIzquierdo()) < 0) {
-            return rotacionDobleDerecha(nodo);
-        }
-        if (fe < -1 && obtenerFE(nodo.getDerecho()) <= 0) {
+
+        if (balance < -1 && dato.compareTo(nodo.getDerecho().getDato()) > 0) {
             return rotacionIzquierda(nodo);
         }
-        if (fe < -1 && obtenerFE(nodo.getDerecho()) > 0) {
-            return rotacionDobleIzquierda(nodo);
+
+        if (balance > 1 && dato.compareTo(nodo.getIzquierdo().getDato()) > 0) {
+            nodo.setIzquierdo(rotacionIzquierda(nodo.getIzquierdo()));
+            return rotacionDerecha(nodo);
         }
+
+        if (balance < -1 && dato.compareTo(nodo.getDerecho().getDato()) < 0) {
+            nodo.setDerecho(rotacionDerecha(nodo.getDerecho()));
+            return rotacionIzquierda(nodo);
+        }
+
         return nodo;
     }
 
-    public void eliminar(int clave) {
-        if (raiz != null) {
-            raiz = eliminarAVL(raiz, clave);
+    private NodoAVL<T> rotacionDerecha(NodoAVL<T> nodo) {
+        NodoAVL<T> izquierdo = nodo.getIzquierdo();
+        NodoAVL<T> derecho = izquierdo.getDerecho();
+
+        izquierdo.setDerecho(nodo);
+        nodo.setIzquierdo(derecho);
+
+        nodo.actualizarAltura();
+        izquierdo.actualizarAltura();
+
+        return izquierdo;
+    }
+
+    private NodoAVL<T> rotacionIzquierda(NodoAVL<T> nodo) {
+        NodoAVL<T> derecho = nodo.getDerecho();
+        NodoAVL<T> izquierdo = derecho.getIzquierdo();
+
+        derecho.setIzquierdo(nodo);
+        nodo.setDerecho(izquierdo);
+
+        nodo.actualizarAltura();
+        derecho.actualizarAltura();
+
+        return derecho;
+    }
+
+    public void eliminar(T dato) {
+        raiz = eliminar(dato, raiz);
+    }
+
+    private NodoAVL<T> eliminar(T dato, NodoAVL<T> nodo) {
+        if (nodo == null) {
+            return null;
+        }
+
+        if (dato.compareTo(nodo.getDato()) < 0) {
+            nodo.setIzquierdo(eliminar(dato, nodo.getIzquierdo()));
+        } else if (dato.compareTo(nodo.getDato()) > 0) {
+            nodo.setDerecho(eliminar(dato, nodo.getDerecho()));
+        } else {
+            if (nodo.getIzquierdo() == null || nodo.getDerecho() == null) {
+                nodo = (nodo.getIzquierdo() != null) ? nodo.getIzquierdo() : nodo.getDerecho();
+            } else {
+                NodoAVL<T> sucesor = buscarSucesor(nodo.getDerecho());
+                nodo.setDato(sucesor.getDato());
+                nodo.setDerecho(eliminar(sucesor.getDato(), nodo.getDerecho()));
+            }
+        }
+
+        if (nodo == null) {
+            return null;
+        }
+
+        nodo.actualizarAltura();
+
+        int balance = nodo.getBalance();
+
+        if (balance > 1 && nodo.getIzquierdo().getBalance() >= 0) {
+            return rotacionDerecha(nodo);
+        }
+
+        if (balance > 1 && nodo.getIzquierdo().getBalance() < 0) {
+            nodo.setIzquierdo(rotacionIzquierda(nodo.getIzquierdo()));
+            return rotacionDerecha(nodo);
+        }
+
+        if (balance < -1 && nodo.getDerecho().getBalance() <= 0) {
+            return rotacionIzquierda(nodo);
+        }
+
+        if (balance < -1 && nodo.getDerecho().getBalance() > 0) {
+            nodo.setDerecho(rotacionDerecha(nodo.getDerecho()));
+            return rotacionIzquierda(nodo);
+        }
+
+        return nodo;
+    }
+
+    private NodoAVL<T> buscarSucesor(NodoAVL<T> nodo) {
+        NodoAVL<T> actual = nodo;
+        while (actual.getIzquierdo() != null) {
+            actual = actual.getIzquierdo();
+        }
+        return actual;
+    }
+
+    public boolean buscar(T dato) {
+        return buscar(dato, raiz);
+    }
+
+    private boolean buscar(T dato, NodoAVL<T> nodo) {
+        if (nodo == null) {
+            return false;
+        }
+
+        if (dato.compareTo(nodo.getDato()) < 0) {
+            return buscar(dato, nodo.getIzquierdo());
+        } else if (dato.compareTo(nodo.getDato()) > 0) {
+            return buscar(dato, nodo.getDerecho());
+        } else {
+            return true;
         }
     }
 
-    public void preOrden(NodoAVL nodo) {
-        if (nodo != null) {
-            System.out.println(nodo.getClave() + " ");
-            preOrden(nodo.getIzquierdo());
-            preOrden(nodo.getDerecho());
-        }
+    public void inOrden() {
+        inOrden(raiz);
     }
-
-    public void inOrden(NodoAVL nodo) {
+    
+    private void inOrden(NodoAVL<T> nodo) {
         if (nodo != null) {
             inOrden(nodo.getIzquierdo());
-            System.out.println(nodo.getClave() + " ");
+            System.out.print(nodo.getDato() + " ");
             inOrden(nodo.getDerecho());
         }
     }
 
-    public void postOrden(NodoAVL nodo) {
+    public void postOrden() {
+        postOrden(raiz);
+    }
+
+    private void postOrden(NodoAVL<T> nodo) {
         if (nodo != null) {
             postOrden(nodo.getIzquierdo());
             postOrden(nodo.getDerecho());
-            System.out.println(nodo.getClave() + " ");
+            System.out.print(nodo.getDato() + " ");
+        }
+    }
+
+    public void preOrden() {
+        preOrden(raiz);
+    }
+
+    private void preOrden(NodoAVL<T> nodo) {
+        if (nodo != null) {
+            System.out.print(nodo.getDato() + " ");
+            preOrden(nodo.getIzquierdo());
+            preOrden(nodo.getDerecho());
         }
     }
 }
