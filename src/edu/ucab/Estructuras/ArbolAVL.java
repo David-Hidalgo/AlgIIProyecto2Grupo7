@@ -187,4 +187,66 @@ public class ArbolAVL<T extends Comparable<T>> {
             preOrden(nodo.getDerecho());
         }
     }
+
+
+    // agregando funciones
+
+    public void mostrarArbol(NodoAVL<T> nodo , int cont) {
+        if (nodo == null){
+            return;
+        } else {
+            mostrarArbol(nodo.getDerecho(), cont+1);
+            for(int i = 0 ; i < cont ; i++){
+                System.out.print(" ");
+            }
+            System.out.println(nodo.getDato());
+            mostrarArbol(nodo.getIzquierdo(), cont+1);
+        }
+    }
+
+    public void niveles(NodoAVL<T> nodo , int cont , int N){
+        if (nodo == null){
+            return;
+        } else {
+            niveles(nodo.getDerecho(), cont+1 , N);
+            if (cont == N) System.out.print(nodo.getDato());
+            niveles(nodo.getDerecho(), cont+1, N);
+        }
+    }
+
+    public int altura1(NodoAVL<T> nodo) {
+    if (nodo == null) {
+        return -1; // La altura de un nodo nulo es -1
+    } else {
+        int alturaIzq = altura1(nodo.getIzquierdo()); // Altura del subárbol izquierdo
+        int alturaDer = altura1(nodo.getDerecho()); // Altura del subárbol derecho
+        return Math.max(alturaIzq, alturaDer) + 1; // Altura del nodo actual es la máxima altura de sus subárboles + 1
+    }
+}
+
+    public int altura2(NodoAVL<T> nodo) {
+    int izquierda , derecha;
+    if (nodo != null){
+        if (nodo.getIzquierdo() != null || nodo.getDerecho() != null ) {
+            izquierda = altura2(nodo.getIzquierdo());
+            derecha = altura2(nodo.getDerecho());
+            if(izquierda > derecha){
+                return (izquierda + 1);   
+            }else return(derecha +1);
+        }
+    }
+    return 0;
+}
+
+
+    public void impirmirNivel(NodoAVL<T> nodo){
+        int N,i,cont = 0;
+        //N = altura1(nodo);
+        N = altura2(nodo);
+        if (nodo != null){
+            for(i = 0 ; i <= N ; i++){
+                niveles(nodo, cont, N);
+            }
+        } 
+    }
 }
