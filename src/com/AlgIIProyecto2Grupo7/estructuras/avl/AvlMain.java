@@ -1,4 +1,4 @@
-package edu.ucab.estructuras.avl;
+package com.AlgIIProyecto2Grupo7.estructuras.avl;
 
 public class AvlMain {
 

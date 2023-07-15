@@ -1,4 +1,4 @@
-package edu.ucab.estructuras;
+package com.AlgIIProyecto2Grupo7.estructuras;
 
 public class NodoAVL<T extends Comparable<T>> {
 

@@ -1,4 +1,4 @@
-package edu.ucab.estructuras;
+package com.AlgIIProyecto2Grupo7.estructuras;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
