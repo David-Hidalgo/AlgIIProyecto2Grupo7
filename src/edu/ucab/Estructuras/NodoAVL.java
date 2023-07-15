@@ -1,47 +1,57 @@
-package edu.ucab.Estructuras;
+package edu.ucab.estructuras;
 
-public class NodoAVL {
-    private int clave;
-    private int fe;
-    private NodoAVL izquierdo;
-    private NodoAVL derecho;
+public class NodoAVL<T extends Comparable<T>> {
 
-    public NodoAVL(int clave) {
-        this.clave = clave;
-        this.fe = 0;
-        this.izquierdo = null;
-        this.derecho = null;
+    private T dato;
+    private NodoAVL<T> izquierdo;
+    private NodoAVL<T> derecho;
+    private int altura;
+
+    public NodoAVL(T dato) {
+        this.dato = dato;
+        izquierdo = null;
+        derecho = null;
+        altura = 1;
     }
 
-    public int getClave() {
-        return clave;
+    public T getDato() {
+        return dato;
     }
 
-    public int getFe() {
-        return fe;
+    public void setDato(T dato) {
+        this.dato = dato;
     }
 
-    public NodoAVL getIzquierdo() {
+    public NodoAVL<T> getIzquierdo() {
         return izquierdo;
     }
 
-    public NodoAVL getDerecho() {
-        return derecho;
-    }
-
-    public void setClave(int clave) {
-        this.clave = clave;
-    }
-
-    public void setFe(int fe) {
-        this.fe = fe;
-    }
-
-    public void setIzquierdo(NodoAVL izquierdo) {
+    public void setIzquierdo(NodoAVL<T> izquierdo) {
         this.izquierdo = izquierdo;
     }
 
-    public void setDerecho(NodoAVL derecho) {
+    public NodoAVL<T> getDerecho() {
+        return derecho;
+    }
+
+    public void setDerecho(NodoAVL<T> derecho) {
         this.derecho = derecho;
     }
+
+    public int getAltura() {
+        return altura;
+    }
+
+    public void actualizarAltura() {
+        int alturaIzquierdo = (izquierdo != null) ? izquierdo.getAltura() : 0;
+        int alturaDerecho = (derecho != null) ? derecho.getAltura() : 0;
+        altura = Math.max(alturaIzquierdo, alturaDerecho) + 1;
+    }
+
+    public int getBalance() {
+        int alturaIzquierdo = (izquierdo != null) ? izquierdo.getAltura() : 0;
+        int alturaDerecho = (derecho != null) ? derecho.getAltura() : 0;
+        return alturaIzquierdo - alturaDerecho;
+    }
+
 }
