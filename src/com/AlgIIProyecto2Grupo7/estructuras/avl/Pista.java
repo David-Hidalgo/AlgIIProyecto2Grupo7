@@ -48,7 +48,7 @@ public class Pista {
 	public static PistaAvl crearPista(int niveles) {
 		Random random = new Random();
 		PistaAvl pistaNueva = new PistaAvl(10000);
-		for (int i = 0; i < (pow(2, niveles)-1); i++) {
+		for (int i = 0; i < (pow(2, niveles-1)-1); i++) {
 			int menor;
 			int mayor;
 			do {
