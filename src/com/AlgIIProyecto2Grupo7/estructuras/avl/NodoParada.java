@@ -5,7 +5,27 @@ public class NodoParada {
 	private int distancia; // distancia en km desde el padre al nodo
     private NodoParada hijoIzquierdo;
     private NodoParada hijoDerecho;
-    private Trampa obstaculo;
+    private Trampa trampa;
+
+    public NodoParada(int clave) {
+        this.clave = clave;
+        hijoIzquierdo = hijoDerecho = null;
+        trampa = null;
+    }
+    
+    public NodoParada() {
+        this.clave = 0;
+        hijoIzquierdo = hijoDerecho = null;
+        trampa = null;
+    }
+
+    public Trampa getTrampa() {
+        return trampa;
+    }
+
+    public void setTrampa(Trampa obstaculo) {
+        this.trampa = obstaculo;
+    }
 
 	public int getDistancia() {
 		return distancia;
@@ -15,15 +35,6 @@ public class NodoParada {
 		this.distancia = distancia;
 	}
 
-    public NodoParada(int clave) {
-        this.clave = clave;
-        hijoIzquierdo = hijoDerecho = null;
-    }
-
-    public NodoParada() {
-        this.clave = 0;
-        hijoIzquierdo = hijoDerecho = null;
-    }
 
     public int getClave() {
         return clave;
@@ -89,6 +100,29 @@ public class NodoParada {
             hijoDerecho.inOrden();
         }
     }
+    
+    public void inOrdenTrampas() {
+        if (hijoIzquierdo != null) {
+            hijoIzquierdo.inOrdenTrampas();
+        }
+        if (trampa != null) {
+            System.out.println(trampa.getTipoTrampa());
+        }
+        if (hijoDerecho != null) {
+            hijoDerecho.inOrdenTrampas();
+        }
+    }
+    public int getCantidadNodos(int i) {
+        if (hijoIzquierdo != null) {
+            hijoIzquierdo.getCantidadNodos(i);
+        }
+        System.out.println(clave);
+        i++;
+        if (hijoDerecho != null) {
+            hijoDerecho.getCantidadNodos(i);
+        }
+        return i;
+    }
 
     public void preOrden() {
         System.out.println(clave);
@@ -109,6 +143,4 @@ public class NodoParada {
         }
         System.out.println(clave);
     }
-
-	
 }

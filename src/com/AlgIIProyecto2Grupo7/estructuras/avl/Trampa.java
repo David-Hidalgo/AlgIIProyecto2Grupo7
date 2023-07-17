@@ -1,17 +1,33 @@
 package com.AlgIIProyecto2Grupo7.estructuras.avl;
 
 public class Trampa {
-    private String tipoObstaculo;
+    private int id;
+    private String tipoTrampa;
 
-    public Trampa(String tipoObstaculo) {
-        this.tipoObstaculo = tipoObstaculo;
+    public Trampa(int num) {
+        this.id =num;
+        switch (num) {
+            case 1:
+                tipoTrampa = "Bomba";
+                break;
+            case 2:
+                tipoTrampa = "Obstaculo";
+                break;
+            case 3:
+                tipoTrampa = "Liquido";
+                break;
+        
+            default:
+                tipoTrampa = "Nada";
+                break;
+        }
     }
 
-    public String getTipoObstaculo() {
-        return tipoObstaculo;
+    public String getTipoTrampa() {
+        return tipoTrampa;
     }
 
-    public void setTipoObstaculo(String tipoObstaculo) {
-        this.tipoObstaculo = tipoObstaculo;
+    public void settipoTrampa(String tipoTrampa) {
+        this.tipoTrampa = tipoTrampa;
     }
 }

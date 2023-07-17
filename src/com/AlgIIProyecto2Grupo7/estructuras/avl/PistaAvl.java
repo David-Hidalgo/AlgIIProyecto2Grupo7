@@ -244,6 +244,15 @@ public class PistaAvl {
         }
     }
 
+    public int getCantidadNodos() {
+        int i = 0;
+        if (raiz != null) {
+            return raiz.getCantidadNodos(i);
+        } else{
+            return 0;
+        }
+    }
+
     public void preOrden() {
         if (raiz != null) {
             raiz.preOrden();
