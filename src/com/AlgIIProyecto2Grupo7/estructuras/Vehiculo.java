@@ -8,11 +8,60 @@ public class Vehiculo {
     private String tamanoCaucho;
     private int monsterTruck;
     private int velocidad;
-    private int velocidadKm;
     private int ResBomba;
     private int ResPiedra;
     private int ResLiquido;
     private String vehiculoEnPantalla;
+
+    /**
+	 * Constructor
+	 */
+
+    public Vehiculo(){
+        nombreEs="";
+        nombreEn="";
+        conductor="";
+        tipoCaucho="";
+        tamanoCaucho="";
+        monsterTruck=0;
+        velocidad=0;
+        ResBomba=0;
+        ResPiedra=0;
+        ResLiquido=0;
+        vehiculoEnPantalla="";
+    }
+
+    public Vehiculo(String nombreEs, String nombreEn, String conductor, String tipoCaucho, String tamanoCaucho,
+            String monsterTruck, String velocidad, String ResBomba, String ResPiedra,
+            String ResLiquido, String vehiculoEnPantalla) {
+        this.nombreEs = nombreEs;
+        this.nombreEn = nombreEn;
+        this.conductor = conductor;
+        this.tipoCaucho = tipoCaucho;
+        this.tamanoCaucho = tamanoCaucho;
+        if (monsterTruck.equals("Yes")) {
+            this.monsterTruck = 1;
+        } else {
+            this.monsterTruck = 0;
+        }
+        this.velocidad = Integer.parseInt(velocidad);
+        this.ResBomba = Integer.parseInt(ResBomba);
+        if (ResPiedra.equals("Yes")) {
+            this.ResPiedra = 1;
+        } else {
+            this.ResPiedra = 0;
+        }
+        if (ResLiquido.equals("Yes")) {
+            this.ResLiquido = 1;
+        } else {
+            this.ResLiquido = 0;
+        }
+        this.vehiculoEnPantalla = "No";
+    }
+
+    /**
+     * Metodos
+     */
 
     public String getnombreEs() {
         return nombreEs;
@@ -70,14 +119,6 @@ public class Vehiculo {
         this.velocidad = velocidad;
     }
 
-    public int getVelocidadKm() {
-        return velocidadKm;
-    }
-
-    public void setVelocidadKm(int velocidadKm) {
-        this.velocidadKm = velocidadKm;
-    }
-
     public int getResBomba() {
         return ResBomba;
     }
@@ -113,5 +154,6 @@ public class Vehiculo {
     @Override
 	public String toString() {
 		return "Los datos de la Carro son: nombreEs " + nombreEs  + ", nombreEn= " + nombreEn + ", velocidad= " + velocidad + ", vehiculoEnPantalla= " + vehiculoEnPantalla+"\n";
-	}	
+	}
+
 }
