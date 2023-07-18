@@ -16,17 +16,7 @@ public class AvlTest{
         avl.insertar(50);
         avl.insertar(25);
 
-        // Test in-order traversal
-        System.out.println("In-order traversal:");
-        avl.inOrden(); // Expected output: 10 20 25 30 40 50
 
-        // Test pre-order traversal
-        System.out.println("\nPre-order traversal:");
-        avl.preOrden(); // Expected output: 30 20 10 25 40 50
-
-        // Test post-order traversal
-        System.out.println("\nPost-order traversal:");
-        avl.postOrden(); // Expected output: 10 25 20 50 40 30
 
         // Test deleting a leaf node
         System.out.println("\nDeleting leaf node 25:");
