@@ -18,9 +18,17 @@ public class Pista {
 		Random random = new Random();
 		int derechoIzquierdo = random.nextInt(2);
 		if (derechoIzquierdo == 0) {
+			if (nodo.getHijoIzquierdo()!=null){
 			return insertarTrampa(nodo.getHijoIzquierdo(), nivel - 1, trampa);
+			}else if (nodo.getHijoDerecho()!=null) {
+				return insertarTrampa(nodo.getHijoDerecho(), nivel - 1, trampa);
+			} return false;
 		} else {
+			if (nodo.getHijoDerecho()!=null){
 			return insertarTrampa(nodo.getHijoDerecho(), nivel - 1, trampa);
+			}else if (nodo.getHijoIzquierdo()!=null) {
+				return insertarTrampa(nodo.getHijoIzquierdo(), nivel - 1, trampa);
+			} return false;
 		}
 		
 	}

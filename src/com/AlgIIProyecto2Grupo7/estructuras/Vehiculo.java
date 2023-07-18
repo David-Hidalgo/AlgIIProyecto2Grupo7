@@ -39,24 +39,10 @@ public class Vehiculo {
         this.conductor = conductor;
         this.tipoCaucho = tipoCaucho;
         this.tamanoCaucho = tamanoCaucho;
-        if (monsterTruck.equals("Yes")) {
-            this.monsterTruck = 1;
-        } else {
-            this.monsterTruck = 0;
-        }
+        this.monsterTruck = Integer.parseInt(monsterTruck);
         this.velocidad = Integer.parseInt(velocidad);
         this.ResBomba = Integer.parseInt(ResBomba);
-        if (ResPiedra.equals("Yes")) {
-            this.ResPiedra = 1;
-        } else {
-            this.ResPiedra = 0;
-        }
-        if (ResLiquido.equals("Yes")) {
-            this.ResLiquido = 1;
-        } else {
-            this.ResLiquido = 0;
-        }
-        this.vehiculoEnPantalla = "No";
+        this.vehiculoEnPantalla = vehiculoEnPantalla;
     }
 
     /**
