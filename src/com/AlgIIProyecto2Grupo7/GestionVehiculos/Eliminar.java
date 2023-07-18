@@ -101,134 +101,6 @@ package com.AlgIIProyecto2Grupo7.GestionVehiculos;
 		//comboComoSeVe = newJ ComboBox();
 	//	
 	
-		labelNombreEnEspanol = new JLabel("Nombre en espanol:");
-		labelNombreEnEspanol.setBounds(225,230,300,30);
-		labelNombreEnEspanol.setFont(new Font("Andale Mono",1,20));
-		labelNombreEnEspanol.setForeground(new Color(255,255,255));
-		add(labelNombreEnEspanol);
-	
-		txtNombreEnEspanol = new JTextField();
-		txtNombreEnEspanol.setBounds(525,230,300,30);
-		txtNombreEnEspanol.setBackground(new java.awt.Color(224,224,224));
-		txtNombreEnEspanol.setFont(new java.awt.Font("Andale Mono",1,14));
-		txtNombreEnEspanol.setForeground(new java.awt.Color(87,35,100));
-		add(txtNombreEnEspanol);
-	
-		labelNombreIngles = new JLabel("Nombre en ingles:");
-		labelNombreIngles.setBounds(225,260,300,30);
-		labelNombreIngles.setFont(new Font("Andale Mono",1,20));
-		labelNombreIngles.setForeground(new Color(255,255,255));
-		add(labelNombreIngles);
-	
-		txtNombreIngles = new JTextField();
-		txtNombreIngles.setBounds(525,260,300,30);
-		txtNombreIngles.setBackground(new java.awt.Color(224,224,224));
-		txtNombreIngles.setFont(new java.awt.Font("Andale Mono",1,14));
-		txtNombreIngles.setForeground(new java.awt.Color(87,35,100));
-		add(txtNombreIngles);
-	
-		labelNombreConductor = new JLabel("Nombre del conductor:");
-		labelNombreConductor.setBounds(225,290,300,30);
-		labelNombreConductor.setFont(new Font("Andale Mono",1,20));
-		labelNombreConductor.setForeground(new Color(255,255,255));
-		add(labelNombreConductor);
-	
-		txtNombreConductor = new JTextField();
-		txtNombreConductor.setBounds(525,290,300,30);
-		txtNombreConductor.setBackground(new java.awt.Color(224,224,224));
-		txtNombreConductor.setFont(new java.awt.Font("Andale Mono",1,14));
-		txtNombreConductor.setForeground(new java.awt.Color(87,35,100));
-		add(txtNombreConductor);
-	
-		labelTipoDeCaucho = new JLabel("Tipo de caucho:");
-		labelTipoDeCaucho.setBounds(225,320,300,30);
-		labelTipoDeCaucho.setFont(new Font("Andale Mono",1,20));
-		labelTipoDeCaucho.setForeground(new Color(255,255,255));
-		add(labelTipoDeCaucho);
-	
-		//comboTipoDeCaucho = new JComboBox();
-		JComboBox<String> comboTipoDeCaucho = new JComboBox<String>();
-		comboTipoDeCaucho.setBounds(525,320,300,30);
-		comboTipoDeCaucho.setBackground(new java.awt.Color(224,224,224));
-		comboTipoDeCaucho.setFont(new java.awt.Font("Andale Mono",1,14));
-		comboTipoDeCaucho.setForeground(new java.awt.Color(87,35,100));
-		add(comboTipoDeCaucho);
-		comboTipoDeCaucho.addItem("tipo1");
-		comboTipoDeCaucho.addItem("tipo2");
-		comboTipoDeCaucho.addItem("tipo3");
-		comboTipoDeCaucho.addItem("tipo4");
-	
-		labelTamanoDeCaucho = new JLabel("Tamano de caucho:");
-		labelTamanoDeCaucho.setBounds(225,350,300,30);
-		labelTamanoDeCaucho.setFont(new Font("Andale Mono",1,20));
-		labelTamanoDeCaucho.setForeground(new Color(255,255,255));
-		add(labelTamanoDeCaucho);
-	
-		//comboTamanoDeCaucho = new JComboBox();
-		JComboBox<String> comboTamanoDeCaucho = new JComboBox<String>();
-		comboTamanoDeCaucho.setBounds(525,350,300,30);
-		comboTamanoDeCaucho.setBackground(new java.awt.Color(224,224,224));
-		comboTamanoDeCaucho.setFont(new java.awt.Font("Andale Mono",1,14));
-		comboTamanoDeCaucho.setForeground(new java.awt.Color(87,35,100));
-		add(comboTamanoDeCaucho);
-		comboTamanoDeCaucho.addItem("tipo1");
-		comboTamanoDeCaucho.addItem("tipo2");
-		comboTamanoDeCaucho.addItem("tipo3");
-		comboTamanoDeCaucho.addItem("tipo4");
-	
-		labelVelocidadDelVehiculo = new JLabel("Velocidad del vehiculo:");
-		labelVelocidadDelVehiculo.setBounds(225,380,300,30);
-		labelVelocidadDelVehiculo.setFont(new Font("Andale Mono",1,20));
-		labelVelocidadDelVehiculo.setForeground(new Color(255,255,255));
-		add(labelVelocidadDelVehiculo);
-	
-		txtVelocidadDelVehiculo = new JTextField();
-		txtVelocidadDelVehiculo.setBounds(525,380,300,30);
-		txtVelocidadDelVehiculo.setBackground(new java.awt.Color(224,224,224));
-		txtVelocidadDelVehiculo.setFont(new java.awt.Font("Andale Mono",1,14));
-		txtVelocidadDelVehiculo.setForeground(new java.awt.Color(87,35,100));
-		add(txtVelocidadDelVehiculo);
-	
-		labelResistenciaBomba = new JLabel("Resistecia bomba:");
-		labelResistenciaBomba.setBounds(225,410,300,30);
-		labelResistenciaBomba.setFont(new Font("Andale Mono",1,20));
-		labelResistenciaBomba.setForeground(new Color(255,255,255));
-		add(labelResistenciaBomba);
-	
-		txtResistenciaBomba = new JTextField();
-		txtResistenciaBomba.setBounds(525,410,300,30);
-		txtResistenciaBomba.setBackground(new java.awt.Color(224,224,224));
-		txtResistenciaBomba.setFont(new java.awt.Font("Andale Mono",1,14));
-		txtResistenciaBomba.setForeground(new java.awt.Color(87,35,100));
-		add(txtResistenciaBomba);
-	
-		labelResistenciaPiedra = new JLabel("Resistencia piedra:");
-		labelResistenciaPiedra.setBounds(225,440,300,30);
-		labelResistenciaPiedra.setFont(new Font("Andale Mono",1,20));
-		labelResistenciaPiedra.setForeground(new Color(255,255,255));
-		add(labelResistenciaPiedra);
-	
-		txtResistenciaPiedra = new JTextField();
-		txtResistenciaPiedra.setBounds(525,440,300,30);
-		txtResistenciaPiedra.setBackground(new java.awt.Color(224,224,224));
-		txtResistenciaPiedra.setFont(new java.awt.Font("Andale Mono",1,14));
-		txtResistenciaPiedra.setForeground(new java.awt.Color(87,35,100));
-		add(txtResistenciaPiedra);
-	
-		labelResistenciaLiquido = new JLabel("Resistencia liquido:");
-		labelResistenciaLiquido.setBounds(225,470,300,30);
-		labelResistenciaLiquido.setFont(new Font("Andale Mono",1,20));
-		labelResistenciaLiquido.setForeground(new Color(255,255,255));
-		add(labelResistenciaLiquido);
-	
-		txtResistenciaLiquido = new JTextField();
-		txtResistenciaLiquido.setBounds(525,470,300,30);
-		txtResistenciaLiquido.setBackground(new java.awt.Color(224,224,224));
-		txtResistenciaLiquido.setFont(new java.awt.Font("Andale Mono",1,14));
-		txtResistenciaLiquido.setForeground(new java.awt.Color(87,35,100));
-		add(txtResistenciaLiquido);
-	
-		
 		
 	
 	
@@ -261,8 +133,8 @@ package com.AlgIIProyecto2Grupo7.GestionVehiculos;
 	
 	*/
 	
-		boton1 = new JButton("Regresar");
-		boton1.setBounds(550,600,100,30);
+		boton1 = new JButton("Confirmar eliminar");
+		boton1.setBounds(550,600,200,30);
 		boton1.setBackground(new Color(255,255,255));
 		boton1.setFont(new Font("Andale Mono", 1,14));
 		boton1.setForeground(new Color(87,35,100));

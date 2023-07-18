@@ -6,7 +6,7 @@ public class Vehiculo {
     private String conductor;
     private String tipoCaucho;
     private String tamanoCaucho;
-    private int monsterTruck;
+    //private int monsterTruck;
     private int velocidad;
     private int ResBomba;
     private int ResPiedra;
@@ -23,7 +23,7 @@ public class Vehiculo {
         conductor="";
         tipoCaucho="";
         tamanoCaucho="";
-        monsterTruck=0;
+        //monsterTruck=0;
         velocidad=0;
         ResBomba=0;
         ResPiedra=0;
@@ -31,15 +31,14 @@ public class Vehiculo {
         vehiculoEnPantalla="";
     }
 
-    public Vehiculo(String nombreEs, String nombreEn, String conductor, String tipoCaucho, String tamanoCaucho,
-            String monsterTruck, String velocidad, String ResBomba, String ResPiedra,
+    public Vehiculo(String nombreEs, String nombreEn, String conductor, String tipoCaucho, String tamanoCaucho, String velocidad, String ResBomba, String ResPiedra,
             String ResLiquido, String vehiculoEnPantalla) {
         this.nombreEs = nombreEs;
         this.nombreEn = nombreEn;
         this.conductor = conductor;
         this.tipoCaucho = tipoCaucho;
         this.tamanoCaucho = tamanoCaucho;
-        this.monsterTruck = Integer.parseInt(monsterTruck);
+        //this.monsterTruck = Integer.parseInt(monsterTruck);
         this.velocidad = Integer.parseInt(velocidad);
         this.ResBomba = Integer.parseInt(ResBomba);
         this.vehiculoEnPantalla = vehiculoEnPantalla;
@@ -88,15 +87,16 @@ public class Vehiculo {
     public void setTamanoCaucho(String tamanoCaucho) {
         this.tamanoCaucho = tamanoCaucho;
     }
-
+/* 
     public int getMonsterTruck() {
         return monsterTruck;
     }
-
+*/
+/* 
     public void setMonsterTruck(int monsterTruck) {
         this.monsterTruck = monsterTruck;
     }
-
+*/
     public int getVelocidad() {
         return velocidad;
     }

@@ -200,7 +200,7 @@ public class ListaVehiculo {
 		s += aux.getP().getTamanoCaucho();
 		return s;
 	}
-
+/* 
 	public String toStringMonsterTruck(int pos) {
 		String s = "";
 		NodoLista aux = inicio;
@@ -210,7 +210,7 @@ public class ListaVehiculo {
 		s += aux.getP().getMonsterTruck();
 		return s;
 	}
-
+*/
 	public String toStringVelocidad(int pos) {
 		String s = "";
 		NodoLista aux = inicio;
