@@ -25,6 +25,15 @@ public class PistaAvl {
         return raiz;
     }
 
+    public void insertarConDistanvia(int valorInsertar, int distancia) {
+        if (this.raiz == null) {
+            this.raiz = new NodoParada(valorInsertar);
+            this.raiz.setDistancia(distancia);
+        } else {
+            this.raiz = insertarConDistancia(valorInsertar,distancia, this.raiz);
+        }
+    }
+
     public void insertar(int valorInsertar) {
         if (this.raiz == null) {
             this.raiz = new NodoParada(valorInsertar);
@@ -78,6 +87,29 @@ public class PistaAvl {
             }
         }
         return nodo;
+    }
+
+    private NodoParada insertarConDistancia(int valorInsertar,int distancia, NodoParada nodo) {
+        if (nodo.getClave() == 0) {
+            nodo.setClave(valorInsertar);
+        } else {
+            if (nodo.getClave() > valorInsertar) {
+                if (nodo.getHijoIzquierdo() == null) {
+                    nodo.setHijoIzquierdo(new NodoParada(valorInsertar));
+                    nodo.getHijoIzquierdo().setDistancia(distancia);
+                } else {
+                    nodo.setHijoIzquierdo(insertarConDistancia(valorInsertar,distancia, nodo.getHijoIzquierdo()));
+                }
+            } else if (nodo.getClave() < valorInsertar) {
+                if (nodo.getHijoDerecho() == null) {
+                    nodo.setHijoDerecho(new NodoParada(valorInsertar));
+                    nodo.getHijoDerecho().setDistancia(distancia);
+                } else {
+                    nodo.setHijoDerecho(insertarConDistancia(valorInsertar,distancia, nodo.getHijoDerecho()));
+                }
+            }
+        }
+        return balancear(nodo);
     }
 
     private NodoParada insertar(int valorInsertar, NodoParada nodo) {
