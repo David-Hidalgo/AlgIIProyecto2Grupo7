@@ -58,8 +58,8 @@ public class Pista {
 			do {
 				mayor =random.nextInt(10001, 20000);
 			} while (pistaNueva.existe(mayor));	
-			pistaNueva.insertar(menor);
-			pistaNueva.insertar(mayor);
+			pistaNueva.insertarConDistanvia(menor, random.nextInt(1,11));
+			pistaNueva.insertarConDistanvia(mayor, random.nextInt(1,11));
 		}
 		return pistaNueva;
 	}
