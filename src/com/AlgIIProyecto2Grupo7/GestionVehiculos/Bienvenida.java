@@ -73,7 +73,7 @@ setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png"
 				agregar.setLocationRelativeTo(null);
 				this.setVisible(false);
 			}
-	 }
+		}
 	}
 
 	public static void main(String args[]){

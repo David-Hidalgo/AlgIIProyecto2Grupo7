@@ -103,17 +103,17 @@ setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png"
 	
 
 	// aqui debe ir el cambo de como se ve la imgen
-	ImageIcon imagen1 = new ImageIcon("imagenesAutosLocos/carro1.jpg");
-	ImageIcon imagen2 = new ImageIcon("imagenesAutosLocos/carro2.jpg");
-	ImageIcon imagen3 = new ImageIcon("imagenesAutosLocos/carro3.jpg");
-	ImageIcon imagen4 = new ImageIcon("imagenesAutosLocos/carro4.jpg");
-	ImageIcon imagen5 = new ImageIcon("imagenesAutosLocos/carro5.jpg");
-	ImageIcon imagen6 = new ImageIcon("imagenesAutosLocos/carro6.jpg");
-	ImageIcon imagen7 = new ImageIcon("imagenesAutosLocos/carro7.jpg");
-	ImageIcon imagen8 = new ImageIcon("imagenesAutosLocos/carro8.jpg");
-	ImageIcon imagen9 = new ImageIcon("imagenesAutosLocos/carro9.jpg");
-	ImageIcon imagen10 = new ImageIcon("imagenesAutosLocos/carro10.jpg");
-	ImageIcon imagen11 = new ImageIcon("imagenesAutosLocos/carro11.jpg");
+	ImageIcon imagen1 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro1.jpg"));
+	ImageIcon imagen2 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro2.jpg"));
+	ImageIcon imagen3 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro3.jpg"));
+	ImageIcon imagen4 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro4.jpg"));
+	ImageIcon imagen5 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro5.jpg"));
+	ImageIcon imagen6 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro6.jpg"));
+	ImageIcon imagen7 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro7.jpg"));
+	ImageIcon imagen8 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro8.jpg"));
+	ImageIcon imagen9 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro9.jpg"));
+	ImageIcon imagen10 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro10.jpg"));
+	ImageIcon imagen11 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro11.jpg"));
 		
 	//comboComoSeVe = newJ ComboBox();
 	JComboBox<ImageIcon> comboComoSeVe = new JComboBox<>();
