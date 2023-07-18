@@ -386,7 +386,12 @@ menuSalir = new JButton("Salir");
 	
 	 }
 	if(e.getSource() == menuEliminar){
-	
+		Eliminar eliminar = new Eliminar();
+		eliminar.setBounds(0,0,1200,750);
+		eliminar.setVisible(true);
+		eliminar.setResizable(false);
+		eliminar.setLocationRelativeTo(null);
+		this.setVisible(false);
 	 }
 	if(e.getSource() == menuConsultar){
 	    Consultar consultar = new Consultar();

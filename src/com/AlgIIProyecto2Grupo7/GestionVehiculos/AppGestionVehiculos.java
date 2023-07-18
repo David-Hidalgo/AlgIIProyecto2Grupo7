@@ -1,14 +1,14 @@
 package com.AlgIIProyecto2Grupo7.GestionVehiculos;
 
-import java.util.ArrayList;
+
 import com.AlgIIProyecto2Grupo7.Menu;
-import com.AlgIIProyecto2Grupo7.Vehiculo;
+import com.AlgIIProyecto2Grupo7.estructuras.Vehiculo;
 
 public class AppGestionVehiculos {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
         Menu.menuGestionVehiculos();
-        ArrayList<Vehiculo> vehiculos = new ArrayList<Vehiculo>();
+        
         /* 
         Vehiculo vehiculo1 = new Vehiculo();
         vehiculo1.setnombreEs("Carro");
