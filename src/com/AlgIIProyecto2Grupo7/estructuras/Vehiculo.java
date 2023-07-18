@@ -4,17 +4,14 @@ public class Vehiculo {
     private String nombreEs;
     private String nombreEn;
     private String conductor;
-    private int tipoCaucho;
-    private String[] aTipoCaucho = { "Error", "Todoterreno", "Normal", "Anticoleo" };
-    private int tamanoCaucho;
-    private String[] aTamanoCaucho = { "Error", "Monstertruck", "Normal", "Pegado al piso" };
+    private String tipoCaucho;
+    private String tamanoCaucho;
     private int monsterTruck;
     private int velocidad;
-    private String[] aVelocidad = { "Error", "Perezoso", "Crucero", "SuperFerrari", "Delorean" };
     private int velocidadKm;
-    private int resBomba;
-    private int resPiedra;
-    private int resLiquido;
+    private int ResBomba;
+    private int ResPiedra;
+    private int ResLiquido;
     private String vehiculoEnPantalla;
 
     public String getnombreEs() {
@@ -41,68 +38,68 @@ public class Vehiculo {
         this.conductor = conductor;
     }
 
-    public int gettipoCaucho() {
+    public String getTipoCaucho() {
         return tipoCaucho;
     }
 
-    public void settipoCaucho(int tipoCaucho) {
-        this.tipoCaucho = tipoCaucho;
+    public void setTipoCaucho(String TipoCaucho) {
+        this.tipoCaucho = TipoCaucho;
     }
 
-    public int gettamanoCaucho() {
+    public String getTamanoCaucho() {
         return tamanoCaucho;
     }
 
-    public void settamanoCaucho(int tamanoCaucho) {
+    public void setTamanoCaucho(String tamanoCaucho) {
         this.tamanoCaucho = tamanoCaucho;
     }
 
-    public int getmonsterTruck() {
+    public int getMonsterTruck() {
         return monsterTruck;
     }
 
-    public void setmonsterTruck(int monsterTruck) {
+    public void setMonsterTruck(int monsterTruck) {
         this.monsterTruck = monsterTruck;
     }
 
-    public int getvelocidad() {
+    public int getVelocidad() {
         return velocidad;
     }
 
-    public void setvelocidad(int velocidad) {
+    public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
 
-    public int getvelocidadKm() {
+    public int getVelocidadKm() {
         return velocidadKm;
     }
 
-    public void setvelocidadKm(int velocidadKm) {
+    public void setVelocidadKm(int velocidadKm) {
         this.velocidadKm = velocidadKm;
     }
 
-    public int getresBomba() {
-        return resBomba;
+    public int getResBomba() {
+        return ResBomba;
     }
 
-    public void setresBomba(int resBomba) {
-        this.resBomba = resBomba;
+    public void setResBomba(int ResBomba) {
+        this.ResBomba = ResBomba;
     }
 
-    public int getresPiedra() {
-        return resPiedra;
+    public int getResPiedra() {
+        return ResPiedra;
     }
 
-    public void setresPiedra(int resPiedra) {
-        this.resPiedra = resPiedra;
+    public void setResPiedra(int ResPiedra) {
+        this.ResPiedra = ResPiedra;
     }
 
-    public int getresLiquido() {
-        return resLiquido;
+    public int getResLiquido() {
+        return ResLiquido;
     }
 
-    public void setresLiquido(int resLiquido) {
-        this.resLiquido = resLiquido;
+    public void setResLiquido(int ResLiquido) {
+        this.ResLiquido = ResLiquido;
     }
 
     public String getvehiculoEnPantalla() {
