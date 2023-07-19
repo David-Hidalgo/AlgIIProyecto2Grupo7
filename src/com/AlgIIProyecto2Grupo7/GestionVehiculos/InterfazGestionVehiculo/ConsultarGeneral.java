@@ -21,11 +21,11 @@ public class ConsultarGeneral extends JFrame implements MouseListener {
 	// private JMenuItem miNuevoAgregar;
 	private JLabel labelNombreEnEspanol, labelNombreIngles, labelNombreConductor, labelTipoDeCaucho;
 	private JLabel labelTamanoDeCaucho, labelVelocidadDelVehiculo, labelResistenciaBomba;
-	private JLabel labelResistenciaPiedra, labelResistenciaLiquido, labelComoSeVe;
+	private JLabel labelResistenciaPiedra, labelResistenciaLiquido, labelComoSeVe ;
 
-	private JLabel labelModificar;
+	private JLabel labelModificar,labelOpcion;
 
-	private JTextField txtNombreEnEspanol, txtNombreIngles, txtNombreConductor;
+	private JTextField txtNombreEnEspanol, txtNombreIngles, txtNombreConductor,txtOpcion;
 	private JTextField txtVelocidadDelVehiculo, txtResistenciaBomba, txtResistenciaPiedra;
 	private JTextField txtResistenciaLiquido;
 	private JComboBox comboTipoDeCaucho, comboTamanoDeCaucho, comboComoSeVe;
@@ -196,6 +196,21 @@ public class ConsultarGeneral extends JFrame implements MouseListener {
 		menuSalir.addMouseListener(this);
 		menuSalir.setBorderPainted(false);
 		add(menuSalir);
+
+		labelOpcion = new JLabel("Elige opcion:");
+	labelOpcion.setBounds(225,520,300,30);
+	labelOpcion.setFont(new Font("Andale Mono",1,20));
+	labelOpcion.setForeground(new Color(255,255,255));
+	add(labelOpcion);
+
+	txtOpcion = new JTextField();
+	txtOpcion.setBounds(525,520,300,30);
+	txtOpcion.setBackground(new java.awt.Color(224,224,224));
+	txtOpcion.setFont(new java.awt.Font("Andale Mono",1,14));
+	txtOpcion.setForeground(new java.awt.Color(87,35,100));
+	add(txtOpcion);
+
+
 	}
 
 	public void mouseClicked(MouseEvent e) {

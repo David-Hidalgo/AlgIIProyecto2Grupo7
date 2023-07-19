@@ -1,10 +1,10 @@
 package com.AlgIIProyecto2Grupo7.GestionVehiculos.InterfazGestionVehiculo;
 
+import com.AlgIIProyecto2Grupo7.estructuras.ReadWrite;
 import javax.swing.*;
-import javax.swing.border.Border;
-
 import java.awt.event.*;
 import java.awt.*;
+import javax.swing.table.DefaultTableModel;
 
 //import java.awt.event.MouseEvent;
 //import java.awt.event.MouseListener;
@@ -19,20 +19,17 @@ public class Eliminar extends JFrame implements MouseListener {
 	// private JMenu menuAgregar , menuModificar , menuEliminar , menuConsultar ,
 	// menuListar , menuSalir;
 	// private JMenuItem miNuevoAgregar;
-	private JLabel labelNombreEnEspanol, labelNombreIngles, labelNombreConductor, labelTipoDeCaucho;
-	private JLabel labelTamanoDeCaucho, labelVelocidadDelVehiculo, labelResistenciaBomba;
-	private JLabel labelResistenciaPiedra, labelResistenciaLiquido, labelComoSeVe;
 
+	
 	private JLabel labelModificar;
-
-	private JTextField txtNombreEnEspanol, txtNombreIngles, txtNombreConductor;
-	private JTextField txtVelocidadDelVehiculo, txtResistenciaBomba, txtResistenciaPiedra;
-	private JTextField txtResistenciaLiquido;
-	private JComboBox comboTipoDeCaucho, comboTamanoDeCaucho, comboComoSeVe;
+	
 	private JButton boton1, menuAgregar, menuModificar, menuEliminar, menuConsultar, menuListar, menuSalir;
+	private JTable table;
+	
 
 	public Eliminar() {
-		setLayout(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(null);
 		setTitle("Pantalla Principal");
 		getContentPane().setBackground(new Color(87, 35, 100));
 		setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png")).getImage());
@@ -131,14 +128,14 @@ public class Eliminar extends JFrame implements MouseListener {
 		boton1.setFont(new Font("Andale Mono", 1, 14));
 		boton1.setForeground(new Color(87, 35, 100));
 		boton1.addMouseListener(this);
-		add(boton1);
+		getContentPane().add(boton1);
 
 		labelModificar = new JLabel("Eliminar");
 		labelModificar.setBounds(40, 30, 300, 50);
 		labelModificar.setFont(new Font("Andale Mono", 1, 40));
 		// labelConsultar.setForeground(new Color(235,235,0)); // color amarillo
 		labelModificar.setForeground(new Color(200, 200, 200)); // color gris
-		add(labelModificar);
+		getContentPane().add(labelModificar);
 
 		// menu de botones
 
@@ -149,7 +146,7 @@ public class Eliminar extends JFrame implements MouseListener {
 		menuAgregar.setForeground(new Color(255, 255, 255));
 		menuAgregar.addMouseListener(this);
 		menuAgregar.setBorderPainted(false);
-		add(menuAgregar);
+		getContentPane().add(menuAgregar);
 
 		menuModificar = new JButton("Modificar Vehiculo");
 		menuModificar.setBounds(200, 0, 200, 30);
@@ -158,7 +155,7 @@ public class Eliminar extends JFrame implements MouseListener {
 		menuModificar.setForeground(new Color(255, 255, 255));
 		menuModificar.addMouseListener(this);
 		menuModificar.setBorderPainted(false);
-		add(menuModificar);
+		getContentPane().add(menuModificar);
 
 		menuEliminar = new JButton("Eliminar Vehiculo");
 		menuEliminar.setBounds(400, 0, 200, 30);
@@ -167,7 +164,7 @@ public class Eliminar extends JFrame implements MouseListener {
 		menuEliminar.setForeground(new Color(255, 255, 255));
 		menuEliminar.addMouseListener(this);
 		menuEliminar.setBorderPainted(false);
-		add(menuEliminar);
+		getContentPane().add(menuEliminar);
 
 		menuConsultar = new JButton("Consultar Vehiculo");
 		menuConsultar.setBounds(600, 0, 200, 30);
@@ -176,7 +173,7 @@ public class Eliminar extends JFrame implements MouseListener {
 		menuConsultar.setForeground(new Color(255, 255, 255));
 		menuConsultar.addMouseListener(this);
 		menuConsultar.setBorderPainted(false);
-		add(menuConsultar);
+		getContentPane().add(menuConsultar);
 
 		menuListar = new JButton("Listar Vehiculos");
 		menuListar.setBounds(800, 0, 200, 30);
@@ -185,7 +182,7 @@ public class Eliminar extends JFrame implements MouseListener {
 		menuListar.setForeground(new Color(255, 255, 255));
 		menuListar.addMouseListener(this);
 		menuListar.setBorderPainted(false);
-		add(menuListar);
+		getContentPane().add(menuListar);
 
 		menuSalir = new JButton("Salir");
 		menuSalir.setBounds(1000, 0, 200, 30);
@@ -195,7 +192,31 @@ public class Eliminar extends JFrame implements MouseListener {
 		menuSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		menuSalir.addMouseListener(this);
 		menuSalir.setBorderPainted(false);
-		add(menuSalir);
+		getContentPane().add(menuSalir);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(200, 105, 744, 385);
+		getContentPane().add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
+			}
+		));
+		scrollPane.setViewportView(table);
 	}
 
 	public void mouseClicked(MouseEvent e) {

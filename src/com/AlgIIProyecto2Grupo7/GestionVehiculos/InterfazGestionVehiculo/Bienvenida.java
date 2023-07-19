@@ -1,5 +1,8 @@
 package com.AlgIIProyecto2Grupo7.GestionVehiculos.InterfazGestionVehiculo;
 
+import com.AlgIIProyecto2Grupo7.estructuras.ReadWrite;
+import com.AlgIIProyecto2Grupo7.estructuras.listaVehiculo.ListaVehiculo;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -11,6 +14,7 @@ public class Bienvenida extends JFrame implements MouseListener{
 private JTextField textfield1;
 private JLabel label1 , label2, label3, label4;
 private JButton boton1;
+private ListaVehiculo listaVehiculos=ReadWrite.cargarVehiculosDefault();
 public static String texto = "";
 
 	public Bienvenida(){

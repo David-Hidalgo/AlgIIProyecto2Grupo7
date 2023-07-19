@@ -1,5 +1,7 @@
 package com.AlgIIProyecto2Grupo7.GestionVehiculos.InterfazGestionVehiculo;
 
+import com.AlgIIProyecto2Grupo7.Validaciones;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -13,11 +15,11 @@ private JLabel labelNombreEnEspanol , labelNombreIngles , labelNombreConductor ,
 private JLabel labelTamanoDeCaucho , labelVelocidadDelVehiculo , labelResistenciaBomba ;
 private JLabel labelResistenciaPiedra , labelResistenciaLiquido , labelComoSeVe;
 
-private JLabel labelConsultar;
+private JLabel labelConsultar, labelOpcion;
 
 private JTextField txtNombreEnEspanol , txtNombreIngles , txtNombreConductor  ;
 private JTextField txtVelocidadDelVehiculo , txtResistenciaBomba ,txtResistenciaPiedra ;
-private JTextField txtResistenciaLiquido  ;
+private JTextField txtResistenciaLiquido , txtOpcion  ;
 private JComboBox comboTipoDeCaucho,comboTamanoDeCaucho,comboComoSeVe ;
 private JButton boton1 , menuAgregar , menuModificar , menuEliminar , menuConsultar , menuListar , menuSalir;
 
@@ -262,6 +264,8 @@ setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png"
 	txtResistenciaLiquido.setForeground(new java.awt.Color(87,35,100));
 	add(txtResistenciaLiquido);
 
+
+	
 	
 	
 
@@ -372,7 +376,19 @@ menuSalir = new JButton("Salir");
 				if (evento.getSource() == labelTitulo){
 					etiqueta1.setText("Hizo clic en el Titulo");
 					*/
+
+
+//-------------------
+
+// ----------------
+			
+
+//---------------
 			if(e.getSource() == boton1){
+
+					if(boton1 == e.getSource()){
+
+
                     ConsultarGeneral consultarGeneral = new ConsultarGeneral();
 	                consultarGeneral.setBounds(0,0,1200,750);
 	                consultarGeneral.setVisible(true);
@@ -430,6 +446,7 @@ menuSalir = new JButton("Salir");
 			this.dispose();
 		}
 			}
+				}
 		
 				}
 		
