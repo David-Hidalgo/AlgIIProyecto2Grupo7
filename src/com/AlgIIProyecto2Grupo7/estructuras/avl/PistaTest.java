@@ -16,12 +16,18 @@ public class PistaTest{
 		PistaAvl auxAvl = (PistaAvl) pista.clone();
 		pista.inOrden();
 		Pista.generarTrampas(pista, nivel, 10);
-		auxAvl = pista;
+		System.out.println("Pista original");
 		auxAvl=pista.clone();
-
-		pista.simularCarrera(pista.raiz, foo);
-		auxAvl.inOrden();
 		pista.inOrden();
+		System.out.println("Pista clonada");
+		auxAvl.inOrden();
+		
+		pista.simularCarrera(pista.raiz, foo);
+		
+		System.out.println("Pista original");
+		pista.inOrden();
+		System.out.println("Pista clonada");
+		auxAvl.inOrden();
 		
 	}
 }
