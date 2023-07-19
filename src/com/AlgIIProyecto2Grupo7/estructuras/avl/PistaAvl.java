@@ -218,7 +218,9 @@ public class PistaAvl {
 
     private NodoParada EliminarRaizIzquierda(NodoParada n) {
         if (n.getHijoIzquierdo().getHijoDerecho() == null) {
+            NodoParada aux = n.getHijoDerecho();
             n = n.getHijoIzquierdo();
+            n.setHijoDerecho(aux);
         } else {
             NodoParada aux = n.getHijoIzquierdo().getHijoDerecho();
             while (aux.getHijoDerecho() != null) {
@@ -237,7 +239,9 @@ public class PistaAvl {
 
     private NodoParada EliminarRaizDerecha(NodoParada n) {
         if (n.getHijoDerecho().getHijoIzquierdo() == null) {
+            NodoParada aux = n.getHijoIzquierdo();
             n= n.getHijoDerecho();
+            n.setHijoIzquierdo(aux);
         } else {
             NodoParada aux = n.getHijoDerecho().getHijoIzquierdo();
             while (aux.getHijoIzquierdo() != null) {

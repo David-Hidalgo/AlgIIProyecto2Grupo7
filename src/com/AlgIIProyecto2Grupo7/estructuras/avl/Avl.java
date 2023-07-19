@@ -180,7 +180,9 @@ public class Avl {
 
     private Nodo EliminarRaizIzquierda(Nodo n) {
         if (n.getHijoIzquierdo().getHijoDerecho() == null) {
+            Nodo aux = n.getHijoDerecho();
             n = n.getHijoIzquierdo();
+            n.setHijoDerecho(aux);
         } else {
             Nodo aux = n.getHijoIzquierdo().getHijoDerecho();
             while (aux.getHijoDerecho() != null) {
@@ -199,7 +201,9 @@ public class Avl {
 
     private Nodo EliminarRaizDerecha(Nodo n) {
         if (n.getHijoDerecho().getHijoIzquierdo() == null) {
+            Nodo aux = n.getHijoIzquierdo();
             n= n.getHijoDerecho();
+            n.setHijoIzquierdo(aux);
         } else {
             Nodo aux = n.getHijoDerecho().getHijoIzquierdo();
             while (aux.getHijoIzquierdo() != null) {
