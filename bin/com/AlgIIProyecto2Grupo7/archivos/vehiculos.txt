@@ -1,4 +1,3 @@
-fads,dfsg,dsawe,Crucero,Normales,Normales,20,10,10,100,file:/C:/Users/Claret/Documents/Code/VS%20Code/Trusted/UCAB/Program2/projects/Java/AlgIIProyecto2Grupo7/bin/com/AlgIIProyecto2Grupo7/GestionVehiculos/InterfazGestionVehiculo/imagenesAutosLocos/carro1.jpg
 El Rocomovil,The Bouldermobile,los Hermanos Macana Piedro y Roco,Perezoso,Todo Terreno,Monster Truck,5,5,10,80,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro2.jpg
 El Espantomovil,The Creepy Coupe,Los Tenebrosos (The Gruesome Twosome),Perezoso,Normales,Normales,15,20,30,120,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro6.jpg
 El Auto_Super Convertible,Convert-a-car,El Profesor Locovich,Perezoso,Todo Terreno,Monster Truck 2,12,17,25,120,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro4.jpg
