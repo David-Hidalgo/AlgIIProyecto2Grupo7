@@ -188,8 +188,7 @@ public class Vehiculo {
 
     @Override
     public String toString() {
-        return "Los datos de la Carro son: nombreEs " + nombreEs + ", nombreEn= " + nombreEn + ", velocidad= "
-                + velocidad + ", vehiculoEnPantalla= " + vehiculoEnPantalla + "\n";
+        return nombreEs+"/"+ nombreEn +"/" + conductor + "/"+ Motor + "/" + tipoCaucho + "/"+ tamanoCaucho + "/"+ ResBomba + "/"+ ResPiedra + "/"+ ResLiquido + "/"+ velocidad;
     }
 
 }
