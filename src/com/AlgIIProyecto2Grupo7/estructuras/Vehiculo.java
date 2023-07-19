@@ -63,11 +63,27 @@ public class Vehiculo {
         this.ResPiedra = Integer.parseInt(ResPiedra);
         this.ResLiquido = Integer.parseInt(ResLiquido);
         this.velocidad = Integer.parseInt(velocidad);
-        this.vehiculoEnPantalla = vehiculoEnPantalla;
         this.tiempoDeLlegada = 0;
         this.ubicación = null;
         this.distanciaRecorrida = 0;
         this.vehiculoEnPantalla = vehiculoEnPantalla;
+    }
+
+    public Vehiculo(String nombreEs, String nombreEn, String conductor, String motor, String tipoCaucho, String tamanoCaucho,
+            String ResBomba, String ResPiedra, String ResLiquido, String velocidad) {
+        this.nombreEs = nombreEs;
+        this.nombreEn = nombreEn;
+        this.conductor = conductor;
+        this.Motor = motor;
+        this.tipoCaucho = tipoCaucho;
+        this.tamanoCaucho = tamanoCaucho;
+        this.ResBomba = Integer.parseInt(ResBomba);
+        this.ResPiedra = Integer.parseInt(ResPiedra);
+        this.ResLiquido = Integer.parseInt(ResLiquido);
+        this.velocidad = Integer.parseInt(velocidad);
+        this.tiempoDeLlegada = 0;
+        this.ubicación = null;
+        this.distanciaRecorrida = 0;
     }
 
     /**

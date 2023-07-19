@@ -15,9 +15,9 @@ public class ReadWrite {
 	 */
 	public static ListaVehiculo cargarVehiculosDefault() {
 		ListaVehiculo nuevaListaVehiculo = new ListaVehiculo();
-		File foo = new File("src\\com\\AlgIIProyecto2Grupo7\\archivos\\vehiculosDefault.txt");
+		File archivo = new File("src\\com\\AlgIIProyecto2Grupo7\\archivos\\vehiculosDefault.txt");
 		try {
-			FileReader reader = new FileReader(foo);
+			FileReader reader = new FileReader(archivo);
 			BufferedReader bufferedReader = new BufferedReader(reader);
 			String line;
 			while ((line = bufferedReader.readLine()) != null) {
@@ -33,9 +33,9 @@ public class ReadWrite {
 	}
 	public static ListaVehiculo cargarVehiculos() {
 		ListaVehiculo nuevaListaVehiculo = new ListaVehiculo();
-		File foo = new File("src\\com\\AlgIIProyecto2Grupo7\\archivos\\vehiculos.txt");
+		File archivo = new File("src\\com\\AlgIIProyecto2Grupo7\\archivos\\vehiculos.txt");
 		try {
-			FileReader reader = new FileReader(foo);
+			FileReader reader = new FileReader(archivo);
 			BufferedReader bufferedReader = new BufferedReader(reader);
 			String line;
 			while ((line = bufferedReader.readLine()) != null) {
@@ -62,12 +62,32 @@ public class ReadWrite {
 		}
 	}
 
-	public static void guardarHistorico(ListaVehiculo listaVehiculo) {
-		FileWriter writer;
+		private static ListaVehiculo cargarHistorico() {
+		ListaVehiculo nuevaListaVehiculo = new ListaVehiculo();
+		File archivo = new File("src\\com\\AlgIIProyecto2Grupo7\\archivos\\Historico.txt");
 		try {
-			writer = new FileWriter("src\\com\\AlgIIProyecto2Grupo7\\archivos\\vehiculos.txt", true);
+			FileReader reader = new FileReader(archivo);
+			BufferedReader bufferedReader = new BufferedReader(reader);
+			String line;
+			while ((line = bufferedReader.readLine()) != null) {
+				String[] datos = line.split(",");
+				Vehiculo vehiculo = new Vehiculo(datos[0], datos[1], datos[2], datos[3], datos[4], datos[5], datos[6], datos[7], datos[8], datos[9]);
+				nuevaListaVehiculo.insertarFinal(vehiculo);
+			}
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return nuevaListaVehiculo;
+	}
+
+	public static void guardarHistorico(ListaVehiculo listaCompetidores) {
+		FileWriter writer;
+		ListaVehiculo listaHistorico = cargarHistorico();
+		try {
+			writer = new FileWriter("src\\com\\AlgIIProyecto2Grupo7\\archivos\\Historico.txt", true);
 			writer.write("\n");
-			writer.write(listaVehiculo.toString());
+			writer.write(listaCompetidores.toString());
 			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
