@@ -142,12 +142,21 @@ public class ListaVehiculo {
 		}
 	}
 
-
-
 	public void vaciar() {
 		while (!esVacia()) {
 			eliminarInicio();
 		}
+	}
+
+
+	public String toString() {
+		String s = "";
+		NodoLista aux = inicio;
+		while (aux != null) {
+			s += aux.getP().toString() + "\n";
+			aux = aux.getProx();
+		}
+		return s;
 	}
 
 	public String toStringNombreEs(int pos) {
@@ -200,17 +209,7 @@ public class ListaVehiculo {
 		s += aux.getP().getTamanoCaucho();
 		return s;
 	}
-/* 
-	public String toStringMonsterTruck(int pos) {
-		String s = "";
-		NodoLista aux = inicio;
-		for (int i = 0; i < pos; i++) {
-			aux = aux.getProx();
-		}
-		s += aux.getP().getMonsterTruck();
-		return s;
-	}
-*/
+
 	public String toStringVelocidad(int pos) {
 		String s = "";
 		NodoLista aux = inicio;

@@ -51,22 +51,22 @@ public class Vehiculo {
         vehiculoEnPantalla = "";
     }
 
-    public Vehiculo(String nombreEs, String nombreEn, String conductor, String tipoCaucho, String tamanoCaucho,
-            String velocidad, String ResBomba, String ResPiedra,
-            String ResLiquido, String vehiculoEnPantalla) {
+    public Vehiculo(String nombreEs, String nombreEn, String conductor, String motor, String tipoCaucho, String tamanoCaucho,
+            String ResBomba, String ResPiedra, String ResLiquido, String velocidad) {
         this.nombreEs = nombreEs;
         this.nombreEn = nombreEn;
         this.conductor = conductor;
+        this.Motor = motor;
         this.tipoCaucho = tipoCaucho;
         this.tamanoCaucho = tamanoCaucho;
-        this.velocidad = Integer.parseInt(velocidad);
         this.ResBomba = Integer.parseInt(ResBomba);
         this.ResPiedra = Integer.parseInt(ResPiedra);
         this.ResLiquido = Integer.parseInt(ResLiquido);
+        this.velocidad = Integer.parseInt(velocidad);
         this.tiempoDeLlegada = 0;
         this.ubicación = null;
         this.distanciaRecorrida = 0;
-        this.vehiculoEnPantalla = vehiculoEnPantalla;
+        this.vehiculoEnPantalla = "";
     }
 
     /**
@@ -188,8 +188,7 @@ public class Vehiculo {
 
     @Override
     public String toString() {
-        return "Los datos de la Carro son: nombreEs " + nombreEs + ", nombreEn= " + nombreEn + ", velocidad= "
-                + velocidad + ", vehiculoEnPantalla= " + vehiculoEnPantalla + "\n";
+        return nombreEs+"/"+ nombreEn +"/" + conductor + "/"+ Motor + "/" + tipoCaucho + "/"+ tamanoCaucho + "/"+ ResBomba + "/"+ ResPiedra + "/"+ ResLiquido + "/"+ velocidad;
     }
 
 }
