@@ -70,7 +70,7 @@ public class ReadWrite {
 			String line;
 			while ((line = bufferedReader.readLine()) != null) {
 				String[] datos = line.split(",");
-				Vehiculo vehiculo = new Vehiculo(datos[0], datos[1], datos[2], datos[3], datos[4], datos[5], datos[6], datos[7], datos[8], datos[9]);
+				Vehiculo vehiculo = new Vehiculo(datos[0], datos[1], datos[2], datos[3], datos[4], datos[5], datos[6], datos[7], datos[8], datos[9], datos[10]);
 				nuevaListaVehiculo.insertarFinal(vehiculo);
 			}
 			reader.close();

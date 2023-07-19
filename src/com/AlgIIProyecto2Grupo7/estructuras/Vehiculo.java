@@ -224,5 +224,8 @@ public class Vehiculo {
     public String toString() {
         return nombreEs+","+ nombreEn +"," + conductor + ","+ Motor + "," + tipoCaucho + ","+ tamanoCaucho + ","+ ResBomba + ","+ ResPiedra + ","+ ResLiquido + ","+ velocidad;
     }
+    public String toStringGuardar() {
+        return nombreEs+","+ nombreEn +"," + conductor + ","+ Motor + "," + tipoCaucho + ","+ tamanoCaucho + ","+ ResBomba + ","+ ResPiedra + ","+ ResLiquido + ","+ velocidad+ ","+ vehiculoEnPantalla;
+    }
 
 }

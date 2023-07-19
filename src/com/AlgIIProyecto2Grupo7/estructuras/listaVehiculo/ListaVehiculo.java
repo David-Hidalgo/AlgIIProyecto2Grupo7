@@ -169,7 +169,7 @@ public class ListaVehiculo {
 		String s = "";
 		NodoLista aux = inicio;
 		while (aux != null) {
-			s += aux.getP().toString() + "\n";
+			s += aux.getP().toStringGuardar() + "\n";
 			aux = aux.getProx();
 		}
 		return s;
