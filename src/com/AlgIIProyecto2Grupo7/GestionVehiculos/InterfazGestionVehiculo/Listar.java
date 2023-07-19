@@ -5,6 +5,7 @@ import javax.swing.border.Border;
 
 import java.awt.event.*;
 import java.awt.*;
+import javax.swing.table.DefaultTableModel;
 
 //import java.awt.event.MouseEvent;
 //import java.awt.event.MouseListener;
@@ -18,22 +19,19 @@ public class Listar extends JFrame implements  MouseListener{
 //private JMenuBar mb;
 //private JMenu menuAgregar , menuModificar , menuEliminar , menuConsultar , menuListar , menuSalir;
 //private JMenuItem miNuevoAgregar;
-private JLabel labelNombreEnEspanol , labelNombreIngles , labelNombreConductor , labelTipoDeCaucho ;
-private JLabel labelTamanoDeCaucho , labelVelocidadDelVehiculo , labelResistenciaBomba ;
-private JLabel labelResistenciaPiedra , labelResistenciaLiquido , labelComoSeVe;
+
 
 private JLabel labelModificar;
 
-private JTextField txtNombreEnEspanol , txtNombreIngles , txtNombreConductor  ;
-private JTextField txtVelocidadDelVehiculo , txtResistenciaBomba ,txtResistenciaPiedra ;
-private JTextField txtResistenciaLiquido  ;
-private JComboBox comboTipoDeCaucho,comboTamanoDeCaucho,comboComoSeVe ;
-private JButton boton1,menuAgregar , menuModificar , menuEliminar , menuConsultar , menuListar , menuSalir;
+
+private JButton menuAgregar , menuModificar , menuEliminar , menuConsultar , menuListar , menuSalir;
+private JScrollPane scrollPane;
+private JTable tableVehiculos;
 
 
 
 	public Listar(){
-		setLayout(null);
+		getContentPane().setLayout(null);
 		setTitle("Pantalla Principal");
 		getContentPane().setBackground(new Color(87,35,100));
 		setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png")).getImage());
@@ -143,7 +141,7 @@ private JButton boton1,menuAgregar , menuModificar , menuEliminar , menuConsulta
 	labelModificar.setFont(new Font("Andale Mono",1,40));
 	//labelConsultar.setForeground(new Color(235,235,0)); // color amarillo
 	labelModificar.setForeground(new Color(200,200,200)); // color gris
-	add(labelModificar);
+	getContentPane().add(labelModificar);
 
 	// menu de botones
 
@@ -154,7 +152,7 @@ private JButton boton1,menuAgregar , menuModificar , menuEliminar , menuConsulta
 		menuAgregar.setForeground(new Color(255,255,255));
 		menuAgregar.addMouseListener(this);
 		menuAgregar.setBorderPainted(false);
-		add(menuAgregar);
+		getContentPane().add(menuAgregar);
 
 	menuModificar = new JButton("Modificar Vehiculo");
 		menuModificar.setBounds(200,0,200,30);
@@ -163,7 +161,7 @@ private JButton boton1,menuAgregar , menuModificar , menuEliminar , menuConsulta
 		menuModificar.setForeground(new Color(255,255,255));
 		menuModificar.addMouseListener(this);
 		menuModificar.setBorderPainted(false);
-		add(menuModificar);
+		getContentPane().add(menuModificar);
 
 	menuEliminar = new JButton("Eliminar Vehiculo");
 		menuEliminar.setBounds(400,0,200,30);
@@ -172,7 +170,7 @@ private JButton boton1,menuAgregar , menuModificar , menuEliminar , menuConsulta
 		menuEliminar.setForeground(new Color(255,255,255));
 		menuEliminar.addMouseListener(this);
 		menuEliminar.setBorderPainted(false);
-		add(menuEliminar);
+		getContentPane().add(menuEliminar);
 
 	menuConsultar = new JButton("Consultar Vehiculo");
 		menuConsultar.setBounds(600,0,200,30);
@@ -181,7 +179,7 @@ private JButton boton1,menuAgregar , menuModificar , menuEliminar , menuConsulta
 		menuConsultar.setForeground(new Color(255,255,255));
 		menuConsultar.addMouseListener(this);
 		menuConsultar.setBorderPainted(false);
-		add(menuConsultar);
+		getContentPane().add(menuConsultar);
 
 	menuListar = new JButton("Listar Vehiculos");
 		menuListar.setBounds(800,0,200,30);
@@ -190,7 +188,7 @@ private JButton boton1,menuAgregar , menuModificar , menuEliminar , menuConsulta
 		menuListar.setForeground(new Color(255,255,255));
 		menuListar.addMouseListener(this);
 		menuListar.setBorderPainted(false);
-		add(menuListar);
+		getContentPane().add(menuListar);
 
 	menuSalir = new JButton("Salir");
 		menuSalir.setBounds(1000,0,200,30);
@@ -200,7 +198,45 @@ private JButton boton1,menuAgregar , menuModificar , menuEliminar , menuConsulta
 		menuSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		menuSalir.addMouseListener(this);
 		menuSalir.setBorderPainted(false);
-		add(menuSalir);
+		getContentPane().add(menuSalir);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(69, 128, 745, 353);
+		getContentPane().add(scrollPane);
+		
+		tableVehiculos = new JTable();
+		tableVehiculos.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"Nombre Es", "Nombre En", "Conductores", "Motor", "Tipo Caucho", "Tama\u00F1o Caucho", "Velocidad", "ResBomb", "ResObs", "ResLiq"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false, false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		scrollPane.setViewportView(tableVehiculos);
 	}
 
 

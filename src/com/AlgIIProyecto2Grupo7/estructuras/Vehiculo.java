@@ -6,9 +6,9 @@ public class Vehiculo {
     private String nombreEs;
     private String nombreEn;
     private String conductor;
+    private String Motor;
     private String tipoCaucho;
     private String tamanoCaucho;
-    private String Motor;
     private int velocidad;
     private int ResBomba;
     private int ResPiedra;
