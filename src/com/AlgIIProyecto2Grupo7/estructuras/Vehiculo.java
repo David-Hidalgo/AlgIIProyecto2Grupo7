@@ -67,10 +67,7 @@ public class Vehiculo {
         this.tiempoDeLlegada = 0;
         this.ubicación = null;
         this.distanciaRecorrida = 0;
-<<<<<<< HEAD
         this.vehiculoEnPantalla = vehiculoEnPantalla;
-=======
->>>>>>> 651eb221eddbf421afcfe9d5fa896e8d7a906fb7
     }
 
     /**
