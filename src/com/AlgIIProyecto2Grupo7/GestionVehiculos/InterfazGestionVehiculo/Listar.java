@@ -7,6 +7,8 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.table.DefaultTableModel;
 
+
+
 import com.AlgIIProyecto2Grupo7.estructuras.ReadWrite;
 import com.AlgIIProyecto2Grupo7.estructuras.listaVehiculo.ListaVehiculo;
 
