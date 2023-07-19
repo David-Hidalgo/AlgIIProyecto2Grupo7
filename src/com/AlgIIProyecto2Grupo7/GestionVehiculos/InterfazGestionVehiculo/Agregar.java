@@ -36,6 +36,7 @@ public class Agregar extends JFrame implements MouseListener {
 	private JComboBox comboBoxTipoCaucho, comboBoxTamanoCaucho, comboComoSeVe;
 	private JButton boton1, menuAgregar, menuModificar, menuEliminar, menuConsultar, menuListar, menuSalir;
 	private JComboBox comboBoxMotor;
+	private JComboBox comboBoxComoSeVe;
 
 	public Agregar() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -127,25 +128,6 @@ public class Agregar extends JFrame implements MouseListener {
 		ImageIcon imagen9 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro9.jpg"));
 		ImageIcon imagen10 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro10.jpg"));
 		ImageIcon imagen11 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro11.jpg"));
-
-		// comboComoSeVe = newJ ComboBox();
-		JComboBox<ImageIcon> comboComoSeVe = new JComboBox<>();
-		comboComoSeVe.setBounds(525, 60, 300, 160);
-		comboComoSeVe.setBackground(new java.awt.Color(224, 224, 224));
-		comboComoSeVe.setFont(new java.awt.Font("Andale Mono", 1, 14));
-		comboComoSeVe.setForeground(new java.awt.Color(87, 35, 100));
-		getContentPane().add(comboComoSeVe);
-		comboComoSeVe.addItem(imagen1);
-		comboComoSeVe.addItem(imagen2);
-		comboComoSeVe.addItem(imagen3);
-		comboComoSeVe.addItem(imagen4);
-		comboComoSeVe.addItem(imagen5);
-		comboComoSeVe.addItem(imagen6);
-		comboComoSeVe.addItem(imagen7);
-		comboComoSeVe.addItem(imagen8);
-		comboComoSeVe.addItem(imagen9);
-		comboComoSeVe.addItem(imagen10);
-		comboComoSeVe.addItem(imagen11);
 		//
 
 		labelNombreEnEspanol = new JLabel("Nombre en espanol:");
@@ -355,7 +337,7 @@ public class Agregar extends JFrame implements MouseListener {
 		comboBoxTipoCaucho = new JComboBox();
 		comboBoxTipoCaucho.setForeground(new Color(128, 0, 128));
 		comboBoxTipoCaucho.setFont(new Font("Dialog", Font.BOLD, 14));
-		comboBoxTipoCaucho.setModel(new DefaultComboBoxModel(new String[] {"Normales", "Anti-Coleo", "Todoterreno"}));
+		comboBoxTipoCaucho.setModel(new DefaultComboBoxModel(new String[] {"Normales", "Anticoleo", "Todoterreno"}));
 		comboBoxTipoCaucho.setBounds(525, 320, 300, 30);
 		getContentPane().add(comboBoxTipoCaucho);
 		
@@ -367,11 +349,17 @@ public class Agregar extends JFrame implements MouseListener {
 		getContentPane().add(comboBoxTamanoCaucho);
 		
 		comboBoxMotor = new JComboBox();
-		comboBoxMotor.setModel(new DefaultComboBoxModel(new String[] {"Perezoso", "Cruzero", "Super Ferrary", "Delorean"}));
+		comboBoxMotor.setModel(new DefaultComboBoxModel(new String[] {"Perezoso", "Crucero", "Super Ferrari", "Delorean"}));
 		comboBoxMotor.setForeground(new Color(128, 0, 128));
 		comboBoxMotor.setFont(new Font("Dialog", Font.BOLD, 14));
 		comboBoxMotor.setBounds(525, 500, 300, 30);
 		getContentPane().add(comboBoxMotor);
+		
+		comboBoxComoSeVe = new JComboBox();
+		comboBoxComoSeVe.setModel(new DefaultComboBoxModel(new ImageIcon[] {imagen1, imagen2, imagen3, imagen4, imagen5, imagen6, imagen7, imagen8, imagen9, imagen10, imagen11}));
+		comboBoxComoSeVe.setBackground(new Color(128, 0, 128));
+		comboBoxComoSeVe.setBounds(525, 60, 300, 160);
+		getContentPane().add(comboBoxComoSeVe);
 	}
 
 	public void mouseClicked(MouseEvent e) {
@@ -421,16 +409,16 @@ public class Agregar extends JFrame implements MouseListener {
 			}
 			// tipo de caucho
 			
-			if (comboBoxTipoCaucho.getSelectedItem().equals("Todo Terreno")) {
-				tipoDeCaucho = "Todo Terreno";
+			if (comboBoxTipoCaucho.getSelectedItem().equals("Todoterreno")) {
+				tipoDeCaucho = "Todoterreno";
 			}else if (comboBoxTipoCaucho.getSelectedItem().equals("Normales")) {
 				tipoDeCaucho = "Normales";
 			} else if (comboBoxTipoCaucho.getSelectedItem().equals("Anticoleo")) {
 				tipoDeCaucho = "Anticoleo";
 			} 
 			// tamano caucho
-			if (comboBoxTamanoCaucho.getSelectedItem().equals("Pegado al piso")) {
-				tamanoDeCaucho = "Pegado al piso";
+			if (comboBoxTamanoCaucho.getSelectedItem().equals("Pegados al Piso")) {
+				tamanoDeCaucho = "Pegados al Piso";
 			}else if (comboBoxTamanoCaucho.getSelectedItem().equals("Normales")) {
 				tamanoDeCaucho = "Normales";
 			}else if (comboBoxTamanoCaucho.getSelectedItem().equals("Moster Truck 1")) {
@@ -451,7 +439,7 @@ public class Agregar extends JFrame implements MouseListener {
 			if (comboBoxMotor.getSelectedItem().equals("Super Ferrari")) {
 				motor = "Super Ferrari";
 			}
-			if (comboBoxMotor.getSelectedItem().equals("Crusero")) {
+			if (comboBoxMotor.getSelectedItem().equals("Crucero")) {
 				motor = "Crucero";
 			}
 			// velocidad
@@ -506,12 +494,13 @@ public class Agregar extends JFrame implements MouseListener {
 					inserto=false;
 				}
 			}
+			comoSeVe=comboBoxComoSeVe.getSelectedItem().toString();
 
 			if (inserto) {
 				JOptionPane.showMessageDialog(null, "Vehiculo agregado con exito");
-				Vehiculo vehiculoNuevo = new Vehiculo(nombreEnEspanol, nombreIngles, nombreConductor, tipoDeCaucho,
-					tamanoDeCaucho, motor, velocidadDelVehiculo, resistenciaBomba, resistenciaPiedra,
-					resistenciaLiquido, comoSeVe);
+				Vehiculo vehiculoNuevo = new Vehiculo(nombreEnEspanol, nombreIngles, nombreConductor, motor,
+						tipoDeCaucho, tamanoDeCaucho,resistenciaBomba, resistenciaPiedra,
+					resistenciaLiquido,velocidadDelVehiculo, comoSeVe);
 				listaActual.insertarInicio(vehiculoNuevo);
 				ReadWrite.guardarVehiculos(listaActual);
 			}
