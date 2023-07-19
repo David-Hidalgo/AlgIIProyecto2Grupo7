@@ -9,4 +9,3 @@ El Alambique Veloz,The Arkansas Chuggabug,Lucas el granjero y el Oso Miedoso,Per
 El Superheterodino,The Turbo Terrific,Pedro Bello,Delorean,Anti-coleo,Pegado al piso,35,40,15,180
 El Troncowagen,The buzzwagon,Brutus y Listus,Perezoso,Todo Terreno,Monster Truck 3,10,15,20,110
 El Super Chatarra Special,The Army Surplus Special,El sargento blast y soldado Meekly,Perezoso,Todo Terreno,Monster Truck 1,15,20,30,140
-

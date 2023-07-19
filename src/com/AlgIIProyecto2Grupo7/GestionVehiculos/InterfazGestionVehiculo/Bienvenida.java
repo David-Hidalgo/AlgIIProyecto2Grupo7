@@ -18,10 +18,11 @@ private ListaVehiculo listaVehiculos=ReadWrite.cargarVehiculosDefault();
 public static String texto = "";
 
 	public Bienvenida(){
+	ReadWrite.guardarVehiculos(listaVehiculos);
 	setLayout(null);
 	setTitle("Bienvenido");
 	getContentPane().setBackground(new Color(87,35,100));
-setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png")).getImage());
+	setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png")).getImage());
 	// colocar imagen de fondo 
 
 	/*

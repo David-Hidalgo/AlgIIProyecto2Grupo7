@@ -54,7 +54,6 @@ public class ReadWrite {
 		FileWriter writer;
 		try {
 			writer = new FileWriter("src\\com\\AlgIIProyecto2Grupo7\\archivos\\vehiculos.txt", false);
-			System.out.println(listaVehiculo.toString());
 			writer.write(listaVehiculo.toString());
 			writer.close();
 		} catch (IOException e) {
