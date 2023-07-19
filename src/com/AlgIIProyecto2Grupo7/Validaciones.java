@@ -3,13 +3,25 @@ package com.AlgIIProyecto2Grupo7;
 import java.util.Scanner;
 
 public class Validaciones {
-    public static String validarNumero(String cambiar, Scanner sc) {
-        System.out.printf("Ingrese un numero para %s: \n", cambiar);
-        String entrada = sc.nextLine();
-        while (!entrada.matches("[0-9]+")) {
-            System.out.println("Error, ingrese un numero");
-            entrada = sc.nextLine();
+    //función que devuelve verdadero o falso si un String es un número entero o no
+    public static boolean validarNumero(String cambiar) {
+        try {
+            Integer.parseInt(cambiar);
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
         }
-        return entrada;
     }
+    //función que elimina las "," de un String
+    public static String eliminarComas(String entrada) {
+        String salida = "";
+        for (int i = 0; i < entrada.length(); i++) {
+            if (entrada.charAt(i) != ',') {
+                salida += entrada.charAt(i);
+            }
+        }
+        return salida;
+    }
+    
+    
 }

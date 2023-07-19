@@ -52,7 +52,7 @@ public class Vehiculo {
     }
 
     public Vehiculo(String nombreEs, String nombreEn, String conductor, String motor, String tipoCaucho, String tamanoCaucho,
-            String ResBomba, String ResPiedra, String ResLiquido, String velocidad) {
+            String ResBomba, String ResPiedra, String ResLiquido, String velocidad, String vehiculoEnPantalla) {
         this.nombreEs = nombreEs;
         this.nombreEn = nombreEn;
         this.conductor = conductor;
@@ -66,7 +66,7 @@ public class Vehiculo {
         this.tiempoDeLlegada = 0;
         this.ubicación = null;
         this.distanciaRecorrida = 0;
-        this.vehiculoEnPantalla = "";
+        this.vehiculoEnPantalla = vehiculoEnPantalla;
     }
 
     /**
