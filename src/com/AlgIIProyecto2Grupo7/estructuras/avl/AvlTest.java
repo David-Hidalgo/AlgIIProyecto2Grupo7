@@ -1,51 +1,107 @@
 package com.AlgIIProyecto2Grupo7.estructuras.avl;
 
-import com.AlgIIProyecto2Grupo7.estructuras.avl.Avl;
-import com.AlgIIProyecto2Grupo7.estructuras.avl.Nodo;
+import static org.junit.Assert.*;
 
-public class AvlTest{
+import org.junit.Before;
+import org.junit.Test;
 
-    public static void main(String[] args) {
-        Avl avl = new Avl();
+public class AvlTest {
 
-        // Test inserting values
-        avl.insertar(10);
-        avl.insertar(20);
-        avl.insertar(30);
-        avl.insertar(40);
-        avl.insertar(50);
-        avl.insertar(25);
+    private Avl arbol;
 
-
-
-        // Test deleting a leaf node
-        System.out.println("\nDeleting leaf node 25:");
-        avl.eliminar(25);
-        avl.inOrden(); // Expected output: 10 20 30 40 50
-
-        // Test deleting a node with one child
-        System.out.println("\nDeleting node 20 with one child:");
-        avl.eliminar(20);
-        avl.inOrden(); // Expected output: 10 30 40 50
-
-        // Test deleting the root node
-        System.out.println("\nDeleting root node 30:");
-        avl.eliminar(30);
-        avl.inOrden(); // Expected output: 10 40 50
-
-        // Test deleting a non-existent node
-        System.out.println("\nDeleting non-existent node 60:");
-        boolean deleted = avl.eliminar(60);
-        System.out.println("Node deleted: " + deleted); // Expected output: false
-
-        // Test checking if a value exists in the tree
-        System.out.println("\nChecking if value 40 exists:");
-        boolean exists = avl.existe(40);
-        System.out.println("Value exists: " + exists); // Expected output: true
-
-        // Test checking if a non-existent value exists in the tree
-        System.out.println("\nChecking if value 60 exists:");
-        exists = avl.existe(60);
-        System.out.println("Value exists: " + exists); // Expected output: false
+    @Before
+    public void setUp() throws Exception {
+        arbol = new Avl();
     }
+
+    @Test
+    public void testInsertar() {
+        arbol.insertar(10);
+        arbol.insertar(20);
+        arbol.insertar(30);
+        arbol.insertar(40);
+        arbol.insertar(50);
+        arbol.insertar(25);
+        arbol.insertar(5);
+        arbol.insertar(15);
+        arbol.insertar(35);
+        arbol.insertar(45);
+        arbol.insertar(55);
+        assertTrue(arbol.existe(10));
+        assertTrue(arbol.existe(20));
+        assertTrue(arbol.existe(30));
+        assertTrue(arbol.existe(40));
+        assertTrue(arbol.existe(50));
+        assertTrue(arbol.existe(25));
+        assertTrue(arbol.existe(5));
+        assertTrue(arbol.existe(15));
+        assertTrue(arbol.existe(35));
+        assertTrue(arbol.existe(45));
+        assertTrue(arbol.existe(55));
+    }
+
+    @Test
+    public void testEliminar() {
+        arbol.insertar(10);
+        arbol.insertar(20);
+        arbol.insertar(30);
+        arbol.insertar(40);
+        arbol.insertar(50);
+        arbol.insertar(25);
+        arbol.insertar(5);
+        arbol.insertar(15);
+        arbol.insertar(35);
+        arbol.insertar(45);
+        arbol.insertar(55);
+        assertTrue(arbol.eliminar(10));
+        assertFalse(arbol.existe(10));
+        assertTrue(arbol.eliminar(20));
+        assertFalse(arbol.existe(20));
+        assertTrue(arbol.eliminar(30));
+        assertFalse(arbol.existe(30));
+        assertTrue(arbol.eliminar(40));
+        assertFalse(arbol.existe(40));
+        assertTrue(arbol.eliminar(50));
+        assertFalse(arbol.existe(50));
+        assertTrue(arbol.eliminar(25));
+        assertFalse(arbol.existe(25));
+        assertTrue(arbol.eliminar(5));
+        assertFalse(arbol.existe(5));
+        assertTrue(arbol.eliminar(15));
+        assertFalse(arbol.existe(15));
+        assertTrue(arbol.eliminar(35));
+        assertFalse(arbol.existe(35));
+        assertTrue(arbol.eliminar(45));
+        assertFalse(arbol.existe(45));
+        assertTrue(arbol.eliminar(55));
+        assertFalse(arbol.existe(55));
+    }
+
+    @Test
+    public void testExiste() {
+        arbol.insertar(10);
+        arbol.insertar(20);
+        arbol.insertar(30);
+        arbol.insertar(40);
+        arbol.insertar(50);
+        arbol.insertar(25);
+        arbol.insertar(5);
+        arbol.insertar(15);
+        arbol.insertar(35);
+        arbol.insertar(45);
+        arbol.insertar(55);
+        assertTrue(arbol.existe(10));
+        assertTrue(arbol.existe(20));
+        assertTrue(arbol.existe(30));
+        assertTrue(arbol.existe(40));
+        assertTrue(arbol.existe(50));
+        assertTrue(arbol.existe(25));
+        assertTrue(arbol.existe(5));
+        assertTrue(arbol.existe(15));
+        assertTrue(arbol.existe(35));
+        assertTrue(arbol.existe(45));
+        assertTrue(arbol.existe(55));
+        assertFalse(arbol.existe(100));
+    }
+
 }
