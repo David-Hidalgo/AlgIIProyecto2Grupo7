@@ -63,10 +63,14 @@ public class Vehiculo {
         this.ResPiedra = Integer.parseInt(ResPiedra);
         this.ResLiquido = Integer.parseInt(ResLiquido);
         this.velocidad = Integer.parseInt(velocidad);
+        this.vehiculoEnPantalla = vehiculoEnPantalla;
         this.tiempoDeLlegada = 0;
         this.ubicación = null;
         this.distanciaRecorrida = 0;
+<<<<<<< HEAD
         this.vehiculoEnPantalla = vehiculoEnPantalla;
+=======
+>>>>>>> 651eb221eddbf421afcfe9d5fa896e8d7a906fb7
     }
 
     /**
@@ -188,7 +192,7 @@ public class Vehiculo {
 
     @Override
     public String toString() {
-        return nombreEs+"/"+ nombreEn +"/" + conductor + "/"+ Motor + "/" + tipoCaucho + "/"+ tamanoCaucho + "/"+ ResBomba + "/"+ ResPiedra + "/"+ ResLiquido + "/"+ velocidad;
+        return nombreEs+","+ nombreEn +"," + conductor + ","+ Motor + "," + tipoCaucho + ","+ tamanoCaucho + ","+ ResBomba + ","+ ResPiedra + ","+ ResLiquido + ","+ velocidad;
     }
 
 }

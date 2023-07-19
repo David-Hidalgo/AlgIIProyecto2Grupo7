@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 El Rocomovil/The Bouldermobile/los Hermanos Macana Piedro y Roco/Perezoso/Todo Terreno/Monster Truck/5/5/10/80
 El Espantomovil/The Creepy Coupe/Los Tenebrosos (The Gruesome Twosome)/Perezoso/Normales/Normales/15/20/30/120
 El Auto_Super Convertible/Convert-a-car/El Profesor Locovich/Perezoso/Todo Terreno/Monster Truck 2/12/17/25/120
@@ -9,3 +10,16 @@ El Alambique Veloz/The Arkansas Chuggabug/Lucas el granjero y el Oso Miedoso/Per
 El Superheterodino/The Turbo Terrific/Pedro Bello/Delorean/Anti-coleo/Pegado al piso/35/40/15/180
 El Troncowagen/The buzzwagon/Brutus y Listus/Perezoso/Todo Terreno/Monster Truck 3/10/15/20/110
 El Super Chatarra Special/The Army Surplus Special/El sargento blast y soldado Meekly/Perezoso/Todo Terreno/Monster Truck 1/15/20/30/140
+=======
+El Rocomovil,The Bouldermobile,los Hermanos Macana Piedro y Roco,Perezoso,Todo Terreno,Monster Truck,5,5,10,80
+El Espantomovil,The Creepy Coupe,Los Tenebrosos (The Gruesome Twosome),Perezoso,Normales,Normales,15,20,30,120
+El Auto_Super Convertible,Convert-a-car,El Profesor Locovich,Perezoso,Todo Terreno,Monster Truck 2,12,17,25,120
+El Stuka Rakuda,Crimson Haybailer,El Baron Hans Fritz,Perezoso,Normales,Normales,15,20,30,120
+El Compact Pussycat,the compact Pussycat,Penelope Glamour,El super Ferrar,Anti-Coleo,Pegado al piso,25,30,20,160
+El Super Ferrari,The Mean Machine 00,Pierre Nodoyuna y Patan,Crucero,Normales,Normales,20,25,35,140
+La Antigualla Blindada,The Bulletproof Boomb,Mafio y sus siete pandilleros,Perezoso,Todo Terreno,Monster Truck 4,7,10,15,100
+El Alambique Veloz,The Arkansas Chuggabug,Lucas el granjero y el Oso Miedoso,Perezoso,Todo Terreno,Monster Truck 2,12,17,25,120
+El Superheterodino,The Turbo Terrific,Pedro Bello,Delorean,Anti-coleo,Pegado al piso,35,40,15,180
+El Troncowagen,The buzzwagon,Brutus y Listus,Perezoso,Todo Terreno,Monster Truck 3,10,15,20,110
+El Super Chatarra Special,The Army Surplus Special,El sargento blast y soldado Meekly,Perezoso,Todo Terreno,Monster Truck 1,15,20,30,140
+>>>>>>> 651eb221eddbf421afcfe9d5fa896e8d7a906fb7
