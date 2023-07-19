@@ -3,6 +3,8 @@ package com.AlgIIProyecto2Grupo7.GestionVehiculos.InterfazGestionVehiculo;
 import javax.swing.*;
 import javax.swing.border.Border;
 import com.AlgIIProyecto2Grupo7.Validaciones;
+import com.AlgIIProyecto2Grupo7.estructuras.Vehiculo;
+
 import java.awt.event.*;
 import java.awt.*;
 
@@ -392,76 +394,131 @@ public class Agregar extends JFrame implements MouseListener {
 		 * etiqueta1.setText("Hizo clic en el Titulo");
 		 */
 		if (e.getSource() == boton1) {
+
 			// ----------------
+			boolean inserto = true;
+			String nombreEnEspanol="";
+			String nombreIngles = "";
+			String nombreConductor = "";
+			String tipoDeCaucho = "";
+			String tamanoDeCaucho = "";
+			int velocidadDelVehiculo = 0;
+			int resistenciaBomba=0;
+			int resistenciaPiedra= 0;
+			int resistenciaLiquido=0;
+			String motor="";
+			String comoSeVe="";
+			
+			
+			
 			if ((txtNombreEnEspanol.getText().equals(""))
 					|| (Validaciones.validarNumero(txtNombreEnEspanol.getText()))) {
 				JOptionPane.showMessageDialog(null, "Debe ingresar el nombre en espanol del vehiculo");
+				inserto=false;
+			} else {
+				nombreEnEspanol = Validaciones.eliminarComas(txtNombreEnEspanol.getText());
 			}
-			String nombreEnEspanol = Validaciones.eliminarComas(txtNombreEnEspanol.getText());
 			if (txtNombreIngles.getText().equals("") || (Validaciones.validarNumero(txtNombreIngles.getText()))) {
 				JOptionPane.showMessageDialog(null, "Debe ingresar el nombre en ingles del vehiculo");
+				inserto=false;
+			} else {
+				nombreIngles = Validaciones.eliminarComas(txtNombreIngles.getText());
 			}
-			String nombreIngles = Validaciones.eliminarComas(txtNombreIngles.getText());
 			if (txtNombreConductor.getText().equals("") || (Validaciones.validarNumero(txtNombreConductor.getText()))) {
 				JOptionPane.showMessageDialog(null, "Debe ingresar el nombre del conductor del vehiculo");
+				inserto=false;
+			} else {
+				nombreConductor = Validaciones.eliminarComas(txtNombreConductor.getText());
 			}
-			String nombreConductor = Validaciones.eliminarComas(txtNombreConductor.getText());
-
-			
-
 			// tipo de caucho
-
-			if (comboTipoDeCaucho.getSelectedItem().equals("Anticoleo")) {
-				String tipoDeCaucho = "Anticoleo";
-			}
-			if (comboTipoDeCaucho.getSelectedItem().equals("Anticoleo")) {
-				String tipoDeCaucho = "Anticoleo";
-			}
+			
 			if (comboTipoDeCaucho.getSelectedItem().equals("Todo Terreno")) {
-				String tipoDeCaucho = "Todo Terreno";
-			}
+				tipoDeCaucho = "Todo Terreno";
+			}else if (comboTipoDeCaucho.getSelectedItem().equals("Normales")) {
+				tipoDeCaucho = "Normales";
+			} else if (comboTipoDeCaucho.getSelectedItem().equals("Anticoleo")) {
+				tipoDeCaucho = "Anticoleo";
+			} 
 			// tamano caucho
 			if (comboTamanoDeCaucho.getSelectedItem().equals("Pegado al piso")) {
-				String tamanoDeCaucho = "Pegado al piso";
-			}
-
-			if (comboTamanoDeCaucho.getSelectedItem().equals("Normales")) {
-				String tamanoDeCaucho = "Normales";
-			}
-			if (comboTamanoDeCaucho.getSelectedItem().equals("Moster Truck 1")) {
-				String tamanoDeCaucho = "Moster Truck 1";
-			}
-			if (comboTamanoDeCaucho.getSelectedItem().equals("Moster Truck 2")) {
-				String tamanoDeCaucho = "Moster Truck 2";
-			}
-			if (comboTamanoDeCaucho.getSelectedItem().equals("Moster Truck 3")) {
-				String tamanoDeCaucho = "Moster Truck 3";
-			}
-			if (comboTamanoDeCaucho.getSelectedItem().equals("Moster Truck 4")) {
-				String tamanoDeCaucho = "Moster Truck 4";
-			}
-			if (comboTamanoDeCaucho.getSelectedItem().equals("Moster Truck 5")) {
-				String tamanoDeCaucho = "Moster Truck 5";
+				tamanoDeCaucho = "Pegado al piso";
+			}else if (comboTamanoDeCaucho.getSelectedItem().equals("Normales")) {
+				tamanoDeCaucho = "Normales";
+			}else if (comboTamanoDeCaucho.getSelectedItem().equals("Moster Truck 1")) {
+				tamanoDeCaucho = "Moster Truck 1";
+			}else if (comboTamanoDeCaucho.getSelectedItem().equals("Moster Truck 2")) {
+				tamanoDeCaucho = "Moster Truck 2";
+			}else if (comboTamanoDeCaucho.getSelectedItem().equals("Moster Truck 3")) {
+				tamanoDeCaucho = "Moster Truck 3";
+			} else if (comboTamanoDeCaucho.getSelectedItem().equals("Moster Truck 4")) {
+				tamanoDeCaucho = "Moster Truck 4";
+			} else if (comboTamanoDeCaucho.getSelectedItem().equals("Moster Truck 5")) {
+				tamanoDeCaucho = "Moster Truck 5";
 			}
 			// motor
 			if (comboMotor.getSelectedItem().equals("Delorean")) {
-				String motor = "Delorean";
+				motor = "Delorean";
 			}
 			if (comboMotor.getSelectedItem().equals("El Super Ferrari")) {
-				String motor = "El Super Ferrari";
+				motor = "El Super Ferrari";
 			}
 			if (comboMotor.getSelectedItem().equals("Crusero")) {
-				String motor = "Crusero";
+				motor = "Crusero";
 			}
 			// velocidad
-			if (txtVelocidadDelVehiculo.getText().equals("")|| (Validaciones.validarNumero(txtNombreEnEspanol.getText())) == false)  {
+			if (txtVelocidadDelVehiculo.getText().equals("") || !(Validaciones.validarNumero(txtNombreEnEspanol.getText()))) {
 				JOptionPane.showMessageDialog(null, "Debe ingresar un número entre 80 y 200");
+				inserto=false;
 			} else {
-				if (Integer.parseInt(txtVelocidadDelVehiculo.getText()) >= 80	&& Integer.parseInt(txtVelocidadDelVehiculo.getText()) <= 200) {
-					int velocidadDelVehiculo = Integer.parseInt(txtVelocidadDelVehiculo.getText());
+				if (Integer.parseInt(txtVelocidadDelVehiculo.getText()) >= 80
+				&& Integer.parseInt(txtVelocidadDelVehiculo.getText()) <= 200) {
+					velocidadDelVehiculo = Integer.parseInt(txtVelocidadDelVehiculo.getText());
 				} else {
 					JOptionPane.showMessageDialog(null, "Debe ingresar un número entre 80 y 200");
 				}
+			}
+			
+			if (txtResistenciaBomba.getText().equals("") || !(Validaciones.validarNumero(txtNombreEnEspanol.getText()))) {
+				JOptionPane.showMessageDialog(null, "Debe ingresar un número entre 5 y 35");
+				inserto=false;
+			} else {
+				if (Integer.parseInt(txtResistenciaBomba.getText()) >= 5
+				&& Integer.parseInt(txtResistenciaBomba.getText()) <= 35) {
+					resistenciaBomba = Integer.parseInt(txtResistenciaBomba.getText());
+				} else {
+					JOptionPane.showMessageDialog(null, "Debe ingresar un número entre 5 y 35");
+				}
+			}
+
+			if (txtResistenciaPiedra.getText().equals("")	|| !(Validaciones.validarNumero(txtNombreEnEspanol.getText()))) {
+				JOptionPane.showMessageDialog(null, "Debe ingresar un número entre 5 y 40");
+				inserto=false;
+			} else {
+				if (Integer.parseInt(txtResistenciaPiedra.getText()) >= 5
+						&& Integer.parseInt(txtResistenciaPiedra.getText()) <= 40) {
+					resistenciaPiedra = Integer.parseInt(txtResistenciaPiedra.getText());
+				} else {
+					JOptionPane.showMessageDialog(null, "Debe ingresar un número entre 5 y 40");
+				}
+			}
+
+			if (txtResistenciaLiquido.getText().equals("")
+					|| (Validaciones.validarNumero(txtNombreEnEspanol.getText())) == false) {
+				JOptionPane.showMessageDialog(null, "Debe ingresar un número entre 10 y 35");
+			} else {
+				if (Integer.parseInt(txtResistenciaLiquido.getText()) >= 10
+						&& Integer.parseInt(txtResistenciaLiquido.getText()) <= 35) {
+					resistenciaLiquido = Integer.parseInt(txtResistenciaLiquido.getText());
+				} else {
+					JOptionPane.showMessageDialog(null, "Debe ingresar un número entre 10 y 35");
+				}
+			}
+
+			if (inserto) {
+				JOptionPane.showMessageDialog(null, "Vehiculo agregado con exito");
+				Vehiculo vehiculoNuevo = new Vehiculo(nombreEnEspanol, nombreIngles, nombreConductor, tipoDeCaucho,
+					tamanoDeCaucho, motor, velocidadDelVehiculo, resistenciaBomba, resistenciaPiedra,
+					resistenciaLiquido, comoSeVe);
 			}
 
 			// ----------------
