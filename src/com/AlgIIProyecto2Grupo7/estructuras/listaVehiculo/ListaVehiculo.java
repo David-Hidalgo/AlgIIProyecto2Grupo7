@@ -181,7 +181,7 @@ public class ListaVehiculo {
 		for (int i = 0; i < pos; i++) {
 			aux = aux.getProx();
 		}
-		s += aux.getP().getnombreEs();
+		s += aux.getP().getNombreEs();
 		return s;
 	}
 
@@ -192,7 +192,7 @@ public class ListaVehiculo {
 		for (int i = 0; i < pos; i++) {
 			aux = aux.getProx();
 		}
-		s += aux.getP().getnombreEn();
+		s += aux.getP().getNombreEn();
 		return s;
 	}
 
@@ -202,7 +202,7 @@ public class ListaVehiculo {
 		for (int i = 0; i < pos; i++) {
 			aux = aux.getProx();
 		}
-		s += aux.getP().getconductor();
+		s += aux.getP().getConductores();
 		return s;
 	}
 
