@@ -1,7 +1,10 @@
 package com.AlgIIProyecto2Grupo7.GestionVehiculos.InterfazGestionVehiculo;
 
 
-
+import com.AlgIIProyecto2Grupo7.estructuras.listaVehiculo.ListaVehiculo;
+import com.AlgIIProyecto2Grupo7.estructuras.Vehiculo;
+import com.AlgIIProyecto2Grupo7.estructuras.ReadWrite;
+import com.AlgIIProyecto2Grupo7.Validaciones;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
