@@ -7,6 +7,9 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.table.DefaultTableModel;
 
+import com.AlgIIProyecto2Grupo7.estructuras.ReadWrite;
+import com.AlgIIProyecto2Grupo7.estructuras.listaVehiculo.ListaVehiculo;
+
 //import java.awt.event.MouseEvent;
 //import java.awt.event.MouseListener;
 
@@ -22,7 +25,7 @@ public class Listar extends JFrame implements  MouseListener{
 
 
 private JLabel labelModificar;
-
+private ListaVehiculo nueva=ReadWrite.cargarVehiculos();
 
 private JButton menuAgregar , menuModificar , menuEliminar , menuConsultar , menuListar , menuSalir;
 private JScrollPane scrollPane;
@@ -35,113 +38,13 @@ private JTable tableVehiculos;
 		setTitle("Pantalla Principal");
 		getContentPane().setBackground(new Color(87,35,100));
 		setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png")).getImage());
-	// colocar imagen de fondo 
-/* 
-		mb = new JMenuBar();
-		mb.setBackground(new Color(87,35,100));
-		setJMenuBar(mb);
-
-	menuAgregar = new JMenu("Agregar");
-	menuAgregar.setBackground(new Color(87,35,100));
-	menuAgregar.setFont(new Font("Andele Mono",1,14));
-	menuAgregar.setForeground(new Color(255,255,255));
-	mb.add(menuAgregar);
-	menuAgregar.addMouseListener(this);
-
-	menuModificar = new JMenu("Modificar");
-	menuModificar.setBackground(new Color(87,35,100));
-	menuModificar.setFont(new Font("Andele Mono",1,14));
-	menuModificar.setForeground(new Color(255,255,255));
-	mb.add(menuModificar);
-	menuModificar.addMouseListener(this);
-
-	menuEliminar = new JMenu("Eliminar");
-	menuEliminar.setBackground(new Color(87,35,100));
-	menuEliminar.setFont(new Font("Andele Mono",1,14));
-	menuEliminar.setForeground(new Color(255,255,255));
-	mb.add(menuEliminar);
-	menuEliminar.addMouseListener(this);
-
-	menuConsultar = new JMenu("Consultar");
-	menuConsultar.setBackground(new Color(87,35,100));
-	menuConsultar.setFont(new Font("Andele Mono",1,14));
-	menuConsultar.setForeground(new Color(255,255,255));
-	mb.add(menuConsultar);
-	menuConsultar.addMouseListener(this);
-
-	menuListar = new JMenu("Listar");
-	menuListar.setBackground(new Color(87,35,100));
-	menuListar.setFont(new Font("Andele Mono",1,14));
-	menuListar.setForeground(new Color(255,255,255));
-	mb.add(menuListar);
-	menuListar.addMouseListener(this);
-
-	menuSalir = new JMenu("Salir");
-	menuSalir.setBackground(new Color(87,35,100));
-	menuSalir.setFont(new Font("Andele Mono",1,14));
-	menuSalir.setForeground(new Color(255,255,255));
-	mb.add(menuSalir);
-	menuSalir.addMouseListener(this);
-*/
-
-/*
-	miNuevoAgregar = new JMenuItem("Nuevo");
-	miNuevoAgregar.setFont(new Font("Andale Mono", 1,14));
-	miNuevoAgregar.setForeground(new Color(87,35,100));
-	menuAgregar.add(miNuevoAgregar);
-	miNuevoAgregar.addMouseListener(this);
-
-*/
-
-
-	//------------------------------------------------
-
-	
-
-
-/*
-
-	label2 = new JLabel("Sistema de Gestion de Vehiculos");
-	label2.setBounds(35,135,300,30);
-	label2.setFont(new Font("Andale Mono", 3,18));
-	label2.setForeground(new Color(255,255,255));
-	add(label2);
-
-	label3 = new JLabel("Ingrese su nombre");
-	label3.setBounds(45,212,200,30);
-	label3.setFont(new Font("Andale Mono", 1,12));
-	label3.setForeground(new Color(255,255,255));
-	add(label3);
-
-	label4 = new JLabel("Universidad Catolica Andres Bello");
-	label4.setBounds(85,375,300,30);
-	label4.setFont(new Font("Andale Mono", 1,12));
-	label4.setForeground(new Color(255,255,255));
-	add(label4);
-	
-	textfield1 = new JTextField();
-	textfield1.setBounds(45,240,255,25);
-	textfield1.setBackground(new Color(224,224,224));
-	textfield1.setFont(new Font("Andale Mono", 1,14));
-	textfield1.setForeground(new Color(87,35,100));
-	add(textfield1);
-
-*/
-/* 
-	boton1 = new JButton("Buscar Vehiculo");
-	boton1.setBounds(475,600,200,30);
-	boton1.setBackground(new Color(255,255,255));
-	boton1.setFont(new Font("Andale Mono", 1,14));
-	boton1.setForeground(new Color(87,35,100));
-	boton1.addMouseListener(this);
-	add(boton1);
-*/
-    labelModificar = new JLabel("Listar");
-	labelModificar.setBounds(40,30,300,50);
-	labelModificar.setFont(new Font("Andale Mono",1,40));
-	//labelConsultar.setForeground(new Color(235,235,0)); // color amarillo
-	labelModificar.setForeground(new Color(200,200,200)); // color gris
-	getContentPane().add(labelModificar);
+		
+	labelModificar = new JLabel("Listar");
+		labelModificar.setBounds(40,30,300,50);
+		labelModificar.setFont(new Font("Andale Mono",1,40));
+		//labelConsultar.setForeground(new Color(235,235,0)); // color amarillo
+		labelModificar.setForeground(new Color(200,200,200)); // color gris
+		getContentPane().add(labelModificar);
 
 	// menu de botones
 
@@ -207,17 +110,6 @@ private JTable tableVehiculos;
 		tableVehiculos = new JTable();
 		tableVehiculos.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
 			},
 			new String[] {
 				"Nombre Es", "Nombre En", "Conductores", "Motor", "Tipo Caucho", "Tama\u00F1o Caucho", "Velocidad", "ResBomb", "ResObs", "ResLiq"
@@ -229,14 +121,28 @@ private JTable tableVehiculos;
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
-			boolean[] columnEditables = new boolean[] {
-				false, false, false, false, false, false, false, false, false, false
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
 		});
 		scrollPane.setViewportView(tableVehiculos);
+
+		//llenar tantas row como vehiculos haya
+		
+
+
+		System.out.println(tableVehiculos.getRowCount());
+		tableVehiculos.addRowSelectionInterval(0, nueva.getTamano());
+		for (int i = 0; i < nueva.getTamano(); i++) {
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getNombreEs(), i, 0);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getNombreEn(), i, 1);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getConductores(), i, 2);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getMotor(), i, 3);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getTipoCaucho(), i, 4);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getTamanoCaucho(), i, 5);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getVelocidad(), i, 6);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getResBomba(), i, 7);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getResPiedra(), i, 8);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getResLiquido(), i, 9);
+		}
+		
 	}
 
 
@@ -303,14 +209,9 @@ private JTable tableVehiculos;
 		if (respuesta == JOptionPane.YES_NO_OPTION)
 		{
 			this.dispose();
-		}
-
-
-                
+		}                
 			}
-		
 				}
-			
 		
 			public void mousePressed(MouseEvent e) {
 				/* 

@@ -107,7 +107,7 @@ public class Vehiculo {
      * Metodos
      */
 
-    public String getnombreEs() {
+    public String getNombreEs() {
         return nombreEs;
     }
 
@@ -115,19 +115,19 @@ public class Vehiculo {
         this.nombreEs = nombreEs;
     }
 
-    public String getnombreEn() {
+    public String getNombreEn() {
         return nombreEn;
     }
 
-    public void setnombreEn(String nombreEn) {
+    public void setNombreEn(String nombreEn) {
         this.nombreEn = nombreEn;
     }
 
-    public String getconductor() {
+    public String getConductores() {
         return conductor;
     }
 
-    public void setconductor(String conductor) {
+    public void setConductores(String conductor) {
         this.conductor = conductor;
     }
 
