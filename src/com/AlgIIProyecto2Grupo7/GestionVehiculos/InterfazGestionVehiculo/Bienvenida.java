@@ -1,10 +1,12 @@
-package com.AlgIIProyecto2Grupo7.GestionVehiculos;
+package com.AlgIIProyecto2Grupo7.GestionVehiculos.InterfazGestionVehiculo;
 
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class Bienvenida extends JFrame implements ActionListener{
+public class Bienvenida extends JFrame implements MouseListener{
 
 private JTextField textfield1;
 private JLabel label1 , label2, label3, label4;
@@ -56,13 +58,20 @@ setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png"
 	boton1.setBackground(new Color(255,255,255));
 	boton1.setFont(new Font("Andale Mono", 1,14));
 	boton1.setForeground(new Color(87,35,100));
-	boton1.addActionListener(this);
+	boton1.addMouseListener(this);
 	add(boton1);
 	}
 
-	public void actionPerformed(ActionEvent e){
-	if(e.getSource() == boton1){
-		texto = textfield1.getText().trim();
+	public void mouseClicked(MouseEvent e) {
+		/* 
+				if (evento.getSource() == boton1){
+					etiqueta1.setText("Hizo clic en mi bot�n");
+				}
+				if (evento.getSource() == labelTitulo){
+					etiqueta1.setText("Hizo clic en el Titulo");
+					*/
+					if(e.getSource() == boton1){
+			texto = textfield1.getText().trim();
 			if(texto.equals("")){
 				JOptionPane.showMessageDialog(null , "Debes Ingresar tu nombre.");
 			}else{
@@ -73,8 +82,65 @@ setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png"
 				agregar.setLocationRelativeTo(null);
 				this.setVisible(false);
 			}
-		}
-	}
+			}
+			
+		
+				}
+			
+		
+			public void mousePressed(MouseEvent e) {
+				/* 
+				etiqueta1.setText("");
+				if (evento.getSource() == boton1){
+					etiqueta2.setText("Presiono el bot�n");
+				}
+				if (evento.getSource() == labelTitulo){
+					etiqueta2.setText("Presiono el Titulo");
+				}
+				*/
+		
+				if(e.getSource() == boton1){
+			
+			}
+			
+		
+		
+			}
+		
+			public void mouseReleased(MouseEvent e) {
+				/* 
+				if (evento.getSource() == boton1){
+					etiqueta2.setText("Libero el bot�n");
+				}
+				if (evento.getSource() == labelTitulo){
+					etiqueta2.setText("Libero el Titulo");
+				}
+				*/
+			}
+		
+			public void mouseExited(MouseEvent e) {
+				/* 
+				if (evento.getSource() == boton1){
+					etiqueta1.setText("Salio del bot�n");
+				}
+				if (evento.getSource() == labelTitulo){
+					etiqueta1.setText("Salio del Titulo");
+				}
+				etiqueta2.setText("");
+				*/
+			}
+		
+			public void mouseEntered(MouseEvent e) {
+				/* 
+				if (evento.getSource() == boton1){
+					etiqueta1.setText("Entro a mi bot�n");
+				}
+				if (evento.getSource() == labelTitulo){
+					etiqueta1.setText("Entro al Titulo");
+				}
+				etiqueta2.setText("");
+				*/
+			}
 
 	public static void main(String args[]){
 	Bienvenida ventanaBienvenida = new Bienvenida();
@@ -82,5 +148,11 @@ setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png"
 	ventanaBienvenida.setVisible(true);
 	ventanaBienvenida.setResizable(false);
 	ventanaBienvenida.setLocationRelativeTo(null);
+
+
 	}
+
+
+
+
 }
