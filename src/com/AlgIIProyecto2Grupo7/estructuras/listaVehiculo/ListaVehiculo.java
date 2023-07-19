@@ -88,6 +88,22 @@ public class ListaVehiculo {
 		tamano++;
 	}
 
+	public void insertarPos(Vehiculo p, int pos) {
+		if (pos == 0) {
+			insertarInicio(p);
+		} else if (pos >= tamano) {
+			insertarFinal(p);
+		} else {
+			NodoLista nuevo = new NodoLista(p);
+			NodoLista aux = inicio;
+			for (int i = 0; i < (pos - 1); i++) {
+				aux = aux.getProx();
+			}
+			nuevo.setProx(aux.getProx());
+			aux.setProx(nuevo);
+			tamano++;
+		}
+	}
 
 	public Vehiculo getVehiculo(int pos) {
 		NodoLista aux = inicio;

@@ -1,6 +1,8 @@
 package com.AlgIIProyecto2Grupo7.estructuras.avl;
 
 import com.AlgIIProyecto2Grupo7.estructuras.Vehiculo;
+import com.AlgIIProyecto2Grupo7.estructuras.listaVehiculo.ListaVehiculo;
+
 import java.util.Random;
 
 /**
@@ -374,6 +376,29 @@ public class PistaAvl implements Cloneable {
         return tiempoAcumulado + tiempoMas;
     }
 
+    public ListaVehiculo ListaGanadores(ListaVehiculo listaVehiculo) {
+        ListaVehiculo foo = new ListaVehiculo();
+        
+        for (int i = 0; i < listaVehiculo.getTamano(); i++) {
+            PistaAvl pista=this.clone();
+            pista.simularCarrera(pista.getRaiz(), listaVehiculo.getVehiculo(i));
+            if (foo.esVacia()) {
+                foo.insertarInicio(listaVehiculo.getVehiculo(i));
+            } else {
+                for (int j = 0; j < foo.getTamano(); j++) {
+                    if (listaVehiculo.getVehiculo(i).getTiempoDeLlegada() < foo.getVehiculo(j).getTiempoDeLlegada()) {
+                        foo.insertarPos(listaVehiculo.getVehiculo(i), j);
+                        break;
+                    } else if (j == foo.getTamano() - 1) {
+                        foo.insertarPos(listaVehiculo.getVehiculo(i), j + 1);
+                        break;
+                    }
+                }
+            }
+        }
+        return foo;
+    }
+
     public void simularCarrera(NodoParada n, Vehiculo v) {
         Random random = new Random();
         if (n != null && !terminar) {
@@ -420,6 +445,8 @@ public class PistaAvl implements Cloneable {
 
             if (!terminar) {
                 System.out.println("Llegaste a la meta en: " + v.getTiempoDeLlegada() + " minutos");
+                System.out.println("Distancia recorrida: " + v.getDistanciaRecorrida() + " kilometros");
+
             }
             terminar = true;
             // parar simulacion
