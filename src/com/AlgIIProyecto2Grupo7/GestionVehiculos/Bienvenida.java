@@ -82,11 +82,5 @@ setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png"
 	ventanaBienvenida.setVisible(true);
 	ventanaBienvenida.setResizable(false);
 	ventanaBienvenida.setLocationRelativeTo(null);
-
-
 	}
-
-
-
-
 }

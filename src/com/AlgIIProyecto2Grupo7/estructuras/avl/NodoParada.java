@@ -1,6 +1,6 @@
 package com.AlgIIProyecto2Grupo7.estructuras.avl;
 
-public class NodoParada {
+public class NodoParada implements Cloneable {
 	private int clave;
 	private int distancia; // distancia en km desde el padre al nodo
     private NodoParada hijoIzquierdo;
@@ -142,5 +142,41 @@ public class NodoParada {
             hijoDerecho.postOrden();
         }
         System.out.println(clave);
+    }
+
+    public void copiar (NodoParada nodo) {
+        if (nodo == null) {
+            return;
+        }
+        this.clave = nodo.getClave();
+        if (this.hijoIzquierdo!=null){
+
+        this.hijoIzquierdo.copiar(nodo.getHijoIzquierdo());
+        }
+        if (this.hijoDerecho!=null){
+
+        this.hijoDerecho.copiar(nodo.getHijoDerecho());
+        }
+        
+
+    }
+
+    @Override
+    public NodoParada clone() {
+        try {
+            NodoParada cloned = (NodoParada) super.clone();
+            if (hijoIzquierdo != null) {
+                cloned.hijoIzquierdo = hijoIzquierdo.clone();
+            }
+            if (hijoDerecho != null) {
+                cloned.hijoDerecho = hijoDerecho.clone();
+            }
+            if (trampa != null) {
+                cloned.trampa = trampa.clone();
+            }
+            return cloned;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

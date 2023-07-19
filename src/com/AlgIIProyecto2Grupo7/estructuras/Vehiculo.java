@@ -1,33 +1,50 @@
 package com.AlgIIProyecto2Grupo7.estructuras;
 
+import com.AlgIIProyecto2Grupo7.estructuras.avl.NodoParada;
+
 public class Vehiculo {
     private String nombreEs;
     private String nombreEn;
     private String conductor;
     private String tipoCaucho;
     private String tamanoCaucho;
-    //private int monsterTruck;
+    private String Motor;
     private int velocidad;
     private int ResBomba;
     private int ResPiedra;
     private int ResLiquido;
+    private double tiempoDeLlegada;
+    private NodoParada ubicación;
     private String vehiculoEnPantalla;
-
+    
     /**
-	 * Constructor
+     * Constructor
 	 */
-
     public Vehiculo(){
         nombreEs="";
         nombreEn="";
         conductor="";
         tipoCaucho="";
         tamanoCaucho="";
-        //monsterTruck=0;
         velocidad=0;
         ResBomba=0;
         ResPiedra=0;
         ResLiquido=0;
+        tiempoDeLlegada=0;
+        vehiculoEnPantalla="";
+    }
+
+    public Vehiculo(int juan){
+        nombreEs="Carro";
+        nombreEn="Car";
+        conductor="Juan";
+        tipoCaucho="Normal";
+        tamanoCaucho="Normal";
+        velocidad=100;
+        ResBomba=0;
+        ResPiedra=0;
+        ResLiquido=0;
+        tiempoDeLlegada=0;
         vehiculoEnPantalla="";
     }
 
@@ -38,7 +55,6 @@ public class Vehiculo {
         this.conductor = conductor;
         this.tipoCaucho = tipoCaucho;
         this.tamanoCaucho = tamanoCaucho;
-        //this.monsterTruck = Integer.parseInt(monsterTruck);
         this.velocidad = Integer.parseInt(velocidad);
         this.ResBomba = Integer.parseInt(ResBomba);
         this.vehiculoEnPantalla = vehiculoEnPantalla;
@@ -48,6 +64,7 @@ public class Vehiculo {
      * Metodos
      */
 
+    
     public String getnombreEs() {
         return nombreEs;
     }
@@ -83,24 +100,23 @@ public class Vehiculo {
     public String getTamanoCaucho() {
         return tamanoCaucho;
     }
-
+    
     public void setTamanoCaucho(String tamanoCaucho) {
         this.tamanoCaucho = tamanoCaucho;
     }
-/* 
-    public int getMonsterTruck() {
-        return monsterTruck;
+
+    public String getMotor() {
+        return Motor;
     }
-*/
-/* 
-    public void setMonsterTruck(int monsterTruck) {
-        this.monsterTruck = monsterTruck;
+
+    public void setMotor(String motor) {
+        Motor = motor;
     }
-*/
+    
     public int getVelocidad() {
         return velocidad;
     }
-
+    
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
@@ -127,6 +143,23 @@ public class Vehiculo {
 
     public void setResLiquido(int ResLiquido) {
         this.ResLiquido = ResLiquido;
+    }
+
+    public double getTiempoDeLlegada() {
+        return tiempoDeLlegada;
+    }
+
+    public void setTiempoDeLlegada(double tiempoDeLlegada) {
+        this.tiempoDeLlegada = tiempoDeLlegada;
+    }
+
+    
+    public NodoParada getUbicación() {
+        return ubicación;
+    }
+
+    public void setUbicación(NodoParada ubicación) {
+        this.ubicación = ubicación;
     }
 
     public String getvehiculoEnPantalla() {

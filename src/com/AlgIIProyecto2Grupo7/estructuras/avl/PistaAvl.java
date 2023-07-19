@@ -1,20 +1,46 @@
 package com.AlgIIProyecto2Grupo7.estructuras.avl;
 
+import com.AlgIIProyecto2Grupo7.estructuras.Vehiculo;
+import java.util.Random;
 /**
  * This class represents an AVL tree node that contains a key and two child nodes (left and right).
  * It provides methods to insert, delete and search for nodes in the tree, as well as methods to traverse the tree in-order, pre-order and post-order.
  * The tree is balanced using AVL rotations to ensure that the height difference between the left and right subtrees of any node is at most 1.
  * @param raiz The root node of the AVL tree.
  */
-public class PistaAvl {
+public class PistaAvl implements Cloneable {
     protected NodoParada raiz;
+    private Vehiculo vehiculo;
+    protected boolean terminar=false;
 
+    /**
+     * Constructores
+     */
     public PistaAvl() {
         raiz = null;
     }
-
+    
     public PistaAvl(int valor) {
         raiz = new NodoParada(valor);
+    }
+    
+    /**
+     * Metodos
+     */
+    
+    /**
+     * @return the vehiculo
+     */
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    /**
+     * set the vehiculo
+     * @param vehiculo
+     */
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
     }
 
     public void setRaiz(NodoParada raiz) {
@@ -25,6 +51,10 @@ public class PistaAvl {
         return raiz;
     }
 
+    /**
+     * @param valorInsertar
+     * @param distancia
+     */
     public void insertarConDistanvia(int valorInsertar, int distancia) {
         if (this.raiz == null) {
             this.raiz = new NodoParada(valorInsertar);
@@ -137,10 +167,10 @@ public class PistaAvl {
         NodoParada aux = raiz.buscarNodo(dato);
         if (aux != null) {
             if (comprobarHoja(aux, dato)) {
-                raiz = EliminarHoja(this.raiz, dato);
+            this.setRaiz(EliminarHoja(this.raiz, dato));
                 return (true);
             } else {
-                raiz = EliminarNodo(this.raiz, dato);
+                this.setRaiz(EliminarNodo(this.raiz, dato));
                 return true;
             }
         } else
@@ -301,4 +331,74 @@ public class PistaAvl {
         }
     }
 
+    public void copiar(PistaAvl pista){
+        if (pista.getRaiz() != null) {
+            this.getRaiz().copiar(pista.getRaiz());
+        }
+    }
+    private static double getTiempo(NodoParada n, Vehiculo v) {
+        double tiempoMas = ((double)n.getDistancia() / (double)v.getVelocidad())*60;
+        double tiempoAcumulado = (double)v.getTiempoDeLlegada();
+        return tiempoAcumulado + tiempoMas;
+    }
+
+    public void simularCarrera(NodoParada n, Vehiculo v) {
+        Random random = new Random();
+        if (n!=null && !terminar) {
+            v.setUbicación(n);
+            v.setTiempoDeLlegada(getTiempo(n,v));
+            if (n.getTrampa() == null) {
+                int derechoIzquierdo = random.nextInt(2);
+                if (derechoIzquierdo == 0) {
+                    do {
+                    simularCarrera(n.getHijoIzquierdo(), v);
+                    if (n.getHijoIzquierdo() != null){
+                        if (n.getHijoIzquierdo().getTrampa() != null) {
+                            eliminar(n.getHijoIzquierdo().getClave());
+                        }
+                    }
+                        if (n.getHijoIzquierdo()==null) {
+                            break;
+                        }
+                    } while (n.getHijoIzquierdo().getTrampa() != null);
+                    simularCarrera(n.getHijoIzquierdo(), v);
+                } else {
+                    do {
+                    simularCarrera(n.getHijoDerecho(), v);
+                    if (n.getHijoDerecho() != null){
+                        if (n.getHijoDerecho().getTrampa() != null) {
+                            eliminar(n.getHijoDerecho().getClave());
+                        }
+
+                    }
+                        if (n.getHijoDerecho()==null) {
+                            break;
+                        }
+                    } while (n.getHijoDerecho().getTrampa() != null);
+                            simularCarrera(n.getHijoDerecho(), v);
+                    }
+                }else {
+            v.setTiempoDeLlegada(getTiempo(n,v));
+            //penalizar (por hacer)
+                
+            }
+            
+        }else{
+
+            if (!terminar) {
+                System.out.println("Llegaste a la meta en: "+v.getTiempoDeLlegada()+" minutos");
+            }
+            terminar=true;
+            //parar simulacion
+        }
+        
+    }
+    
+    public PistaAvl clone() {
+        PistaAvl cloned = new PistaAvl();
+        if (this.raiz != null) {
+            cloned.raiz = this.raiz.clone();
+        }
+        return cloned;
+    }
 }

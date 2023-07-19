@@ -1,6 +1,6 @@
 package com.AlgIIProyecto2Grupo7.estructuras.avl;
 
-public class Trampa {
+public class Trampa implements Cloneable {
     private int id;
     private String tipoTrampa;
 
@@ -29,5 +29,18 @@ public class Trampa {
 
     public void settipoTrampa(String tipoTrampa) {
         this.tipoTrampa = tipoTrampa;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public Trampa clone() {
+        try {
+            return (Trampa) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

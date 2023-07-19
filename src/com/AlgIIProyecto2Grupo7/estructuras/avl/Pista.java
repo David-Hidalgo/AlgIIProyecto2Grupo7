@@ -3,7 +3,6 @@ package com.AlgIIProyecto2Grupo7.estructuras.avl;
 import static java.lang.Math.pow;
 import static java.lang.Math.log;
 import java.util.Random;
-import com.AlgIIProyecto2Grupo7.estructuras.avl.PistaAvl;
 
 public class Pista {
 
