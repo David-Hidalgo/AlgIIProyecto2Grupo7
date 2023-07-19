@@ -203,7 +203,7 @@ public class ConsultarGeneral extends JFrame implements MouseListener {
 	labelOpcion.setForeground(new Color(255,255,255));
 	add(labelOpcion);
 
-	txtOpcion = new JTextField();
+    	txtOpcion = new JTextField();
 	txtOpcion.setBounds(525,520,300,30);
 	txtOpcion.setBackground(new java.awt.Color(224,224,224));
 	txtOpcion.setFont(new java.awt.Font("Andale Mono",1,14));
