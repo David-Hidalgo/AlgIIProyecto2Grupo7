@@ -2,16 +2,21 @@ package com.AlgIIProyecto2Grupo7.estructuras.avl;
 
 import com.AlgIIProyecto2Grupo7.estructuras.Vehiculo;
 import java.util.Random;
+
 /**
- * This class represents an AVL tree node that contains a key and two child nodes (left and right).
- * It provides methods to insert, delete and search for nodes in the tree, as well as methods to traverse the tree in-order, pre-order and post-order.
- * The tree is balanced using AVL rotations to ensure that the height difference between the left and right subtrees of any node is at most 1.
+ * This class represents an AVL tree node that contains a key and two child
+ * nodes (left and right).
+ * It provides methods to insert, delete and search for nodes in the tree, as
+ * well as methods to traverse the tree in-order, pre-order and post-order.
+ * The tree is balanced using AVL rotations to ensure that the height difference
+ * between the left and right subtrees of any node is at most 1.
+ * 
  * @param raiz The root node of the AVL tree.
  */
 public class PistaAvl implements Cloneable {
     protected NodoParada raiz;
     private Vehiculo vehiculo;
-    protected boolean terminar=false;
+    protected boolean terminar = false;
 
     /**
      * Constructores
@@ -19,15 +24,20 @@ public class PistaAvl implements Cloneable {
     public PistaAvl() {
         raiz = null;
     }
-    
+
     public PistaAvl(int valor) {
         raiz = new NodoParada(valor);
     }
-    
+
+    public PistaAvl(int valor, Vehiculo vehiculo) {
+        raiz = new NodoParada(valor);
+        this.vehiculo = vehiculo;
+    }
+
     /**
      * Metodos
      */
-    
+
     /**
      * @return the vehiculo
      */
@@ -37,6 +47,7 @@ public class PistaAvl implements Cloneable {
 
     /**
      * set the vehiculo
+     * 
      * @param vehiculo
      */
     public void setVehiculo(Vehiculo vehiculo) {
@@ -60,7 +71,7 @@ public class PistaAvl implements Cloneable {
             this.raiz = new NodoParada(valorInsertar);
             this.raiz.setDistancia(distancia);
         } else {
-            this.raiz = insertarConDistancia(valorInsertar,distancia, this.raiz);
+            this.raiz = insertarConDistancia(valorInsertar, distancia, this.raiz);
         }
     }
 
@@ -104,13 +115,15 @@ public class PistaAvl implements Cloneable {
         int alturaDerecha = nodo.altura(nodo.getHijoDerecho());
 
         if (alturaIzquierda - alturaDerecha > 1) {
-            if (hijoIzquierdo.altura(hijoIzquierdo.getHijoIzquierdo()) >= hijoIzquierdo.altura(hijoIzquierdo.getHijoDerecho())) {
+            if (hijoIzquierdo.altura(hijoIzquierdo.getHijoIzquierdo()) >= hijoIzquierdo
+                    .altura(hijoIzquierdo.getHijoDerecho())) {
                 nodo = rotacionSimpleIzquierda(nodo);
             } else {
                 nodo = rotacionDobleIzquierda(nodo);
             }
         } else if (alturaDerecha - alturaIzquierda > 1) {
-            if (hijoDerecho.altura(hijoDerecho.getHijoDerecho()) >= hijoDerecho.altura(hijoDerecho.getHijoIzquierdo())) {
+            if (hijoDerecho.altura(hijoDerecho.getHijoDerecho()) >= hijoDerecho
+                    .altura(hijoDerecho.getHijoIzquierdo())) {
                 nodo = rotacionSimpleDerecha(nodo);
             } else {
                 nodo = rotacionDobleDerecha(nodo);
@@ -119,7 +132,7 @@ public class PistaAvl implements Cloneable {
         return nodo;
     }
 
-    private NodoParada insertarConDistancia(int valorInsertar,int distancia, NodoParada nodo) {
+    private NodoParada insertarConDistancia(int valorInsertar, int distancia, NodoParada nodo) {
         if (nodo.getClave() == 0) {
             nodo.setClave(valorInsertar);
         } else {
@@ -128,14 +141,14 @@ public class PistaAvl implements Cloneable {
                     nodo.setHijoIzquierdo(new NodoParada(valorInsertar));
                     nodo.getHijoIzquierdo().setDistancia(distancia);
                 } else {
-                    nodo.setHijoIzquierdo(insertarConDistancia(valorInsertar,distancia, nodo.getHijoIzquierdo()));
+                    nodo.setHijoIzquierdo(insertarConDistancia(valorInsertar, distancia, nodo.getHijoIzquierdo()));
                 }
             } else if (nodo.getClave() < valorInsertar) {
                 if (nodo.getHijoDerecho() == null) {
                     nodo.setHijoDerecho(new NodoParada(valorInsertar));
                     nodo.getHijoDerecho().setDistancia(distancia);
                 } else {
-                    nodo.setHijoDerecho(insertarConDistancia(valorInsertar,distancia, nodo.getHijoDerecho()));
+                    nodo.setHijoDerecho(insertarConDistancia(valorInsertar, distancia, nodo.getHijoDerecho()));
                 }
             }
         }
@@ -167,7 +180,7 @@ public class PistaAvl implements Cloneable {
         NodoParada aux = raiz.buscarNodo(dato);
         if (aux != null) {
             if (comprobarHoja(aux, dato)) {
-            this.setRaiz(EliminarHoja(this.raiz, dato));
+                this.setRaiz(EliminarHoja(this.raiz, dato));
                 return (true);
             } else {
                 this.setRaiz(EliminarNodo(this.raiz, dato));
@@ -199,7 +212,7 @@ public class PistaAvl implements Cloneable {
 
         }
         if (dato < n.getClave()) {
-            n.setHijoIzquierdo(EliminarHoja(n.getHijoIzquierdo(), dato)); 
+            n.setHijoIzquierdo(EliminarHoja(n.getHijoIzquierdo(), dato));
             return balancear(n);
 
         } else {
@@ -270,7 +283,7 @@ public class PistaAvl implements Cloneable {
     private NodoParada EliminarRaizDerecha(NodoParada n) {
         if (n.getHijoDerecho().getHijoIzquierdo() == null) {
             NodoParada aux = n.getHijoIzquierdo();
-            n= n.getHijoDerecho();
+            n = n.getHijoDerecho();
             n.setHijoIzquierdo(aux);
         } else {
             NodoParada aux = n.getHijoDerecho().getHijoIzquierdo();
@@ -314,7 +327,7 @@ public class PistaAvl implements Cloneable {
         int i = 0;
         if (raiz != null) {
             return raiz.getCantidadNodos(i);
-        } else{
+        } else {
             return 0;
         }
     }
@@ -331,69 +344,89 @@ public class PistaAvl implements Cloneable {
         }
     }
 
-    public void copiar(PistaAvl pista){
+    private double penalizar(NodoParada n, Vehiculo v) { //penalizacion por trampa en minutos
+        int opc = n.getTrampa().getId();
+        double penalizacion;
+        switch (opc) {
+            case 1:
+                penalizacion = (v.getResBomba() * v.getVelocidad() / 60);
+                return penalizacion;
+            case 2:
+                penalizacion = (v.getResPiedra() * v.getVelocidad() / 60);
+                return penalizacion;
+            case 3:
+                penalizacion = (v.getResLiquido() * v.getVelocidad() / 60);
+                return penalizacion;
+            default:
+                return 0;
+        }
+    }
+
+    public void copiar(PistaAvl pista) {
         if (pista.getRaiz() != null) {
             this.getRaiz().copiar(pista.getRaiz());
         }
     }
+
     private static double getTiempo(NodoParada n, Vehiculo v) {
-        double tiempoMas = ((double)n.getDistancia() / (double)v.getVelocidad())*60;
-        double tiempoAcumulado = (double)v.getTiempoDeLlegada();
+        double tiempoMas = ((double) n.getDistancia() / (double) v.getVelocidad()) * 60;
+        double tiempoAcumulado = (double) v.getTiempoDeLlegada();
         return tiempoAcumulado + tiempoMas;
     }
 
     public void simularCarrera(NodoParada n, Vehiculo v) {
         Random random = new Random();
-        if (n!=null && !terminar) {
+        if (n != null && !terminar) {
             v.setUbicación(n);
-            v.setTiempoDeLlegada(getTiempo(n,v));
+            v.setTiempoDeLlegada(getTiempo(n, v));
+            v.setDistanciaRecorrida(v.getDistanciaRecorrida() + n.getDistancia());
             if (n.getTrampa() == null) {
                 int derechoIzquierdo = random.nextInt(2);
                 if (derechoIzquierdo == 0) {
                     do {
-                    simularCarrera(n.getHijoIzquierdo(), v);
-                    if (n.getHijoIzquierdo() != null){
-                        if (n.getHijoIzquierdo().getTrampa() != null) {
-                            eliminar(n.getHijoIzquierdo().getClave());
+                        simularCarrera(n.getHijoIzquierdo(), v);
+                        if (n.getHijoIzquierdo() != null) {
+                            if (n.getHijoIzquierdo().getTrampa() != null) {
+                                eliminar(n.getHijoIzquierdo().getClave());
+                            }
                         }
-                    }
-                        if (n.getHijoIzquierdo()==null) {
+                        if (n.getHijoIzquierdo() == null) {
                             break;
                         }
                     } while (n.getHijoIzquierdo().getTrampa() != null);
                     simularCarrera(n.getHijoIzquierdo(), v);
                 } else {
                     do {
-                    simularCarrera(n.getHijoDerecho(), v);
-                    if (n.getHijoDerecho() != null){
-                        if (n.getHijoDerecho().getTrampa() != null) {
-                            eliminar(n.getHijoDerecho().getClave());
-                        }
+                        simularCarrera(n.getHijoDerecho(), v);
+                        if (n.getHijoDerecho() != null) {
+                            if (n.getHijoDerecho().getTrampa() != null) {
+                                eliminar(n.getHijoDerecho().getClave());
+                            }
 
-                    }
-                        if (n.getHijoDerecho()==null) {
+                        }
+                        if (n.getHijoDerecho() == null) {
                             break;
                         }
                     } while (n.getHijoDerecho().getTrampa() != null);
-                            simularCarrera(n.getHijoDerecho(), v);
-                    }
-                }else {
-            v.setTiempoDeLlegada(getTiempo(n,v));
-            //penalizar (por hacer)
-                
+                    simularCarrera(n.getHijoDerecho(), v);
+                }
+            } else {
+                v.setTiempoDeLlegada(getTiempo(n, v) + penalizar(n, v));
+                v.setDistanciaRecorrida(v.getDistanciaRecorrida() + n.getDistancia());
+
             }
-            
-        }else{
+
+        } else {
 
             if (!terminar) {
-                System.out.println("Llegaste a la meta en: "+v.getTiempoDeLlegada()+" minutos");
+                System.out.println("Llegaste a la meta en: " + v.getTiempoDeLlegada() + " minutos");
             }
-            terminar=true;
-            //parar simulacion
+            terminar = true;
+            // parar simulacion
         }
-        
+
     }
-    
+
     public PistaAvl clone() {
         PistaAvl cloned = new PistaAvl();
         if (this.raiz != null) {
