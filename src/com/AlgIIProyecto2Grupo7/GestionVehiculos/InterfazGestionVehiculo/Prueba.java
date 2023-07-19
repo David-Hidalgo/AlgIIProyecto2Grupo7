@@ -78,22 +78,22 @@ public class Prueba extends JPanel {
 	private void llenarTabla(DefaultTableModel miTabla) {
 
 	
-		ListaVehiculo vehiculoActual = ReadWrite.cargarVehiculosDefault();
+		ListaVehiculo vehiculo = ReadWrite.cargarVehiculosDefault();
 
-		while (vehiculoActual != null) {
+		while (vehiculo != null) {
 		    Object[] fila = new Object[10];
 
-			fila[0] = vehiculoActual.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getnombreEs();
-			fila[1] = vehiculoActual.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getnombreEn();
-			fila[2] = vehiculoActual.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getconductor();
-			fila[3] = vehiculoActual.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getMotor();
+			fila[0] = vehiculo.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getNombreEs();
+			fila[1] = vehiculo.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getNombreEn();
+			fila[2] = vehiculo.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getConductores();
+			fila[3] = vehiculo.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getMotor();
 
-			fila[4] = vehiculoActual.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getTipoCaucho();
-			fila[5] = vehiculoActual.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getTamanoCaucho();
-			fila[6] = vehiculoActual.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getVelocidad();
-			fila[7] = vehiculoActual.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getResBomba();
-			fila[8] = vehiculoActual.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getResLiquido();
-			fila[9] = vehiculoActual.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getResPiedra();
+			fila[4] = vehiculo.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getTipoCaucho();
+			fila[5] = vehiculo.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getTamanoCaucho();
+			fila[6] = vehiculo.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getVelocidad();
+			fila[7] = vehiculo.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getResBomba();
+			fila[8] = vehiculo.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getResLiquido();
+			fila[9] = vehiculo.getVehiculo(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).getResPiedra();
 
 			miTabla.addRow(fila);
 		}
