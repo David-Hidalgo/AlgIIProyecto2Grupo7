@@ -354,12 +354,18 @@ public class Agregar extends JFrame implements MouseListener {
 		comboBoxMotor.setFont(new Font("Dialog", Font.BOLD, 14));
 		comboBoxMotor.setBounds(525, 500, 300, 30);
 		getContentPane().add(comboBoxMotor);
+
+		
 		
 		comboBoxComoSeVe = new JComboBox();
+		//comboBoxComoSeVe.setPreferredSize(new Dimension(300, 300));
 		comboBoxComoSeVe.setModel(new DefaultComboBoxModel(new ImageIcon[] {imagen1, imagen2, imagen3, imagen4, imagen5, imagen6, imagen7, imagen8, imagen9, imagen10, imagen11}));
 		comboBoxComoSeVe.setBackground(new Color(128, 0, 128));
-		comboBoxComoSeVe.setBounds(525, 60, 300, 160);
+		
+		comboBoxComoSeVe.setBounds(525, 60, 300, 160);  //300, 30   225, 110, 300, 30
 		getContentPane().add(comboBoxComoSeVe);
+		
+
 	}
 
 	public void mouseClicked(MouseEvent e) {
