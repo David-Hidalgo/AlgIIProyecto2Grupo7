@@ -13,9 +13,9 @@ public class Vehiculo {
     private int ResBomba;
     private int ResPiedra;
     private int ResLiquido;
-    private NodoParada ubicación;
-    private double tiempoDeLlegada;
-    private int distanciaRecorrida;
+    private NodoParada ubicación;//
+    private double tiempoDeLlegada;//
+    private int distanciaRecorrida; //
     private String vehiculoEnPantalla;
 
     /**
@@ -31,9 +31,9 @@ public class Vehiculo {
         ResBomba = 0;
         ResPiedra = 0;
         ResLiquido = 0;
-        ubicación = null;
-        tiempoDeLlegada = 0;
-        distanciaRecorrida = 0;
+        ubicación = null; 
+        tiempoDeLlegada = 0; 
+        distanciaRecorrida = 0; 
         vehiculoEnPantalla = "";
     }
 
