@@ -1,11 +1,11 @@
-El Rocomovil,The Bouldermobile,los Hermanos Macana Piedro y Roco,Perezoso,Todo Terreno,Monster Truck,5,5,10,80,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro2.jpg
+El Rocomovil,The Bouldermobile,los Hermanos Macana Piedro y Roco,Perezoso,Todoterreno,Monster Truck,5,5,10,80,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesoAutosLocos/carro2.jpg
 El Espantomovil,The Creepy Coupe,Los Tenebrosos (The Gruesome Twosome),Perezoso,Normales,Normales,15,20,30,120,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro6.jpg
-El Auto_Super Convertible,Convert-a-car,El Profesor Locovich,Perezoso,Todo Terreno,Monster Truck 2,12,17,25,120,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro4.jpg
+El Auto_Super Convertible,Convert-a-car,El Profesor Locovich,Perezoso,Todoterreno,Monster Truck 2,12,17,25,120,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro4.jpg
 El Stuka Rakuda,Crimson Haybailer,El Baron Hans Fritz,Perezoso,Normales,Normales,15,20,30,120,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro3.jpg
-El Compact Pussycat,the compact Pussycat,Penelope Glamour,El super Ferrar,Anti-Coleo,Pegado al piso,25,30,20,160,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro10.jpg
+El Compact Pussycat,the compact Pussycat,Penelope Glamour,Super Ferrari,Anticoleo,Pegado al Piso,25,30,20,160,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro10.jpg
 El Super Ferrari,The Mean Machine 00,Pierre Nodoyuna y Patan,Crucero,Normales,Normales,20,25,35,140,/src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro5.jpg
-La Antigualla Blindada,The Bulletproof Boomb,Mafio y sus siete pandilleros,Perezoso,Todo Terreno,Monster Truck 4,7,10,15,100,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro11.jpg
-El Alambique Veloz,The Arkansas Chuggabug,Lucas el granjero y el Oso Miedoso,Perezoso,Todo Terreno,Monster Truck 2,12,17,25,120,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro7.jpg
-El Superheterodino,The Turbo Terrific,Pedro Bello,Delorean,Anti-coleo,Pegado al piso,35,40,15,180,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro9.jpg
-El Troncowagen,The buzzwagon,Brutus y Listus,Perezoso,Todo Terreno,Monster Truck 3,10,15,20,110,/src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro1.jpg
-El Super Chatarra Special,The Army Surplus Special,El sargento blast y soldado Meekly,Perezoso,Todo Terreno,Monster Truck 1,15,20,30,140,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro8.jpg
+La Antigualla Blindada,The Bulletproof Boomb,Mafio y sus siete pandilleros,Perezoso,Todoterreno,Monster Truck 4,7,10,15,100,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro11.jpg
+El Alambique Veloz,The Arkansas Chuggabug,Lucas el granjero y el Oso Miedoso,Perezoso,Todoterreno,Monster Truck 2,12,17,25,120,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro7.jpg
+El Superheterodino,The Turbo Terrific,Pedro Bello,Delorean,Anticoleo,Pegado al Piso,35,40,15,180,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro9.jpg
+El Troncowagen,The buzzwagon,Brutus y Listus,Perezoso,Todoterreno,Monster Truck 3,10,15,20,110,/src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro1.jpg
+El Super Chatarra Special,The Army Surplus Special,El sargento blast y soldado Meekly,Perezoso,Todoterreno,Monster Truck 1,15,20,30,140,src/com/AlgIIProyecto2Grupo7/Imagenes/imagenesAutosLocos/carro8.jpgT

@@ -104,12 +104,43 @@ private JTable tableVehiculos;
 		getContentPane().add(menuSalir);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(69, 128, 745, 353);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPane.setEnabled(false);
+		scrollPane.setBounds(23, 128, 1155, 388);
 		getContentPane().add(scrollPane);
 		
 		tableVehiculos = new JTable();
+		tableVehiculos.setSurrendersFocusOnKeystroke(true);
+		tableVehiculos.setBorder(null);
+		tableVehiculos.setFillsViewportHeight(true);
+		tableVehiculos.setFont(new Font("Dialog", Font.PLAIN, 15));
+		tableVehiculos.setColumnSelectionAllowed(true);
+		tableVehiculos.setCellSelectionEnabled(true);
+		tableVehiculos.setEnabled(false);
 		tableVehiculos.setModel(new DefaultTableModel(
 			new Object[][] {
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
 			},
 			new String[] {
 				"Nombre Es", "Nombre En", "Conductores", "Motor", "Tipo Caucho", "Tama\u00F1o Caucho", "Velocidad", "ResBomb", "ResObs", "ResLiq"
@@ -122,15 +153,22 @@ private JTable tableVehiculos;
 				return columnTypes[columnIndex];
 			}
 		});
+		tableVehiculos.getColumnModel().getColumn(0).setPreferredWidth(90);
+		tableVehiculos.getColumnModel().getColumn(1).setPreferredWidth(90);
+		tableVehiculos.getColumnModel().getColumn(2).setPreferredWidth(90);
+		tableVehiculos.getColumnModel().getColumn(5).setPreferredWidth(80);
+		tableVehiculos.getColumnModel().getColumn(6).setPreferredWidth(40);
+		tableVehiculos.getColumnModel().getColumn(7).setPreferredWidth(40);
+		tableVehiculos.getColumnModel().getColumn(8).setPreferredWidth(40);
+		tableVehiculos.getColumnModel().getColumn(9).setPreferredWidth(40);
 		scrollPane.setViewportView(tableVehiculos);
 
 		//llenar tantas row como vehiculos haya
-		
 
 
 		System.out.println(tableVehiculos.getRowCount());
 		tableVehiculos.addRowSelectionInterval(0, nueva.getTamano());
-		for (int i = 0; i < nueva.getTamano(); i++) {
+		for (int i = 0; i <nueva.getTamano() ; i++) {
 			tableVehiculos.setValueAt(nueva.getVehiculo(i).getNombreEs(), i, 0);
 			tableVehiculos.setValueAt(nueva.getVehiculo(i).getNombreEn(), i, 1);
 			tableVehiculos.setValueAt(nueva.getVehiculo(i).getConductores(), i, 2);
