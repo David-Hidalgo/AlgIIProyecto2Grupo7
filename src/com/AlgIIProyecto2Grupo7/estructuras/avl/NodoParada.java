@@ -1,3 +1,8 @@
+/**
+/**
+ * Cada nodo tiene una clave, una distancia desde su nodo padre, nodos hijos izquierdo y derecho, un objeto trampa y una bandera booleana que indica si un automóvil ha estado en esta parada.
+
+ */
 package com.AlgIIProyecto2Grupo7.estructuras.avl;
 
 public class NodoParada implements Cloneable {
@@ -6,11 +11,21 @@ public class NodoParada implements Cloneable {
     private NodoParada hijoIzquierdo;
     private NodoParada hijoDerecho;
     private Trampa trampa;
+    private boolean elCarroEstaAqui = false;
+
+    public boolean getElCarroEstaAqui() {
+        return elCarroEstaAqui;
+    }
+
+    public void setElCarroEstaAqui(boolean elCarroEstuvoAqui) {
+        this.elCarroEstaAqui = elCarroEstuvoAqui;
+    }
 
     public NodoParada(int clave) {
         this.clave = clave;
         hijoIzquierdo = hijoDerecho = null;
         trampa = null;
+        setElCarroEstaAqui(false);
     }
     
     public NodoParada() {
@@ -91,6 +106,16 @@ public class NodoParada implements Cloneable {
         return aux;
     }
 
+    public int nodosCompletos(NodoParada n) {
+        if (n == null)
+            return 0;
+        else {
+            if (n.getHijoIzquierdo() != null && n.getHijoDerecho() != null)
+                return nodosCompletos(n.getHijoIzquierdo()) + nodosCompletos(n.getHijoDerecho()) + 1;
+            return nodosCompletos(n.getHijoIzquierdo()) + nodosCompletos(n.getHijoDerecho());
+        }
+    }
+
     public void inOrden() {
         if (hijoIzquierdo != null) {
             hijoIzquierdo.inOrden();
@@ -159,6 +184,16 @@ public class NodoParada implements Cloneable {
         }
         
 
+    }
+
+    
+    public String toString() {
+        if (this.elCarroEstaAqui) {
+            return "Carro";
+        } else if (this.trampa!=null){
+            return "Trampa";
+        } else 
+        return String.valueOf(clave)+" "+distancia+"km";
     }
 
     @Override

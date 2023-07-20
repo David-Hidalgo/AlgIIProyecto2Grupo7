@@ -2,6 +2,7 @@ package com.AlgIIProyecto2Grupo7.estructuras.avl;
 
 import com.AlgIIProyecto2Grupo7.estructuras.Vehiculo;
 import com.AlgIIProyecto2Grupo7.estructuras.listaVehiculo.ListaVehiculo;
+import com.AlgIIProyecto2Grupo7.GestionPistas.lienzoarbol.Lienzo;
 
 import java.util.Random;
 
@@ -376,12 +377,12 @@ public class PistaAvl implements Cloneable {
         return tiempoAcumulado + tiempoMas;
     }
 
-    public ListaVehiculo ListaGanadores(ListaVehiculo listaVehiculo) {
+    public ListaVehiculo ListaGanadores(ListaVehiculo listaVehiculo, Lienzo lienzo) {
         ListaVehiculo foo = new ListaVehiculo();
-        
+        lienzo.setObjArbol(this);
         for (int i = 0; i < listaVehiculo.getTamano(); i++) {
             PistaAvl pista=this.clone();
-            pista.simularCarrera(pista.getRaiz(), listaVehiculo.getVehiculo(i));
+            pista.simularCarrera(pista.getRaiz(), listaVehiculo.getVehiculo(i), lienzo);
             if (foo.esVacia()) {
                 foo.insertarInicio(listaVehiculo.getVehiculo(i));
             } else {
@@ -398,20 +399,31 @@ public class PistaAvl implements Cloneable {
         }
         return foo;
     }
-
-    public void simularCarrera(NodoParada n, Vehiculo v) {
+    
+    public void simularCarrera(NodoParada n, Vehiculo v, Lienzo lienzo) {
+        lienzo.setObjArbol(this);
+        try {
+            Thread.sleep(250);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         Random random = new Random();
         if (n != null && !terminar) {
             v.setUbicación(n);
+            n.setElCarroEstaAqui(true);
             v.setTiempoDeLlegada(getTiempo(n, v));
             v.setDistanciaRecorrida(v.getDistanciaRecorrida() + n.getDistancia());
             if (n.getTrampa() == null) {
                 int derechoIzquierdo = random.nextInt(2);
                 if (derechoIzquierdo == 0) {
                     do {
-                        simularCarrera(n.getHijoIzquierdo(), v);
+                        n.setElCarroEstaAqui(false);
+                        simularCarrera(n.getHijoIzquierdo(), v, lienzo);
                         if (n.getHijoIzquierdo() != null) {
                             if (n.getHijoIzquierdo().getTrampa() != null) {
+                                v.setUbicación(n);
+                                n.setElCarroEstaAqui(true);
                                 eliminar(n.getHijoIzquierdo().getClave());
                             }
                         }
@@ -419,12 +431,16 @@ public class PistaAvl implements Cloneable {
                             break;
                         }
                     } while (n.getHijoIzquierdo().getTrampa() != null);
-                    simularCarrera(n.getHijoIzquierdo(), v);
+                    n.setElCarroEstaAqui(false);
+                    simularCarrera(n.getHijoIzquierdo(), v, lienzo);
                 } else {
                     do {
-                        simularCarrera(n.getHijoDerecho(), v);
+                        n.setElCarroEstaAqui(false);
+                        simularCarrera(n.getHijoDerecho(), v, lienzo);
                         if (n.getHijoDerecho() != null) {
                             if (n.getHijoDerecho().getTrampa() != null) {
+                                v.setUbicación(n);
+                                n.setElCarroEstaAqui(true);
                                 eliminar(n.getHijoDerecho().getClave());
                             }
 
@@ -433,11 +449,13 @@ public class PistaAvl implements Cloneable {
                             break;
                         }
                     } while (n.getHijoDerecho().getTrampa() != null);
-                    simularCarrera(n.getHijoDerecho(), v);
+                    n.setElCarroEstaAqui(false);
+                    simularCarrera(n.getHijoDerecho(), v, lienzo);
                 }
             } else {
                 v.setTiempoDeLlegada(getTiempo(n, v) + penalizar(n, v));
                 v.setDistanciaRecorrida(v.getDistanciaRecorrida() + n.getDistancia());
+                n.setElCarroEstaAqui(false);
 
             }
 

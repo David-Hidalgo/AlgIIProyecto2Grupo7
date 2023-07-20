@@ -82,7 +82,6 @@ public class ReadWrite {
 
 	public static void guardarHistorico(ListaVehiculo listaCompetidores) {
 		FileWriter writer;
-		ListaVehiculo listaHistorico = cargarHistorico();
 		try {
 			writer = new FileWriter("src\\com\\AlgIIProyecto2Grupo7\\archivos\\Historico.txt", true);
 			writer.write("\n");
@@ -91,11 +90,5 @@ public class ReadWrite {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static void main(String[] args) {
-		ListaVehiculo nueva =cargarVehiculosDefault();
-		guardarVehiculos(nueva);
-		nueva.esVacia();
 	}
 }
