@@ -8,10 +8,11 @@ import com.AlgIIProyecto2Grupo7.estructuras.avl.PistaAvl;
 import com.AlgIIProyecto2Grupo7.estructuras.listaVehiculo.ListaVehiculo;
 
 public class AppGestionPistas {
-	public static void Simulacion(int niveles, int numeroTrampa) {
+	public static void main(String[] args) {
+			
 		
-		int nivel = niveles;
-		int numeroTrampas = numeroTrampa;
+		int nivel = 5;
+		int numeroTrampas = 6;
 		Lienzo lienzo = new Lienzo();
 		
 		JFrame ventana = new JFrame();
