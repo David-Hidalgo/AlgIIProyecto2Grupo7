@@ -3,7 +3,9 @@ package com.AlgIIProyecto2Grupo7.GestionVehiculos.InterfazGestionVehiculo;
 import javax.swing.*;
 import javax.swing.border.Border;
 import com.AlgIIProyecto2Grupo7.Validaciones;
+import com.AlgIIProyecto2Grupo7.estructuras.ReadWrite;
 import com.AlgIIProyecto2Grupo7.estructuras.Vehiculo;
+import com.AlgIIProyecto2Grupo7.estructuras.listaVehiculo.ListaVehiculo;
 
 import java.awt.event.*;
 import java.awt.*;
@@ -22,16 +24,18 @@ public class ModificarPreciso extends JFrame implements  MouseListener{
 //private JMenuItem miNuevoAgregar;
 private JLabel labelNombreEnEspanol , labelNombreIngles , labelNombreConductor , labelTipoDeCaucho ;
 private JLabel labelTamanoDeCaucho , labelVelocidadDelVehiculo , labelResistenciaBomba ;
-private JLabel labelResistenciaPiedra , labelResistenciaLiquido , labelComoSeVe;
+private JLabel labelResistenciaPiedra , labelResistenciaLiquido , labelComoSeVe, labelMotor;
 
 private JLabel labelModificar;
+private ListaVehiculo listaActual=ReadWrite.cargarVehiculos();
 
 private JTextField txtNombreEnEspanol , txtNombreIngles , txtNombreConductor  ;
 private JTextField txtVelocidadDelVehiculo , txtResistenciaBomba ,txtResistenciaPiedra ;
 private JTextField txtResistenciaLiquido  ;
-private JComboBox comboBoxTipoCaucho,comboBoxTamanoCaucho,comboComoSeVe , comboBoxMotor;
+private JComboBox comboBoxTipoCaucho,comboBoxTamanoCaucho,comboComoSeVe ;
 private JButton boton1,menuAgregar , menuModificar , menuEliminar , menuConsultar , menuListar , menuSalir;
-
+private JComboBox comboBoxMotor;
+private JComboBox comboBoxComoSeVe;
 
 
 	public ModificarPreciso(){
@@ -39,64 +43,6 @@ private JButton boton1,menuAgregar , menuModificar , menuEliminar , menuConsulta
 		setTitle("Pantalla Principal");
 		getContentPane().setBackground(new Color(87,35,100));
 		setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png")).getImage());
-	// colocar imagen de fondo 
-/* 
-		mb = new JMenuBar();
-		mb.setBackground(new Color(87,35,100));
-		setJMenuBar(mb);
-
-	menuAgregar = new JMenu("Agregar");
-	menuAgregar.setBackground(new Color(87,35,100));
-	menuAgregar.setFont(new Font("Andele Mono",1,14));
-	menuAgregar.setForeground(new Color(255,255,255));
-	mb.add(menuAgregar);
-	menuAgregar.addMouseListener(this);
-
-	menuModificar = new JMenu("Modificar");
-	menuModificar.setBackground(new Color(87,35,100));
-	menuModificar.setFont(new Font("Andele Mono",1,14));
-	menuModificar.setForeground(new Color(255,255,255));
-	mb.add(menuModificar);
-	menuModificar.addMouseListener(this);
-
-	menuEliminar = new JMenu("Eliminar");
-	menuEliminar.setBackground(new Color(87,35,100));
-	menuEliminar.setFont(new Font("Andele Mono",1,14));
-	menuEliminar.setForeground(new Color(255,255,255));
-	mb.add(menuEliminar);
-	menuEliminar.addMouseListener(this);
-
-	menuConsultar = new JMenu("Consultar");
-	menuConsultar.setBackground(new Color(87,35,100));
-	menuConsultar.setFont(new Font("Andele Mono",1,14));
-	menuConsultar.setForeground(new Color(255,255,255));
-	mb.add(menuConsultar);
-	menuConsultar.addMouseListener(this);
-
-	menuListar = new JMenu("Listar");
-	menuListar.setBackground(new Color(87,35,100));
-	menuListar.setFont(new Font("Andele Mono",1,14));
-	menuListar.setForeground(new Color(255,255,255));
-	mb.add(menuListar);
-	menuListar.addMouseListener(this);
-
-	menuSalir = new JMenu("Salir");
-	menuSalir.setBackground(new Color(87,35,100));
-	menuSalir.setFont(new Font("Andele Mono",1,14));
-	menuSalir.setForeground(new Color(255,255,255));
-	mb.add(menuSalir);
-	menuSalir.addMouseListener(this);
-*/
-
-/*
-	miNuevoAgregar = new JMenuItem("Nuevo");
-	miNuevoAgregar.setFont(new Font("Andale Mono", 1,14));
-	miNuevoAgregar.setForeground(new Color(87,35,100));
-	menuAgregar.add(miNuevoAgregar);
-	miNuevoAgregar.addMouseListener(this);
-
-*/
-
 
 	//------------------------------------------------
 	labelComoSeVe = new JLabel("Como se ve:");
@@ -125,156 +71,117 @@ private JButton boton1,menuAgregar , menuModificar , menuEliminar , menuConsulta
 	ImageIcon imagen9 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro9.jpg"));
 	ImageIcon imagen10 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro10.jpg"));
 	ImageIcon imagen11 = new ImageIcon(getClass().getResource("imagenesAutosLocos/carro11.jpg"));
-		
-	//comboComoSeVe = newJ ComboBox();
-	JComboBox<ImageIcon> comboComoSeVe = new JComboBox<>();
-	comboComoSeVe.setBounds(525,60,300,160);
-	comboComoSeVe.setBackground(new java.awt.Color(224,224,224));
-	comboComoSeVe.setFont(new java.awt.Font("Andale Mono",1,14));
-	comboComoSeVe.setForeground(new java.awt.Color(87,35,100));
-	add(comboComoSeVe);
-	comboComoSeVe.addItem(imagen1);
-	comboComoSeVe.addItem(imagen2);
-	comboComoSeVe.addItem(imagen3);
-	comboComoSeVe.addItem(imagen4);
-	comboComoSeVe.addItem(imagen5);
-	comboComoSeVe.addItem(imagen6);
-	comboComoSeVe.addItem(imagen7);
-	comboComoSeVe.addItem(imagen8);
-	comboComoSeVe.addItem(imagen9);
-	comboComoSeVe.addItem(imagen10);
-	comboComoSeVe.addItem(imagen11);
-//	
+	//
 
 	labelNombreEnEspanol = new JLabel("Nombre en espanol:");
-	labelNombreEnEspanol.setBounds(225,230,300,30);
-	labelNombreEnEspanol.setFont(new Font("Andale Mono",1,20));
-	labelNombreEnEspanol.setForeground(new Color(255,255,255));
-	add(labelNombreEnEspanol);
+	labelNombreEnEspanol.setBounds(225, 230, 300, 30);
+	labelNombreEnEspanol.setFont(new Font("Andale Mono", 1, 20));
+	labelNombreEnEspanol.setForeground(new Color(255, 255, 255));
+	getContentPane().add(labelNombreEnEspanol);
 
 	txtNombreEnEspanol = new JTextField();
-	txtNombreEnEspanol.setBounds(525,230,300,30);
-	txtNombreEnEspanol.setBackground(new java.awt.Color(224,224,224));
-	txtNombreEnEspanol.setFont(new java.awt.Font("Andale Mono",1,14));
-	txtNombreEnEspanol.setForeground(new java.awt.Color(87,35,100));
-	add(txtNombreEnEspanol);
+	txtNombreEnEspanol.setBounds(525, 230, 300, 30);
+	txtNombreEnEspanol.setBackground(new java.awt.Color(224, 224, 224));
+	txtNombreEnEspanol.setFont(new java.awt.Font("Andale Mono", 1, 14));
+	txtNombreEnEspanol.setForeground(new java.awt.Color(87, 35, 100));
+	getContentPane().add(txtNombreEnEspanol);
 
 	labelNombreIngles = new JLabel("Nombre en ingles:");
-	labelNombreIngles.setBounds(225,260,300,30);
-	labelNombreIngles.setFont(new Font("Andale Mono",1,20));
-	labelNombreIngles.setForeground(new Color(255,255,255));
-	add(labelNombreIngles);
+	labelNombreIngles.setBounds(225, 260, 300, 30);
+	labelNombreIngles.setFont(new Font("Andale Mono", 1, 20));
+	labelNombreIngles.setForeground(new Color(255, 255, 255));
+	getContentPane().add(labelNombreIngles);
 
 	txtNombreIngles = new JTextField();
-	txtNombreIngles.setBounds(525,260,300,30);
-	txtNombreIngles.setBackground(new java.awt.Color(224,224,224));
-	txtNombreIngles.setFont(new java.awt.Font("Andale Mono",1,14));
-	txtNombreIngles.setForeground(new java.awt.Color(87,35,100));
-	add(txtNombreIngles);
+	txtNombreIngles.setBounds(525, 260, 300, 30);
+	txtNombreIngles.setBackground(new java.awt.Color(224, 224, 224));
+	txtNombreIngles.setFont(new java.awt.Font("Andale Mono", 1, 14));
+	txtNombreIngles.setForeground(new java.awt.Color(87, 35, 100));
+	getContentPane().add(txtNombreIngles);
 
 	labelNombreConductor = new JLabel("Nombre del conductor:");
-	labelNombreConductor.setBounds(225,290,300,30);
-	labelNombreConductor.setFont(new Font("Andale Mono",1,20));
-	labelNombreConductor.setForeground(new Color(255,255,255));
-	add(labelNombreConductor);
+	labelNombreConductor.setBounds(225, 290, 300, 30);
+	labelNombreConductor.setFont(new Font("Andale Mono", 1, 20));
+	labelNombreConductor.setForeground(new Color(255, 255, 255));
+	getContentPane().add(labelNombreConductor);
 
 	txtNombreConductor = new JTextField();
-	txtNombreConductor.setBounds(525,290,300,30);
-	txtNombreConductor.setBackground(new java.awt.Color(224,224,224));
-	txtNombreConductor.setFont(new java.awt.Font("Andale Mono",1,14));
-	txtNombreConductor.setForeground(new java.awt.Color(87,35,100));
-	add(txtNombreConductor);
+	txtNombreConductor.setBounds(525, 290, 300, 30);
+	txtNombreConductor.setBackground(new java.awt.Color(224, 224, 224));
+	txtNombreConductor.setFont(new java.awt.Font("Andale Mono", 1, 14));
+	txtNombreConductor.setForeground(new java.awt.Color(87, 35, 100));
+	getContentPane().add(txtNombreConductor);
 
 	labelTipoDeCaucho = new JLabel("Tipo de caucho:");
-	labelTipoDeCaucho.setBounds(225,320,300,30);
-	labelTipoDeCaucho.setFont(new Font("Andale Mono",1,20));
-	labelTipoDeCaucho.setForeground(new Color(255,255,255));
-	add(labelTipoDeCaucho);
+	labelTipoDeCaucho.setBounds(225, 320, 300, 30);
+	labelTipoDeCaucho.setFont(new Font("Andale Mono", 1, 20));
+	labelTipoDeCaucho.setForeground(new Color(255, 255, 255));
+	getContentPane().add(labelTipoDeCaucho);
 
-	//comboTipoDeCaucho = new JComboBox();
-	JComboBox<String> comboTipoDeCaucho = new JComboBox<String>();
-	comboTipoDeCaucho.setBounds(525,320,300,30);
-	comboTipoDeCaucho.setBackground(new java.awt.Color(224,224,224));
-	comboTipoDeCaucho.setFont(new java.awt.Font("Andale Mono",1,14));
-	comboTipoDeCaucho.setForeground(new java.awt.Color(87,35,100));
-	add(comboTipoDeCaucho);
-	comboTipoDeCaucho.addItem("tipo1");
-	comboTipoDeCaucho.addItem("tipo2");
-	comboTipoDeCaucho.addItem("tipo3");
-	comboTipoDeCaucho.addItem("tipo4");
 
 	labelTamanoDeCaucho = new JLabel("Tamano de caucho:");
-	labelTamanoDeCaucho.setBounds(225,350,300,30);
-	labelTamanoDeCaucho.setFont(new Font("Andale Mono",1,20));
-	labelTamanoDeCaucho.setForeground(new Color(255,255,255));
-	add(labelTamanoDeCaucho);
-
-	//comboTamanoDeCaucho = new JComboBox();
-	JComboBox<String> comboTamanoDeCaucho = new JComboBox<String>();
-	comboTamanoDeCaucho.setBounds(525,350,300,30);
-	comboTamanoDeCaucho.setBackground(new java.awt.Color(224,224,224));
-	comboTamanoDeCaucho.setFont(new java.awt.Font("Andale Mono",1,14));
-	comboTamanoDeCaucho.setForeground(new java.awt.Color(87,35,100));
-	add(comboTamanoDeCaucho);
-	comboTamanoDeCaucho.addItem("tipo1");
-	comboTamanoDeCaucho.addItem("tipo2");
-	comboTamanoDeCaucho.addItem("tipo3");
-	comboTamanoDeCaucho.addItem("tipo4");
+	labelTamanoDeCaucho.setBounds(225, 350, 300, 30);
+	labelTamanoDeCaucho.setFont(new Font("Andale Mono", 1, 20));
+	labelTamanoDeCaucho.setForeground(new Color(255, 255, 255));
+	getContentPane().add(labelTamanoDeCaucho);
 
 	labelVelocidadDelVehiculo = new JLabel("Velocidad del vehiculo:");
-	labelVelocidadDelVehiculo.setBounds(225,380,300,30);
-	labelVelocidadDelVehiculo.setFont(new Font("Andale Mono",1,20));
-	labelVelocidadDelVehiculo.setForeground(new Color(255,255,255));
-	add(labelVelocidadDelVehiculo);
+	labelVelocidadDelVehiculo.setBounds(225, 380, 300, 30);
+	labelVelocidadDelVehiculo.setFont(new Font("Andale Mono", 1, 20));
+	labelVelocidadDelVehiculo.setForeground(new Color(255, 255, 255));
+	getContentPane().add(labelVelocidadDelVehiculo);
 
 	txtVelocidadDelVehiculo = new JTextField();
-	txtVelocidadDelVehiculo.setBounds(525,380,300,30);
-	txtVelocidadDelVehiculo.setBackground(new java.awt.Color(224,224,224));
-	txtVelocidadDelVehiculo.setFont(new java.awt.Font("Andale Mono",1,14));
-	txtVelocidadDelVehiculo.setForeground(new java.awt.Color(87,35,100));
-	add(txtVelocidadDelVehiculo);
+	txtVelocidadDelVehiculo.setBounds(525, 380, 300, 30);
+	txtVelocidadDelVehiculo.setBackground(new java.awt.Color(224, 224, 224));
+	txtVelocidadDelVehiculo.setFont(new java.awt.Font("Andale Mono", 1, 14));
+	txtVelocidadDelVehiculo.setForeground(new java.awt.Color(87, 35, 100));
+	getContentPane().add(txtVelocidadDelVehiculo);
 
 	labelResistenciaBomba = new JLabel("Resistecia bomba:");
-	labelResistenciaBomba.setBounds(225,410,300,30);
-	labelResistenciaBomba.setFont(new Font("Andale Mono",1,20));
-	labelResistenciaBomba.setForeground(new Color(255,255,255));
-	add(labelResistenciaBomba);
+	labelResistenciaBomba.setBounds(225, 410, 300, 30);
+	labelResistenciaBomba.setFont(new Font("Andale Mono", 1, 20));
+	labelResistenciaBomba.setForeground(new Color(255, 255, 255));
+	getContentPane().add(labelResistenciaBomba);
 
 	txtResistenciaBomba = new JTextField();
-	txtResistenciaBomba.setBounds(525,410,300,30);
-	txtResistenciaBomba.setBackground(new java.awt.Color(224,224,224));
-	txtResistenciaBomba.setFont(new java.awt.Font("Andale Mono",1,14));
-	txtResistenciaBomba.setForeground(new java.awt.Color(87,35,100));
-	add(txtResistenciaBomba);
+	txtResistenciaBomba.setBounds(525, 410, 300, 30);
+	txtResistenciaBomba.setBackground(new java.awt.Color(224, 224, 224));
+	txtResistenciaBomba.setFont(new java.awt.Font("Andale Mono", 1, 14));
+	txtResistenciaBomba.setForeground(new java.awt.Color(87, 35, 100));
+	getContentPane().add(txtResistenciaBomba);
 
 	labelResistenciaPiedra = new JLabel("Resistencia piedra:");
-	labelResistenciaPiedra.setBounds(225,440,300,30);
-	labelResistenciaPiedra.setFont(new Font("Andale Mono",1,20));
-	labelResistenciaPiedra.setForeground(new Color(255,255,255));
-	add(labelResistenciaPiedra);
+	labelResistenciaPiedra.setBounds(225, 440, 300, 30);
+	labelResistenciaPiedra.setFont(new Font("Andale Mono", 1, 20));
+	labelResistenciaPiedra.setForeground(new Color(255, 255, 255));
+	getContentPane().add(labelResistenciaPiedra);
 
 	txtResistenciaPiedra = new JTextField();
-	txtResistenciaPiedra.setBounds(525,440,300,30);
-	txtResistenciaPiedra.setBackground(new java.awt.Color(224,224,224));
-	txtResistenciaPiedra.setFont(new java.awt.Font("Andale Mono",1,14));
-	txtResistenciaPiedra.setForeground(new java.awt.Color(87,35,100));
-	add(txtResistenciaPiedra);
+	txtResistenciaPiedra.setBounds(525, 440, 300, 30);
+	txtResistenciaPiedra.setBackground(new java.awt.Color(224, 224, 224));
+	txtResistenciaPiedra.setFont(new java.awt.Font("Andale Mono", 1, 14));
+	txtResistenciaPiedra.setForeground(new java.awt.Color(87, 35, 100));
+	getContentPane().add(txtResistenciaPiedra);
 
 	labelResistenciaLiquido = new JLabel("Resistencia liquido:");
-	labelResistenciaLiquido.setBounds(225,470,300,30);
-	labelResistenciaLiquido.setFont(new Font("Andale Mono",1,20));
-	labelResistenciaLiquido.setForeground(new Color(255,255,255));
-	add(labelResistenciaLiquido);
+	labelResistenciaLiquido.setBounds(225, 470, 300, 30);
+	labelResistenciaLiquido.setFont(new Font("Andale Mono", 1, 20));
+	labelResistenciaLiquido.setForeground(new Color(255, 255, 255));
+	getContentPane().add(labelResistenciaLiquido);
 
 	txtResistenciaLiquido = new JTextField();
-	txtResistenciaLiquido.setBounds(525,470,300,30);
-	txtResistenciaLiquido.setBackground(new java.awt.Color(224,224,224));
-	txtResistenciaLiquido.setFont(new java.awt.Font("Andale Mono",1,14));
-	txtResistenciaLiquido.setForeground(new java.awt.Color(87,35,100));
-	add(txtResistenciaLiquido);
+	txtResistenciaLiquido.setBounds(525, 470, 300, 30);
+	txtResistenciaLiquido.setBackground(new java.awt.Color(224, 224, 224));
+	txtResistenciaLiquido.setFont(new java.awt.Font("Andale Mono", 1, 14));
+	txtResistenciaLiquido.setForeground(new java.awt.Color(87, 35, 100));
+	getContentPane().add(txtResistenciaLiquido);
 
-	
-	
+	labelMotor = new JLabel("Tipo de motor:");
+	labelMotor.setBounds(225, 500, 300, 30);
+	labelMotor.setFont(new Font("Andale Mono", 1, 20));
+	labelMotor.setForeground(new Color(255, 255, 255));
+	getContentPane().add(labelMotor);
 
 
 /*
@@ -370,6 +277,41 @@ private JButton boton1,menuAgregar , menuModificar , menuEliminar , menuConsulta
 		menuSalir.addMouseListener(this);
 		menuSalir.setBorderPainted(false);
 		add(menuSalir);
+
+
+		comboBoxTipoCaucho = new JComboBox();
+		comboBoxTipoCaucho.setForeground(new Color(128, 0, 128));
+		comboBoxTipoCaucho.setFont(new Font("Dialog", Font.BOLD, 14));
+		comboBoxTipoCaucho.setModel(new DefaultComboBoxModel(new String[] {"Normales", "Anticoleo", "Todoterreno"}));
+		comboBoxTipoCaucho.setBounds(525, 320, 300, 30);
+		getContentPane().add(comboBoxTipoCaucho);
+		
+		comboBoxTamanoCaucho = new JComboBox();
+		comboBoxTamanoCaucho.setForeground(new Color(128, 0, 128));
+		comboBoxTamanoCaucho.setFont(new Font("Dialog", Font.BOLD, 14));
+		comboBoxTamanoCaucho.setModel(new DefaultComboBoxModel(new String[] {"Normales", "Pegados al Piso", "Monster Truck 1", "Monster Truck 2", "Monster Truck 3", "Monster Truck 4", "Monster Truck 5"}));
+		comboBoxTamanoCaucho.setBounds(525, 350, 300, 30);
+		getContentPane().add(comboBoxTamanoCaucho);
+		
+		comboBoxMotor = new JComboBox();
+		comboBoxMotor.setModel(new DefaultComboBoxModel(new String[] {"Perezoso", "Crucero", "Super Ferrari", "Delorean"}));
+		comboBoxMotor.setForeground(new Color(128, 0, 128));
+		comboBoxMotor.setFont(new Font("Dialog", Font.BOLD, 14));
+		comboBoxMotor.setBounds(525, 500, 300, 30);
+		getContentPane().add(comboBoxMotor);
+
+		comboBoxComoSeVe = new JComboBox();
+		//comboBoxComoSeVe.setPreferredSize(new Dimension(300, 300));
+		comboBoxComoSeVe.setModel(new DefaultComboBoxModel(new ImageIcon[] {imagen1, imagen2, imagen3, imagen4, imagen5, imagen6, imagen7, imagen8, imagen9, imagen10, imagen11}));
+		comboBoxComoSeVe.setBackground(new Color(128, 0, 128));
+		
+		comboBoxComoSeVe.setBounds(525, 60, 300, 160);  //300, 30   225, 110, 300, 30
+		getContentPane().add(comboBoxComoSeVe);
+
+
+
+
+
 	}
 
 
@@ -386,6 +328,15 @@ private JButton boton1,menuAgregar , menuModificar , menuEliminar , menuConsulta
 
 
 // ----------------
+		
+
+
+
+
+			if(e.getSource() == boton1){
+
+
+				// aqui va la validacion de los campos
 			boolean inserto = true;
 			String nombreEnEspanol="";
 			String nombreIngles = "";
@@ -517,10 +468,6 @@ private JButton boton1,menuAgregar , menuModificar , menuEliminar , menuConsulta
 
 			// ----------------
 
-
-
-
-			if(e.getSource() == boton1){
                         
                         ModificarGeneral modificarGeneral = new ModificarGeneral();
                         modificarGeneral.setBounds(0,0,1200,750);

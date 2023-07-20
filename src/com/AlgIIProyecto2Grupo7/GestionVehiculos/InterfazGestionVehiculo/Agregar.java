@@ -448,6 +448,9 @@ public class Agregar extends JFrame implements MouseListener {
 			if (comboBoxMotor.getSelectedItem().equals("Crucero")) {
 				motor = "Crucero";
 			}
+			if (comboBoxMotor.getSelectedItem().equals("Perezoso")) {
+				motor = "Perezoso";
+			}
 			// velocidad
 			if (txtVelocidadDelVehiculo.getText().equals("") || (Validaciones.validarNumero(txtVelocidadDelVehiculo.getText())==false)) {
 				JOptionPane.showMessageDialog(null, "La velocidad debe ser un número entre 80 y 200");

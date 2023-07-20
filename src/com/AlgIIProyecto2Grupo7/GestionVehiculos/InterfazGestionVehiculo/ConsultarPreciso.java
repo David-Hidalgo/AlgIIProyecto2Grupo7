@@ -385,10 +385,6 @@ menuSalir = new JButton("Salir");
 
 //---------------
 			if(e.getSource() == boton1){
-
-					if(boton1 == e.getSource()){
-
-
                     ConsultarGeneral consultarGeneral = new ConsultarGeneral();
 	                consultarGeneral.setBounds(0,0,1200,750);
 	                consultarGeneral.setVisible(true);
@@ -448,7 +444,7 @@ menuSalir = new JButton("Salir");
 			}
 				}
 		
-				}
+				
 		
 			public void mousePressed(MouseEvent e) {
 				/* 

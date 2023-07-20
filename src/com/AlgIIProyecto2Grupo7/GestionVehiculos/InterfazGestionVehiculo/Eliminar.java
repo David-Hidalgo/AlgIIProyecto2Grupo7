@@ -1,6 +1,8 @@
 package com.AlgIIProyecto2Grupo7.GestionVehiculos.InterfazGestionVehiculo;
 
 import com.AlgIIProyecto2Grupo7.estructuras.ReadWrite;
+import com.AlgIIProyecto2Grupo7.estructuras.listaVehiculo.ListaVehiculo;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -22,9 +24,11 @@ public class Eliminar extends JFrame implements MouseListener {
 
 	
 	private JLabel labelModificar;
+	private ListaVehiculo nueva=ReadWrite.cargarVehiculos();
 	
 	private JButton boton1, menuAgregar, menuModificar, menuEliminar, menuConsultar, menuListar, menuSalir;
-	private JTable table;
+	private JScrollPane scrollPane;
+	private JTable tableVehiculos;
 	
 
 	public Eliminar() {
@@ -194,13 +198,34 @@ public class Eliminar extends JFrame implements MouseListener {
 		menuSalir.setBorderPainted(false);
 		getContentPane().add(menuSalir);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(200, 105, 744, 385);
+		scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPane.setEnabled(false);
+		scrollPane.setBounds(23, 128, 1155, 388);
 		getContentPane().add(scrollPane);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
+		tableVehiculos = new JTable();
+		tableVehiculos.setSurrendersFocusOnKeystroke(true);
+		tableVehiculos.setBorder(null);
+		tableVehiculos.setFillsViewportHeight(true);
+		tableVehiculos.setFont(new Font("Dialog", Font.PLAIN, 15));
+		tableVehiculos.setColumnSelectionAllowed(true);
+		tableVehiculos.setCellSelectionEnabled(true);
+		tableVehiculos.setEnabled(false);
+		tableVehiculos.setModel(new DefaultTableModel(
 			new Object[][] {
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
 				{null, null, null, null, null, null, null, null, null, null},
 				{null, null, null, null, null, null, null, null, null, null},
 				{null, null, null, null, null, null, null, null, null, null},
@@ -213,10 +238,43 @@ public class Eliminar extends JFrame implements MouseListener {
 				{null, null, null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
+				"Nombre Es", "Nombre En", "Conductores", "Motor", "Tipo Caucho", "Tama\u00F1o Caucho", "Velocidad", "ResBomb", "ResObs", "ResLiq"
 			}
-		));
-		scrollPane.setViewportView(table);
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		tableVehiculos.getColumnModel().getColumn(0).setPreferredWidth(90);
+		tableVehiculos.getColumnModel().getColumn(1).setPreferredWidth(90);
+		tableVehiculos.getColumnModel().getColumn(2).setPreferredWidth(90);
+		tableVehiculos.getColumnModel().getColumn(5).setPreferredWidth(80);
+		tableVehiculos.getColumnModel().getColumn(6).setPreferredWidth(40);
+		tableVehiculos.getColumnModel().getColumn(7).setPreferredWidth(40);
+		tableVehiculos.getColumnModel().getColumn(8).setPreferredWidth(40);
+		tableVehiculos.getColumnModel().getColumn(9).setPreferredWidth(40);
+		scrollPane.setViewportView(tableVehiculos);
+
+		//llenar tantas row como vehiculos haya
+
+
+		System.out.println(tableVehiculos.getRowCount());
+		tableVehiculos.addRowSelectionInterval(0, nueva.getTamano());
+		for (int i = 0; i <nueva.getTamano() ; i++) {
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getNombreEs(), i, 0);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getNombreEn(), i, 1);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getConductores(), i, 2);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getMotor(), i, 3);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getTipoCaucho(), i, 4);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getTamanoCaucho(), i, 5);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getVelocidad(), i, 6);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getResBomba(), i, 7);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getResPiedra(), i, 8);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getResLiquido(), i, 9);
+		}
 	}
 
 	public void mouseClicked(MouseEvent e) {
