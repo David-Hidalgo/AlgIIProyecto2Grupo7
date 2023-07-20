@@ -8,7 +8,7 @@ import com.AlgIIProyecto2Grupo7.estructuras.avl.PistaAvl;
 import com.AlgIIProyecto2Grupo7.estructuras.listaVehiculo.ListaVehiculo;
 
 public class AppGestionPistas {
-	public static void Simulacion() {
+	public static void Simulacion(int nivel, int numeroTrampas) {
 		
 		
 		Lienzo lienzo = new Lienzo();
@@ -21,14 +21,10 @@ public class AppGestionPistas {
 		
         System.out.println("Hello, World!");
         ListaVehiculo listaCompetidores = ReadWrite.cargarVehiculosDefault();
-		int nivel = 5;
-		double lim = (Math.pow(2, nivel-1)*1.5)-4;
-		int limInt=((int)lim);
 		PistaAvl pista = Pista.crearPista(nivel);
 		PistaAvl auxAvl = (PistaAvl) pista.clone();
 		pista.inOrden();
-		Pista.generarTrampas(pista, nivel, 10);
-		System.out.println("Pista original");
+		Pista.generarTrampas(pista, nivel, numeroTrampas);
 		auxAvl=pista.clone();
 		pista.inOrden();
 		System.out.println("Pista clonada");

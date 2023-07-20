@@ -32,8 +32,8 @@ public class configurarPista extends JFrame implements MouseListener {
 
 	private JTextField txtNivelPista, txtNumeroTrampas, txtCantidadVehiculos;
 	private JButton boton1, menuSetPista, menuSimularCarrera, menuVehiculos, menuSalir;
-	private int nivel;
-	private int numeroTrampas;
+	private int nivel=5;
+	private int numeroTrampas=5;
 	private int contadorVehiculos;
 
 	public configurarPista() {
@@ -223,7 +223,7 @@ public class configurarPista extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == menuVehiculos || inserto==true) {
-			Listar listar = new Listar();
+			Listar listar = new Listar(nivel, numeroTrampas);
 			listar.setBounds(0, 0, 1280, 720);
 			listar.setVisible(true);
 			listar.setResizable(false);
@@ -231,7 +231,7 @@ public class configurarPista extends JFrame implements MouseListener {
 			this.setVisible(false);
 		}
 		if (e.getSource() == menuSimularCarrera) {
-			AppGestionPistas.Simulacion();
+			AppGestionPistas.Simulacion(nivel, numeroTrampas);
 			
 		}
 		if (e.getSource() == menuSalir) {

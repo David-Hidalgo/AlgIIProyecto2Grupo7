@@ -32,10 +32,14 @@ private ListaVehiculo nueva=ReadWrite.cargarVehiculos();
 private JButton menuAgregar , menuModificar , menuListar , menuSalir;
 private JScrollPane scrollPane;
 private JTable tableVehiculos;
+private int nivel=5;
+private int numeroTrampas=5;
 
 
 
-	public Listar(){
+	public Listar(int n, int t){
+		nivel=n;
+		numeroTrampas=t;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		setTitle("Pantalla Principal");
@@ -195,10 +199,10 @@ private JTable tableVehiculos;
                     this.setVisible(false);
 			}
 			if(e.getSource() == menuModificar){
-			AppGestionPistas.Simulacion();
+			AppGestionPistas.Simulacion(nivel, numeroTrampas);
 			}
 			if(e.getSource() == menuListar){
-                    Listar listar = new Listar();
+                    Listar listar = new Listar(nivel, numeroTrampas);
 	                listar.setBounds(0,0,1200,750);
 	                listar.setVisible(true);
 	                listar.setResizable(false);
@@ -287,11 +291,5 @@ private JTable tableVehiculos;
 				*/
 			}
 
-	public static void main(String args[]){
-	Listar listar = new Listar();
-	listar.setBounds(0,0,1280,720);
-	listar.setVisible(true);
-	listar.setResizable(false);
-	listar.setLocationRelativeTo(null);
-	}
+	
 }
