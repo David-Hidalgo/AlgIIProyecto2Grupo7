@@ -8,9 +8,10 @@ import com.AlgIIProyecto2Grupo7.estructuras.avl.PistaAvl;
 import com.AlgIIProyecto2Grupo7.estructuras.listaVehiculo.ListaVehiculo;
 
 public class AppGestionPistas {
-	public static void Simulacion(int nivel, int numeroTrampas) {
+	public static void Simulacion(int niveles, int numeroTrampa) {
 		
-		
+		int nivel = niveles;
+		int numeroTrampas = numeroTrampa;
 		Lienzo lienzo = new Lienzo();
 		
 		JFrame ventana = new JFrame();
@@ -25,6 +26,7 @@ public class AppGestionPistas {
 		PistaAvl auxAvl = (PistaAvl) pista.clone();
 		pista.inOrden();
 		Pista.generarTrampas(pista, nivel, numeroTrampas);
+
 		auxAvl=pista.clone();
 		pista.inOrden();
 		System.out.println("Pista clonada");

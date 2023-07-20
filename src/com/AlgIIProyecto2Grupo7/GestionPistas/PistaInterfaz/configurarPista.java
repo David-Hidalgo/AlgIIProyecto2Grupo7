@@ -1,14 +1,13 @@
 package com.AlgIIProyecto2Grupo7.GestionPistas.PistaInterfaz;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import com.AlgIIProyecto2Grupo7.Validaciones;
 import com.AlgIIProyecto2Grupo7.estructuras.ReadWrite;
-import com.AlgIIProyecto2Grupo7.estructuras.Vehiculo;
 import com.AlgIIProyecto2Grupo7.estructuras.listaVehiculo.ListaVehiculo;
 import com.AlgIIProyecto2Grupo7.estructuras.avl.PistaAvl;
 import com.AlgIIProyecto2Grupo7.estructuras.avl.Pista;
-import com.AlgIIProyecto2Grupo7.GestionPistas.AppGestionPistas;
+import com.AlgIIProyecto2Grupo7.GestionPistas.lienzoarbol.Lienzo;
+
 import java.awt.event.*;
 import java.awt.*;
 
@@ -231,7 +230,32 @@ public class configurarPista extends JFrame implements MouseListener {
 			this.setVisible(false);
 		}
 		if (e.getSource() == menuSimularCarrera) {
-			AppGestionPistas.Simulacion(nivel, numeroTrampas);
+			int nivel = this.nivel;
+			int numeroTrampas = this.numeroTrampas;
+			Lienzo lienzo = new Lienzo();
+			
+			JFrame ventana = new JFrame();
+			ventana.getContentPane().add(lienzo);
+			ventana.setDefaultCloseOperation(3);
+			ventana.setSize(600, 600);
+			ventana.setVisible(true);
+			
+			System.out.println("Hello, World!");
+			ListaVehiculo listaCompetidores = ReadWrite.cargarVehiculosDefault();
+			PistaAvl pista = Pista.crearPista(nivel);
+			PistaAvl auxAvl = (PistaAvl) pista.clone();
+			pista.inOrden();
+			Pista.generarTrampas(pista, nivel, numeroTrampas);
+
+			auxAvl=pista.clone();
+			pista.inOrden();
+			System.out.println("Pista clonada");
+			auxAvl.inOrden();
+			
+			
+			listaCompetidores=pista.ListaGanadores(listaCompetidores, lienzo);
+			ReadWrite.guardarHistorico(listaCompetidores);
+			System.out.println(listaCompetidores);
 			
 		}
 		if (e.getSource() == menuSalir) {
