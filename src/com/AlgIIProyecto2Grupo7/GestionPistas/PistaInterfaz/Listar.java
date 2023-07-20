@@ -40,7 +40,6 @@ private JTable tableVehiculos;
 		getContentPane().setLayout(null);
 		setTitle("Pantalla Principal");
 		getContentPane().setBackground(new Color(87,35,100));
-		setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png")).getImage());
 		
 	labelModificar = new JLabel("Listar");
 		labelModificar.setBounds(40,30,300,50);
@@ -189,7 +188,7 @@ private JTable tableVehiculos;
 */
 			if(e.getSource() == menuAgregar){
 				configurarPista configurarPista = new configurarPista();
-				configurarPista.setBounds(0,0,1200,750);
+				configurarPista.setBounds(0,0,800,450);
 				configurarPista.setVisible(true);
 				configurarPista.setResizable(false);
 				configurarPista.setLocationRelativeTo(null);

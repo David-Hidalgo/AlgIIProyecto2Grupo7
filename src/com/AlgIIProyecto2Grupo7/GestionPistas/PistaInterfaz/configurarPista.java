@@ -41,7 +41,6 @@ public class configurarPista extends JFrame implements MouseListener {
 		getContentPane().setLayout(null);
 		setTitle("Pantalla Principal");
 		getContentPane().setBackground(new Color(87, 35, 100));
-	//	setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png")).getImage());
 
 		labelTitulo = new JLabel("Simulacion de la Carrera");
 		labelTitulo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -225,7 +224,7 @@ public class configurarPista extends JFrame implements MouseListener {
 		}
 		if (e.getSource() == menuVehiculos || inserto==true) {
 			Listar listar = new Listar();
-			listar.setBounds(0, 0, 1200, 750);
+			listar.setBounds(0, 0, 1280, 720);
 			listar.setVisible(true);
 			listar.setResizable(false);
 			listar.setLocationRelativeTo(null);
