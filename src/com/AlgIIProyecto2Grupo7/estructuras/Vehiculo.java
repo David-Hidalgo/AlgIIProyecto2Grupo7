@@ -225,7 +225,7 @@ public class Vehiculo {
         return nombreEs+","+ nombreEn +"," + conductor + ","+ Motor + "," + tipoCaucho + ","+ tamanoCaucho + ","+ ResBomba + ","+ ResPiedra + ","+ ResLiquido + ","+ velocidad;
     }
     public String toStringGuardar() {
-        return nombreEs+","+ nombreEn +"," + conductor + ","+ Motor + "," + tipoCaucho + ","+ tamanoCaucho + ","+ ResBomba + ","+ ResPiedra + ","+ ResLiquido + ","+ velocidad+ ","+ vehiculoEnPantalla;
+        return nombreEs+","+ nombreEn +"," + conductor +","+tiempoDeLlegada+","+distanciaRecorrida+ ","+ ResBomba + ","+ ResPiedra + ","+ ResLiquido + ","+ velocidad+ ","+ vehiculoEnPantalla;
     }
 
 }

@@ -1,15 +1,13 @@
 package com.AlgIIProyecto2Grupo7.GestionPistas.PistaInterfaz;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.table.DefaultTableModel;
-import com.AlgIIProyecto2Grupo7.GestionPistas.AppGestionPistas;
-import com.AlgIIProyecto2Grupo7.GestionVehiculos.InterfazGestionVehiculo.ConsultarGeneral;
-import com.AlgIIProyecto2Grupo7.GestionVehiculos.InterfazGestionVehiculo.Eliminar;
+import com.AlgIIProyecto2Grupo7.GestionPistas.lienzoarbol.Lienzo;
 import com.AlgIIProyecto2Grupo7.estructuras.ReadWrite;
+import com.AlgIIProyecto2Grupo7.estructuras.avl.Pista;
+import com.AlgIIProyecto2Grupo7.estructuras.avl.PistaAvl;
 import com.AlgIIProyecto2Grupo7.estructuras.listaVehiculo.ListaVehiculo;
 
 //import java.awt.event.MouseEvent;
@@ -199,15 +197,40 @@ private int numeroTrampas=5;
                     this.setVisible(false);
 			}
 			if(e.getSource() == menuModificar){
-			AppGestionPistas.Simulacion(nivel, numeroTrampas);
+			int nivel = 5;
+			int numeroTrampas = 6;
+			Lienzo lienzo = new Lienzo();
+			
+			JFrame ventana = new JFrame();
+			ventana.getContentPane().add(lienzo);
+			ventana.setDefaultCloseOperation(3);
+			ventana.setSize(600, 600);
+			ventana.setVisible(true);
+			
+			System.out.println("Hello, World!");
+			ListaVehiculo listaCompetidores = ReadWrite.cargarVehiculosDefault();
+			PistaAvl pista = Pista.crearPista(nivel);
+			PistaAvl auxAvl = (PistaAvl) pista.clone();
+			pista.inOrden();
+			Pista.generarTrampas(pista, nivel, numeroTrampas);
+
+			auxAvl=pista.clone();
+			pista.inOrden();
+			System.out.println("Pista clonada");
+			auxAvl.inOrden();
+			
+			
+			listaCompetidores=pista.ListaGanadores(listaCompetidores, lienzo);
+			ReadWrite.guardarHistorico(listaCompetidores);
+			System.out.println(listaCompetidores);
 			}
 			if(e.getSource() == menuListar){
                     Listar listar = new Listar(nivel, numeroTrampas);
-	                listar.setBounds(0,0,1200,750);
-	                listar.setVisible(true);
-	                listar.setResizable(false);
-	                listar.setLocationRelativeTo(null);
-                    this.setVisible(false);
+					listar.setBounds(0,0,1200,750);
+					listar.setVisible(true);
+					listar.setResizable(false);
+					listar.setLocationRelativeTo(null);
+					this.setVisible(false);
 			}
 			if(e.getSource() == menuSalir){
 
