@@ -31,6 +31,7 @@ public class ReadWrite {
 		}
 		return nuevaListaVehiculo;
 	}
+
 	public static ListaVehiculo cargarVehiculos() {
 		ListaVehiculo nuevaListaVehiculo = new ListaVehiculo();
 		File archivo = new File("src\\com\\AlgIIProyecto2Grupo7\\archivos\\vehiculos.txt");
@@ -85,7 +86,7 @@ public class ReadWrite {
 		try {
 			writer = new FileWriter("src\\com\\AlgIIProyecto2Grupo7\\archivos\\Historico.txt", true);
 			writer.write("\n");
-			writer.write(listaCompetidores.toString());
+			writer.write(listaCompetidores.toStringGuardar());
 			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();

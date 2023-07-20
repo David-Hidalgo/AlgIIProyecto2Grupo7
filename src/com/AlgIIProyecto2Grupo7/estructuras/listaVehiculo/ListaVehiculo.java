@@ -165,11 +165,20 @@ public class ListaVehiculo {
 	}
 
 
-	public String toString() {
+	public String toStringGuardar() {
 		String s = "";
 		NodoLista aux = inicio;
 		while (aux != null) {
 			s += aux.getP().toStringGuardar() + "\n";
+			aux = aux.getProx();
+		}
+		return s;
+	}
+	public String toString() {
+		String s = "";
+		NodoLista aux = inicio;
+		while (aux != null) {
+			s += aux.getP().toString() + "\n";
 			aux = aux.getProx();
 		}
 		return s;

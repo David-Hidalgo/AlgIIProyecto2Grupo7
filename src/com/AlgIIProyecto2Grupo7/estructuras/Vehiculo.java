@@ -222,7 +222,7 @@ public class Vehiculo {
 
     @Override
     public String toString() {
-        return nombreEs+","+ nombreEn +"," + conductor + ","+ Motor + "," + tipoCaucho + ","+ tamanoCaucho + ","+ ResBomba + ","+ ResPiedra + ","+ ResLiquido + ","+ velocidad;
+        return nombreEs+","+ nombreEn +"," + conductor + ","+ Motor + "," + tipoCaucho + ","+ tamanoCaucho + ","+ ResBomba + ","+ ResPiedra + ","+ ResLiquido + ","+ velocidad+","+vehiculoEnPantalla;
     }
     public String toStringGuardar() {
         return nombreEs+","+ nombreEn +"," + conductor +","+tiempoDeLlegada+","+distanciaRecorrida+ ","+ ResBomba + ","+ ResPiedra + ","+ ResLiquido + ","+ velocidad+ ","+ vehiculoEnPantalla;
