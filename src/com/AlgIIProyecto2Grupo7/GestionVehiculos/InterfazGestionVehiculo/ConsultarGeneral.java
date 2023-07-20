@@ -2,6 +2,10 @@ package com.AlgIIProyecto2Grupo7.GestionVehiculos.InterfazGestionVehiculo;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
+
+import com.AlgIIProyecto2Grupo7.estructuras.ReadWrite;
+import com.AlgIIProyecto2Grupo7.estructuras.listaVehiculo.ListaVehiculo;
 
 import java.awt.event.*;
 import java.awt.*;
@@ -23,6 +27,7 @@ public class ConsultarGeneral extends JFrame implements MouseListener {
 	private JLabel labelTamanoDeCaucho, labelVelocidadDelVehiculo, labelResistenciaBomba;
 	private JLabel labelResistenciaPiedra, labelResistenciaLiquido, labelComoSeVe ;
 
+	private ListaVehiculo nueva=ReadWrite.cargarVehiculos();
 	private JLabel labelModificar,labelOpcion;
 
 	private JTextField txtNombreEnEspanol, txtNombreIngles, txtNombreConductor,txtOpcion;
@@ -30,6 +35,8 @@ public class ConsultarGeneral extends JFrame implements MouseListener {
 	private JTextField txtResistenciaLiquido;
 	private JComboBox comboTipoDeCaucho, comboTamanoDeCaucho, comboComoSeVe;
 	private JButton boton1, menuAgregar, menuModificar, menuEliminar, menuConsultar, menuListar, menuSalir;
+	private JScrollPane scrollPane;
+	private JTable tableVehiculos;
 
 	public ConsultarGeneral() {
 		setLayout(null);
@@ -38,91 +45,6 @@ public class ConsultarGeneral extends JFrame implements MouseListener {
 		setIconImage(new ImageIcon(getClass().getResource("imagenesAutosLocos/icono.png")).getImage());
 		// colocar imagen de fondo
 		/*
-		 * mb = new JMenuBar();
-		 * mb.setBackground(new Color(87,35,100));
-		 * setJMenuBar(mb);
-		 * 
-		 * menuAgregar = new JMenu("Agregar");
-		 * menuAgregar.setBackground(new Color(87,35,100));
-		 * menuAgregar.setFont(new Font("Andele Mono",1,14));
-		 * menuAgregar.setForeground(new Color(255,255,255));
-		 * mb.add(menuAgregar);
-		 * menuAgregar.addMouseListener(this);
-		 * 
-		 * menuModificar = new JMenu("Modificar");
-		 * menuModificar.setBackground(new Color(87,35,100));
-		 * menuModificar.setFont(new Font("Andele Mono",1,14));
-		 * menuModificar.setForeground(new Color(255,255,255));
-		 * mb.add(menuModificar);
-		 * menuModificar.addMouseListener(this);
-		 * 
-		 * menuEliminar = new JMenu("Eliminar");
-		 * menuEliminar.setBackground(new Color(87,35,100));
-		 * menuEliminar.setFont(new Font("Andele Mono",1,14));
-		 * menuEliminar.setForeground(new Color(255,255,255));
-		 * mb.add(menuEliminar);
-		 * menuEliminar.addMouseListener(this);
-		 * 
-		 * menuConsultar = new JMenu("Consultar");
-		 * menuConsultar.setBackground(new Color(87,35,100));
-		 * menuConsultar.setFont(new Font("Andele Mono",1,14));
-		 * menuConsultar.setForeground(new Color(255,255,255));
-		 * mb.add(menuConsultar);
-		 * menuConsultar.addMouseListener(this);
-		 * 
-		 * menuListar = new JMenu("Listar");
-		 * menuListar.setBackground(new Color(87,35,100));
-		 * menuListar.setFont(new Font("Andele Mono",1,14));
-		 * menuListar.setForeground(new Color(255,255,255));
-		 * mb.add(menuListar);
-		 * menuListar.addMouseListener(this);
-		 * 
-		 * menuSalir = new JMenu("Salir");
-		 * menuSalir.setBackground(new Color(87,35,100));
-		 * menuSalir.setFont(new Font("Andele Mono",1,14));
-		 * menuSalir.setForeground(new Color(255,255,255));
-		 * mb.add(menuSalir);
-		 * menuSalir.addMouseListener(this);
-		 */
-
-		/*
-		 * miNuevoAgregar = new JMenuItem("Nuevo");
-		 * miNuevoAgregar.setFont(new Font("Andale Mono", 1,14));
-		 * miNuevoAgregar.setForeground(new Color(87,35,100));
-		 * menuAgregar.add(miNuevoAgregar);
-		 * miNuevoAgregar.addMouseListener(this);
-		 * 
-		 */
-
-		// ------------------------------------------------
-
-		/*
-		 * 
-		 * label2 = new JLabel("Sistema de Gestion de Vehiculos");
-		 * label2.setBounds(35,135,300,30);
-		 * label2.setFont(new Font("Andale Mono", 3,18));
-		 * label2.setForeground(new Color(255,255,255));
-		 * add(label2);
-		 * 
-		 * label3 = new JLabel("Ingrese su nombre");
-		 * label3.setBounds(45,212,200,30);
-		 * label3.setFont(new Font("Andale Mono", 1,12));
-		 * label3.setForeground(new Color(255,255,255));
-		 * add(label3);
-		 * 
-		 * label4 = new JLabel("Universidad Catolica Andres Bello");
-		 * label4.setBounds(85,375,300,30);
-		 * label4.setFont(new Font("Andale Mono", 1,12));
-		 * label4.setForeground(new Color(255,255,255));
-		 * add(label4);
-		 * 
-		 * textfield1 = new JTextField();
-		 * textfield1.setBounds(45,240,255,25);
-		 * textfield1.setBackground(new Color(224,224,224));
-		 * textfield1.setFont(new Font("Andale Mono", 1,14));
-		 * textfield1.setForeground(new Color(87,35,100));
-		 * add(textfield1);
-		 * 
 		 */
 
 		boton1 = new JButton("Buscar Vehiculo");
@@ -209,6 +131,86 @@ public class ConsultarGeneral extends JFrame implements MouseListener {
 	txtOpcion.setFont(new java.awt.Font("Andale Mono",1,14));
 	txtOpcion.setForeground(new java.awt.Color(87,35,100));
 	add(txtOpcion);
+
+
+		scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPane.setEnabled(false);
+		scrollPane.setBounds(23, 128, 1155, 388);
+		getContentPane().add(scrollPane);
+		
+		tableVehiculos = new JTable();
+		tableVehiculos.setSurrendersFocusOnKeystroke(true);
+		tableVehiculos.setBorder(null);
+		tableVehiculos.setFillsViewportHeight(true);
+		tableVehiculos.setFont(new Font("Dialog", Font.PLAIN, 15));
+		tableVehiculos.setColumnSelectionAllowed(true);
+		tableVehiculos.setCellSelectionEnabled(true);
+		tableVehiculos.setEnabled(false);
+		tableVehiculos.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"Nombre Es", "Nombre En", "Conductores", "Motor", "Tipo Caucho", "Tama\u00F1o Caucho", "Velocidad", "ResBomb", "ResObs", "ResLiq"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		tableVehiculos.getColumnModel().getColumn(0).setPreferredWidth(90);
+		tableVehiculos.getColumnModel().getColumn(1).setPreferredWidth(90);
+		tableVehiculos.getColumnModel().getColumn(2).setPreferredWidth(90);
+		tableVehiculos.getColumnModel().getColumn(5).setPreferredWidth(80);
+		tableVehiculos.getColumnModel().getColumn(6).setPreferredWidth(40);
+		tableVehiculos.getColumnModel().getColumn(7).setPreferredWidth(40);
+		tableVehiculos.getColumnModel().getColumn(8).setPreferredWidth(40);
+		tableVehiculos.getColumnModel().getColumn(9).setPreferredWidth(40);
+		scrollPane.setViewportView(tableVehiculos);
+
+		//llenar tantas row como vehiculos haya
+
+
+		System.out.println(tableVehiculos.getRowCount());
+		tableVehiculos.addRowSelectionInterval(0, nueva.getTamano());
+		for (int i = 0; i <nueva.getTamano() ; i++) {
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getNombreEs(), i, 0);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getNombreEn(), i, 1);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getConductores(), i, 2);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getMotor(), i, 3);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getTipoCaucho(), i, 4);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getTamanoCaucho(), i, 5);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getVelocidad(), i, 6);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getResBomba(), i, 7);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getResPiedra(), i, 8);
+			tableVehiculos.setValueAt(nueva.getVehiculo(i).getResLiquido(), i, 9);
+		}
+
 
 
 	}
